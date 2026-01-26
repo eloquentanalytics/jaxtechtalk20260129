@@ -100,43 +100,44 @@
 - Bold conclusion statement at bottom
 
 ### Slide 4: The 4 Structural Barriers (Overview) (1:00)
-- The Scope Problem
-- The Shortest Path
-- The Hero's Journey
-- The Gravity Well
-- (Quick visual overview before diving in)
+
+**Framing:** The enterprise AI transformation follows the Dan Harmon Story Circle—but most enterprises fail at specific stages. Each barrier represents where the hero's journey breaks down.
+
+- **The Scope Problem** → "Go" — They never fully cross the threshold (stop at 80%)
+- **The Upside Down** → "Search" — The unfamiliar world is ugly and uncomfortable
+- **The Shortest Path** → "Find" — Tempted to grab meager winnings and flee home
+- **The Sacrifice** → "Return" — Must kill part of themselves to be reborn; they can't
 
 **Visual Layout:**
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  Four Barriers to Enterprise AI Transformation          │
+│  The Story Circle of Enterprise AI (and where it breaks)│
 │                                                         │
-│   ┌─────────────┐  ┌─────────────┐                     │
-│   │      1      │  │      2      │                     │
-│   │   [scope    │  │  [scissors  │                     │
-│   │    icon]    │  │   icon]     │                     │
-│   │             │  │             │                     │
-│   │ THE SCOPE   │  │ THE SHORTEST│                     │
-│   │  PROBLEM    │  │    PATH     │                     │
-│   └─────────────┘  └─────────────┘                     │
-│                                                         │
-│   ┌─────────────┐  ┌─────────────┐                     │
-│   │      3      │  │      4      │                     │
-│   │  [bridge    │  │  [gravity   │                     │
-│   │   icon]     │  │   icon]     │                     │
-│   │             │  │             │                     │
-│   │ THE HERO'S  │  │ THE GRAVITY │                     │
-│   │  JOURNEY    │  │    WELL     │                     │
-│   └─────────────┘  └─────────────┘                     │
+│                       1. SCOPE PROBLEM                  │
+│                        "Won't cross"                    │
+│                            ↓ GO                         │
+│                    ╱───────────────╲                    │
+│               YOU                    SEARCH             │
+│              ╱                           ╲              │
+│            ╱                         2. UPSIDE DOWN     │
+│                                      "Unfamiliar world" │
+│         CHANGE                              ╲           │
+│           ↑                                 FIND        │
+│    4. SACRIFICE                               ↓         │
+│    "Must let go"                      3. SHORTEST PATH  │
+│            ╲                          "Tempted to flee" │
+│             ╲       RETURN ← TAKE       ╱               │
+│              ╲─────────────────────────╱                │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 ```
-- 2x2 grid of cards, each with icon + name
-- Simple icons: target/scope, scissors/cut, bridge/construction, spiral/gravity
-- This slide serves as a visual table of contents
-- Each card same size, muted colors, will highlight as you progress
+- Story circle diagram with barriers at each failure point
+- Clockwise journey: Go → Search → Find → Take → Return → Change
+- Enterprises fail at 4 specific moments; startups skip the first half entirely
 
 ### Slide 5: Barrier #1 — The Scope Problem (2:00)
+
+**Story Circle Stage: "GO"** — The hero must cross the threshold into the unfamiliar world. Enterprises refuse to fully cross—they stop at 80% automation, keeping one foot in the comfort zone. They never truly enter the transformative space.
 
 **Summary:** Enterprises naturally seek 80/20 solutions, but AI's transformative value only unlocks at 100% automation. Startups should target the most automatable subset of an enterprise's scope and serve customers who only need that slice at far lower prices. Enterprises should respond by identifying customer segments whose entire experience is automatable and building exclusively for them before expanding.
 
@@ -181,13 +182,113 @@
 - Three bullet points below diagram
 - Visual emphasis on "slice" concept
 
-### Slide 6: Barrier #2 — The Shortest Path (2:00)
+### Slide 6: Barrier #2 — The Upside Down (2:00)
+
+**Story Circle Stage: "SEARCH"** — The hero enters the unfamiliar world and must navigate its strange rules. The AI transformation landscape is ugly, uncomfortable, and alien. Everything works differently here. Most enterprises can't stomach the disorientation and retreat.
+
+**Summary:** Transitioning to AI-driven processes requires significant investment in disposable software—systems designed solely to bridge the gap while humans and AI still overlap. Think of early Waymo prototypes: ugly, wire-covered, transitional. Enterprises struggle to justify building infrastructure they know will be thrown away, while startups can build AI-native from day one.
+
+- Hybrid handoff systems don't exist—if AI handles 80% and humans 20%, you need new infrastructure for the transition that wasn't designed for either
+- Legacy systems were built for humans clicking through workflows; AI needs APIs, structured data, and different interfaces entirely
+- The "vibe-coded" throwaway systems that bridge old and new become permanent technical debt before anyone notices
+
+**Leverage Points (Upside Down):**
+- B2: Hybrid Handoff Systems Don't Exist — new engineering project with no direct revenue
+- B5: Vibe-Coded Throwaway Systems — prototypes promoted to production without proper engineering
+- F1: Legacy Systems Weren't Built for AI — expose UIs not APIs, human-centric workflows
+- F4: Decommissioning Legacy Systems Rarely Happens — finance assumes shutdown, reality is parallel running
+- F2: Multi-Bot Integration Is an Order of Magnitude Harder — no standards for multi-agent coordination
+- F5: AI-Native Tools Emphasize Task-Based Orientation — opinionated tools feel "limited" to enterprises
+
+**Visual Layout:**
+```
+┌─────────────────────────────────────────────────────────┐
+│  2 · THE UPSIDE DOWN                                    │
+│                                                         │
+│   ┌─────────────────────────────────────────────────┐  │
+│   │                                                 │  │
+│   │      [IMG: img/stanley-trunk-chaos.jpg         │  │
+│   │       Stanley's trunk: 6 computers, wires,     │  │
+│   │       zip ties, ethernet spaghetti]            │  │
+│   │                                                 │  │
+│   └─────────────────────────────────────────────────┘  │
+│                                                         │
+│   "This won the 2005 DARPA Challenge. Ugly. Necessary." │
+│                                                         │
+│  • Hybrid handoff systems don't exist—you build them    │
+│  • Legacy wasn't built for AI; AI wasn't built for legacy│
+│  • The throwaway code becomes permanent before you notice│
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+- Central image: Stanley's trunk (2005 DARPA winner) - chaotic wiring, server racks, zip ties
+- Caption below: "This won. Ugly. Necessary."
+- Three bullets at bottom
+- The visual metaphor carries the slide
+
+### Slide 7: Barrier #3 — The Shortest Path (2:00)
+
+**Story Circle Stage: "FIND"** — The hero finds something valuable, but is tempted to grab the easy prize and flee. Enterprises find cost savings and are tempted to take them and run home—declaring victory with their meager winnings instead of pressing on to the true treasure.
 
 **Summary:** When AI delivers productivity gains, enterprises face a choice: cut costs (fire people) or invest in growth (do more with the same headcount). Cost cutting wins almost every time—not because leaders lack vision, but because it's the rational risk-adjusted choice. Growth is speculative and uncertain; headcount reduction delivers immediate, quantifiable savings that flow straight to the bottom line.
 
-- Cost cutting delivers certain, immediate ROI that shows up in this quarter's earnings; growth investments are speculative bets that may take years to pay off—or never
-- Shareholders and analysts reward margin expansion; "we're investing in growth" sounds like "our margins are declining"
-- The efficiency mindset (fewer people, same output) is linear; the volume mindset (same people, 100x output) requires imagining markets that don't exist yet
+---
+
+#### THE MATH: Why Cost Cutting Always Wins
+
+**Real-World Context:**
+- Workday announced 1,750 layoffs (8.5% of workforce) → stock jumped 6.3% the same day
+- HP targeting $1B savings by 2028 through 4,000-6,000 AI-driven layoffs
+- Microsoft saved $500M through AI integration, laid off 9,000 employees
+- CFO survey: Cost control is now priority #1 (38%), revenue growth dropped to #5 (23%)
+
+**Example Scenario:**
+```
+Enterprise Division
+├── Revenue: $30M
+├── AI Investment: $1M
+├── AI creates: 10% efficiency = $3M in cost savings potential
+└── Gross margin: 60%
+```
+
+**Option A: Cut Costs**
+```
+Action:            Cut $3M in labor/operational costs
+Profit impact:     +$3M (100% falls to bottom line)
+Timeline:          This quarter
+Certainty:         ~95% (just execute the layoffs)
+Stock reaction:    +6% (see Workday)
+```
+
+**Option B: Invest in Growth**
+```
+Action:            Keep the $3M capacity, pursue new revenue
+To match $3M profit: Need $3M ÷ 60% margin = $5M new revenue
+That's:            17% revenue growth required just to BREAK EVEN
+Timeline:          12-24 months
+Certainty:         ~35% (need new customers, longer sales cycles)
+Stock reaction:    "They're investing" = margin compression narrative
+```
+
+**The Punchline:**
+```
+Cost cutting IS 17% growth — guaranteed, delivered this quarter.
+
+To match it with actual growth, you need to:
+  • Find $5M in new revenue (17% growth)
+  • Close it within 12-24 months
+  • At only 35% probability of success
+
+Why would any rational CFO choose Option B?
+```
+
+**Why CFOs Choose A:**
+- 56% of CFOs say they struggle to balance cost cutting with growth investment
+- Quarterly earnings pressure rewards certainty
+- "We're investing in growth" = "Our margins are declining" to analysts
+- Cost savings hit P&L immediately; revenue growth is a spreadsheet fantasy until it closes
+
+---
 
 **Leverage Points (Shortest Path):**
 - K1: Efficiency vs. Volume Mindset — incumbents see cost reduction; startups see 100x volume expansion
@@ -200,121 +301,80 @@
 **Visual Layout:**
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  2 · THE SHORTEST PATH                                  │
+│  3 · THE SHORTEST PATH                                  │
 │                                                         │
-│            When AI delivers productivity gains...       │
+│  $30M revenue · $1M AI investment · 10% efficiency ($3M)│
 │                                                         │
-│        ┌──────────────┐         ┌──────────────┐       │
-│        │   OPTION A   │         │   OPTION B   │       │
-│        │              │         │              │       │
-│        │  ✂️ CUT COSTS │         │  📈 GROW     │       │
-│        │              │         │              │       │
-│        │  • Certain   │         │  • Speculative│      │
-│        │  • Immediate │         │  • Multi-year │       │
-│        │  • This Q    │         │  • Maybe never│       │
-│        │              │         │              │       │
-│        │   ✓ WINS     │         │   ✗ LOSES    │       │
-│        └──────────────┘         └──────────────┘       │
+│  ┌─────────────────────────┐ ┌─────────────────────────┐│
+│  │      ✂️ CUT COSTS        │ │      📈 GROW            ││
+│  │                         │ │                         ││
+│  │  Save $3M in labor      │ │  Keep $3M capacity      ││
+│  │  Profit: +$3M (100%)    │ │  At 60% margin: need    ││
+│  │                         │ │  $5M new revenue        ││
+│  │  Timeline: This quarter │ │  That's 17% growth      ││
+│  │  Certainty: 95%         │ │  Certainty: 35%         ││
+│  └─────────────────────────┘ └─────────────────────────┘│
 │                                                         │
-│    "It's not a lack of vision. It's rational math."    │
+│  ┌─────────────────────────────────────────────────────┐│
+│  │  $3M saved = $3M profit (certain)                   ││
+│  │  $3M reinvested ÷ 60% margin = need $5M (speculative)│
+│  └─────────────────────────────────────────────────────┘│
+│                                                         │
+│     "Cost cutting IS 17% growth — guaranteed, today."   │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 ```
-- Two-column choice layout
-- Left card (highlighted/larger): "Cut Costs" with certainty attributes
-- Right card (faded): "Grow" with uncertainty attributes
-- Checkmark on left, X on right—make the point visually
-- Quote/punchline at bottom
+- Two-column comparison with real numbers
+- Left card (glowing, amber): the certain choice
+- Right card (faded): the speculative bet
+- Math box showing the gross margin calculation
+- Punchline: cost cutting IS the equivalent of 17% growth
+- Real examples cited verbally (Workday, HP, Microsoft)
 
-### Slide 7: Barrier #3 — The Hero's Journey (2:00)
+### Slide 8: Barrier #4 — The Sacrifice (2:00)
 
-**Summary:** Transitioning to AI-driven processes requires significant investment in disposable software—systems designed solely to bridge the gap while humans and AI still overlap. Think of early Waymo prototypes: ugly, wire-covered, transitional. Enterprises struggle to justify building infrastructure they know will be thrown away, while startups can build AI-native from day one.
+**Story Circle Stage: "RETURN/CHANGE"** — To return transformed, the hero must leave something behind. The enterprise must sacrifice part of itself to be reborn—existing customers, revenue streams, processes, people. But enterprises are structurally incapable of self-cannibalization. They try to transform while preserving everything, which is impossible.
 
-- Hybrid handoff systems don't exist—if AI handles 80% and humans 20%, you need new infrastructure for the transition that wasn't designed for either
-- Legacy systems were built for humans clicking through workflows; AI needs APIs, structured data, and different interfaces entirely
-- The "vibe-coded" throwaway systems that bridge old and new become permanent technical debt before anyone notices
+**Summary:** Transformation requires killing part of yourself. Enterprises must sacrifice existing customers who demand the old way, revenue streams that will be cannibalized, processes and values that define who they are, and sometimes the people whose roles depend on the current model. Startups win because they have nothing to sacrifice—they're born on the other side.
 
-**Leverage Points (Hero's Journey):**
-- B2: Hybrid Handoff Systems Don't Exist — new engineering project with no direct revenue
-- B5: Vibe-Coded Throwaway Systems — prototypes promoted to production without proper engineering
-- F1: Legacy Systems Weren't Built for AI — expose UIs not APIs, human-centric workflows
-- F4: Decommissioning Legacy Systems Rarely Happens — finance assumes shutdown, reality is parallel running
-- F2: Multi-Bot Integration Is an Order of Magnitude Harder — no standards for multi-agent coordination
-- F5: AI-Native Tools Emphasize Task-Based Orientation — opinionated tools feel "limited" to enterprises
+- To be reborn, something must die: existing customers, current revenue, legacy processes, familiar roles—enterprises can't willingly let go
+- Resource allocation is democratic: existing customers vote loudly, future customers are silent, non-customers don't exist yet
+- Cannibalization appears in this quarter's P&L; new revenue is a spreadsheet fantasy—business unit leaders protect what's real
+
+**Leverage Points (Sacrifice):**
+- C1: Processes, Values, and Profit Targets Are Structural — the org's identity is the constraint
+- C2: Resource Dependence on Existing Customers — you can't serve two masters
+- D1: Cannibalization Fear — killing your own revenue is organizational suicide
+- N1: No Legacy to Defend — startups have nothing to sacrifice; that's their advantage
+- C5: Autonomous Units/Spinouts Rarely Work — parent can't let the child kill the parent
+- J1: "Replacing People with Algorithms" = Bad Press — the human cost of sacrifice is visible
 
 **Visual Layout:**
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  3 · THE HERO'S JOURNEY                                 │
+│  4 · THE SACRIFICE                                      │
 │                                                         │
-│   ┌─────────────────────────────────────────────────┐  │
-│   │                                                 │  │
-│   │      [PHOTO: Early Waymo prototype with        │  │
-│   │       visible wires, sensors, ugly but         │  │
-│   │       functional transitional hardware]        │  │
-│   │                                                 │  │
-│   └─────────────────────────────────────────────────┘  │
+│         To return transformed, you must leave behind:   │
 │                                                         │
-│     "Ugly, wire-covered, transitional. Necessary."      │
+│    ┌────────────┐ ┌────────────┐ ┌────────────┐        │
+│    │  EXISTING  │ │  CURRENT   │ │   LEGACY   │        │
+│    │ CUSTOMERS  │ │  REVENUE   │ │ PROCESSES  │        │
+│    │            │ │            │ │            │        │
+│    │   👥 → ❌   │ │   💰 → ❌   │ │   ⚙️ → ❌   │        │
+│    │            │ │            │ │            │        │
+│    │ They want  │ │ It pays    │ │ They define│        │
+│    │ the old way│ │ the bills  │ │  who we are│        │
+│    └────────────┘ └────────────┘ └────────────┘        │
 │                                                         │
-│  • Hybrid handoff systems don't exist—you build them    │
-│  • Legacy wasn't built for AI; AI wasn't built for legacy│
-│  • The throwaway code becomes permanent before you notice│
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
-- Central image: early Waymo/autonomous vehicle prototype (messy, wires visible)
-- Caption below image emphasizing "transitional but necessary"
-- Three bullets at bottom
-- The visual metaphor carries the slide
-
-### Slide 8: Barrier #4 — The Gravity Well (2:00)
-
-**Summary:** Organizational inertia isn't about resistant individuals—it's structural. Existing processes, values, profit targets, and customer relationships create gravitational pull toward the current business model. Cannibalization fear, margin percentage obsession, and shareholder pressure for stability make transformative bets nearly impossible from inside the system.
-
-- It's not the people—it's the organizational processes, values, and profit targets that prevent pursuing disruptive plays; even visionary leaders can't overcome structural constraints quickly
-- Resource allocation goes to what existing profitable customers demand, making enterprises rationally avoid "small" disruptive opportunities that could become large
-- Cannibalization appears in this quarter's numbers while new revenue is uncertain and future—business unit leaders protect their P&L even at company expense
-
-**Leverage Points (Gravity Well):**
-- C1: Processes, Values, and Profit Targets Are Structural — Christensen's core insight: the org itself is the constraint
-- C2: Resource Dependence on Existing Customers — customer voice is loud; non-customers are silent
-- D1: Cannibalization Fear — optimizing for current quarter delays AI-first products
-- C3: Common Ownership Creates Disincentives for Disruption — institutional shareholders prefer stability
-- N1: No Legacy to Defend — startups optimize for future; incumbents optimize for compatibility
-- C5: Autonomous Units/Spinouts Rarely Work — parent company can't resist "synergies" that destroy independence
-- C7: Shocks Overcome Inertia, But You Can't Plan for Shocks — absent crisis, status quo wins
-
-**Visual Layout:**
-```
-┌─────────────────────────────────────────────────────────┐
-│  4 · THE GRAVITY WELL                                   │
-│                                                         │
-│                    ┌─────────────┐                     │
-│                    │   STARTUP   │                     │
-│                    │     ☆       │  ← free to move     │
-│                    └─────────────┘                     │
-│                                                         │
-│         ╲                               ╱               │
-│          ╲                             ╱                │
-│           ╲                           ╱                 │
-│            ╲    ┌───────────────┐   ╱                  │
-│             ╲   │  ENTERPRISE   │  ╱                   │
-│              ╲  │   ●●●●●●●●    │ ╱   ← pulled back    │
-│               ╲ │   stuck here  │╱                     │
-│                ╲└───────────────┘                      │
-│                                                         │
-│  • It's not the people—it's processes, values, targets  │
-│  • Resources flow to existing customers, not new ones   │
-│  • Cannibalization fear kills AI-first products         │
+│    Enterprises can't sacrifice. Startups have nothing   │
+│    to sacrifice. That's why startups win.               │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 ```
-- Gravity well visualization: funnel/cone shape
-- Startup floating free at top
-- Enterprise trapped at bottom of the well
-- Arrows showing gravitational pull toward existing business
-- Three bullets explaining the structural forces
+- Three sacrifice cards showing what must be given up
+- Each card: icon, label, why it's hard to let go
+- Stark visual: things being crossed out / left behind
+- Punchline: startups win by having nothing to lose
 
 ### Slide 9: Remaining Leverage Points — The Long Tail (1:30)
 
@@ -326,8 +386,8 @@
 - **Capability Gradients:** AI excels at text over voice, async over real-time—but enterprises want it everywhere (M1, M2, M3)
 - **Workforce Dynamics:** Labor protections, high-salary employees, and the soul-crushing nature of AI training work create resistance (C4, C6, E5)
 - **Baseline Measurement:** Knowing if AI beats humans requires constantly measuring both—a permanent cost center with no finish line (A1, A4)
+- **Shareholder & Market Forces:** Common ownership creates disincentives for disruption; only shocks overcome inertia (C3, C7)
 - **Distribution & Bundling:** Incumbents still control relationships and can bundle AI as a feature rather than compete head-on (I1, I3, L2)
-- **Speed Mismatch:** Software iterates weekly; enterprise planning cycles are annual—by the time a decision is made, the situation has changed (H1, H2, I2)
 
 **Visual Layout:**
 ```
@@ -464,6 +524,9 @@
 - Punchline at bottom: complexity = protection
 
 ### Slide 13: Your Domain Advantage + Call to Action (1:15)
+
+**Story Circle Insight:** Startups win because they begin already transformed. No threshold to cross (Scope Problem), no unfamiliar world to fear (Upside Down), no temptation to flee with meager winnings (Shortest Path), and nothing to sacrifice (The Sacrifice). They're born on the other side of the hero's journey.
+
 - You know an industry's pain points better than any AI researcher
 - The framework: find the process, find the underserved market, build AI-first
 - Question to leave with: What's the "$50K floor" in your industry?

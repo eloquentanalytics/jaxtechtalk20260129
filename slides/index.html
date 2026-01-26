@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI Innovator's Dilemma — Jax Tech 2026</title>
+
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Colors */
+      --bg-primary: #0A0A0F;
+      --text-primary: #F5F5F7;
+      --text-secondary: #8E8E93;
+      --accent-blue: #0A84FF;
+      --accent-amber: #FF9F0A;
+      --accent-green: #30D158;
+
+      /* Cards */
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(255, 255, 255, 0.1);
+    }
+
+    .reveal-viewport {
+      background: var(--bg-primary);
+    }
+
+    .reveal {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 32px;
+      color: var(--text-primary);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 700;
+      text-transform: none;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .reveal h1 {
+      font-size: 3.2em;
+      line-height: 1.1;
+    }
+
+    .reveal h2 {
+      font-size: 2.4em;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .reveal h3 {
+      font-size: 1.6em;
+      font-weight: 600;
+    }
+
+    .reveal p {
+      line-height: 1.5;
+    }
+
+    .reveal .text-secondary {
+      color: var(--text-secondary);
+    }
+
+    .reveal .text-blue {
+      color: var(--accent-blue);
+    }
+
+    .reveal .text-amber {
+      color: var(--accent-amber);
+    }
+
+    .reveal .text-green {
+      color: var(--accent-green);
+    }
+
+    /* Slide label (e.g., "1 · THE SCOPE PROBLEM") */
+    .slide-label {
+      font-size: 0.6em;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1em;
+    }
+
+    /* Thesis card */
+    .thesis-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(10, 132, 255, 0.4);
+      border-radius: 16px;
+      padding: 1.2em 1.8em;
+      margin-top: 2em;
+      box-shadow: 0 0 60px rgba(10, 132, 255, 0.15);
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .thesis-card p {
+      font-size: 0.75em;
+      font-style: italic;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    /* Speaker info */
+    .speaker-info {
+      margin-top: 2.5em;
+      font-size: 0.55em;
+      color: var(--text-secondary);
+    }
+
+    /* Subtitle */
+    .subtitle {
+      font-size: 0.5em;
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-top: 0.3em;
+    }
+
+    /* Two-column comparison */
+    .comparison {
+      display: flex;
+      gap: 60px;
+      justify-content: center;
+      margin-top: 1.5em;
+    }
+
+    .comparison-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2em;
+      width: 400px;
+      text-align: center;
+    }
+
+    .comparison-card.promise {
+      border-color: rgba(10, 132, 255, 0.3);
+    }
+
+    .comparison-card.reality {
+      border-color: rgba(255, 159, 10, 0.3);
+    }
+
+    .comparison-card .icon {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+    }
+
+    .comparison-card .label {
+      font-size: 0.7em;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5em;
+    }
+
+    .comparison-card .description {
+      font-size: 0.65em;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* Punchline */
+    .punchline {
+      margin-top: 2em;
+      font-size: 1.1em;
+      font-weight: 600;
+    }
+
+    .punchline .highlight {
+      color: var(--accent-blue);
+    }
+
+    /* Slide transitions */
+    .reveal .slides section {
+      padding: 80px;
+    }
+
+    /* Progress bar / threshold visualization */
+    .threshold-bar {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      height: 40px;
+      width: 100%;
+      max-width: 900px;
+      margin: 2em auto;
+      position: relative;
+      overflow: visible;
+    }
+
+    .threshold-bar .filled {
+      background: linear-gradient(90deg, var(--accent-amber) 0%, var(--accent-amber) 84%, var(--accent-green) 84%, var(--accent-green) 100%);
+      height: 100%;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    .threshold-bar .marker {
+      position: absolute;
+      top: -30px;
+      font-size: 0.5em;
+      color: var(--text-secondary);
+      transform: translateX(-50%);
+    }
+
+    .threshold-bar .marker.at-80 { left: 80%; }
+    .threshold-bar .marker.at-95 { left: 95%; }
+    .threshold-bar .marker.at-100 { left: 100%; }
+
+    .threshold-bar .label {
+      position: absolute;
+      bottom: -50px;
+      font-size: 0.55em;
+      transform: translateX(-50%);
+    }
+
+    .threshold-bar .label.at-80 {
+      left: 80%;
+      color: var(--accent-amber);
+    }
+    .threshold-bar .label.at-100 {
+      left: 100%;
+      color: var(--accent-green);
+    }
+
+    /* Big statement */
+    .big-statement {
+      font-size: 1.8em;
+      font-weight: 700;
+      line-height: 1.3;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .big-statement .highlight-green {
+      color: var(--accent-green);
+    }
+
+    /* Story circle */
+    .story-circle {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, auto);
+      gap: 20px;
+      max-width: 1000px;
+      margin: 1.5em auto;
+      font-size: 0.7em;
+    }
+
+    .story-circle .stage {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1em;
+      text-align: center;
+    }
+
+    .story-circle .stage.failure {
+      border-color: rgba(255, 159, 10, 0.5);
+      background: rgba(255, 159, 10, 0.08);
+    }
+
+    .story-circle .stage .name {
+      font-weight: 600;
+      font-size: 0.9em;
+      margin-bottom: 0.3em;
+    }
+
+    .story-circle .stage .barrier {
+      font-size: 0.75em;
+      color: var(--accent-amber);
+    }
+
+    .story-circle .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* Barrier slide header */
+    .barrier-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      margin-bottom: 0.5em;
+    }
+
+    .barrier-number {
+      background: var(--accent-amber);
+      color: var(--bg-primary);
+      font-weight: 700;
+      font-size: 0.5em;
+      padding: 0.3em 0.6em;
+      border-radius: 6px;
+    }
+
+    .barrier-title {
+      font-size: 1.8em;
+      font-weight: 700;
+    }
+
+    /* Enterprise vs Startup comparison */
+    .ent-vs-startup {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin: 1.5em 0;
+    }
+
+    .ent-vs-startup .side {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.5em 2em;
+      width: 380px;
+    }
+
+    .ent-vs-startup .side.enterprise {
+      border-color: rgba(255, 159, 10, 0.3);
+    }
+
+    .ent-vs-startup .side.startup {
+      border-color: rgba(48, 209, 88, 0.3);
+    }
+
+    .ent-vs-startup .side-label {
+      font-size: 0.6em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1em;
+    }
+
+    .ent-vs-startup .visual {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1em;
+    }
+
+    .ent-vs-startup .bar {
+      height: 24px;
+      border-radius: 6px;
+    }
+
+    .ent-vs-startup .bar.partial {
+      background: linear-gradient(90deg, var(--accent-amber) 0%, var(--accent-amber) 80%, rgba(255,255,255,0.1) 80%);
+      width: 200px;
+    }
+
+    .ent-vs-startup .bar.full {
+      background: var(--accent-green);
+      width: 120px;
+    }
+
+    .ent-vs-startup .bar-label {
+      font-size: 0.55em;
+      color: var(--text-secondary);
+    }
+
+    .ent-vs-startup .detail {
+      font-size: 0.6em;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Key points list */
+    .key-points {
+      list-style: none;
+      padding: 0;
+      margin: 1.5em auto;
+      max-width: 800px;
+      text-align: left;
+    }
+
+    .key-points li {
+      font-size: 0.75em;
+      color: var(--text-secondary);
+      margin-bottom: 0.8em;
+      padding-left: 1.5em;
+      position: relative;
+    }
+
+    .key-points li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent-blue);
+    }
+
+    /* Image slide */
+    .image-container {
+      max-width: 700px;
+      margin: 1em auto;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+
+    .image-container img {
+      width: 100%;
+      display: block;
+    }
+
+    .image-caption {
+      font-size: 0.6em;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-top: 0.8em;
+    }
+
+    /* Two-path choice */
+    .two-paths {
+      display: flex;
+      gap: 60px;
+      justify-content: center;
+      margin: 1.5em 0;
+    }
+
+    .two-paths .path {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.5em 2em;
+      width: 360px;
+      text-align: center;
+    }
+
+    .two-paths .path.temptation {
+      border-color: rgba(255, 159, 10, 0.4);
+      box-shadow: 0 0 40px rgba(255, 159, 10, 0.1);
+    }
+
+    .two-paths .path.prize {
+      border-color: rgba(255, 255, 255, 0.15);
+      opacity: 0.6;
+    }
+
+    .two-paths .path-icon {
+      font-size: 2.5em;
+      margin-bottom: 0.3em;
+    }
+
+    .two-paths .path-label {
+      font-size: 0.65em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.8em;
+    }
+
+    .two-paths .path-points {
+      font-size: 0.6em;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* Sacrifice cards */
+    .sacrifice-cards {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin: 1.5em 0;
+    }
+
+    .sacrifice-cards .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 159, 10, 0.3);
+      border-radius: 16px;
+      padding: 1.5em;
+      width: 260px;
+      text-align: center;
+    }
+
+    .sacrifice-cards .card-icon {
+      font-size: 2em;
+      margin-bottom: 0.3em;
+    }
+
+    .sacrifice-cards .card-title {
+      font-size: 0.7em;
+      font-weight: 600;
+      margin-bottom: 0.5em;
+    }
+
+    .sacrifice-cards .card-detail {
+      font-size: 0.55em;
+      color: var(--text-secondary);
+    }
+
+    /* Grid of small cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 1.5em auto;
+    }
+
+    .card-grid .mini-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.2em;
+      text-align: center;
+    }
+
+    .card-grid .mini-card .icon {
+      font-size: 1.8em;
+      margin-bottom: 0.3em;
+    }
+
+    .card-grid .mini-card .title {
+      font-size: 0.6em;
+      font-weight: 600;
+    }
+
+    /* Framework list */
+    .framework-list {
+      max-width: 800px;
+      margin: 1.5em auto;
+      text-align: left;
+    }
+
+    .framework-list .item {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 1.2em;
+      padding: 1em 1.5em;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+    }
+
+    .framework-list .item-number {
+      font-size: 0.8em;
+      font-weight: 700;
+      color: var(--accent-blue);
+      min-width: 30px;
+    }
+
+    .framework-list .item-label {
+      font-size: 0.75em;
+      font-weight: 600;
+      min-width: 140px;
+    }
+
+    .framework-list .item-criteria {
+      font-size: 0.7em;
+      color: var(--text-secondary);
+    }
+
+    /* Comparison table */
+    .comparison-table {
+      width: 100%;
+      max-width: 1000px;
+      margin: 1.5em auto;
+      border-collapse: collapse;
+      font-size: 0.65em;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1em 1.2em;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .comparison-table th {
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.85em;
+    }
+
+    .comparison-table td:first-child {
+      font-weight: 600;
+    }
+
+    .comparison-table .highlight-cell {
+      color: var(--accent-green);
+    }
+
+    .comparison-table .dim-cell {
+      color: var(--text-secondary);
+    }
+
+    /* Moat visualization */
+    .moat-visual {
+      text-align: center;
+      margin: 1.5em 0;
+    }
+
+    .moat-visual .castle {
+      font-size: 1.2em;
+      margin-bottom: 1em;
+      letter-spacing: 0.3em;
+    }
+
+    .moat-traps {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .moat-traps .trap {
+      background: var(--card-bg);
+      border: 1px solid rgba(48, 209, 88, 0.3);
+      border-radius: 12px;
+      padding: 1.2em 1.5em;
+      width: 220px;
+      text-align: center;
+    }
+
+    .moat-traps .trap-title {
+      font-size: 0.7em;
+      font-weight: 600;
+      color: var(--accent-green);
+      margin-bottom: 0.5em;
+    }
+
+    .moat-traps .trap-detail {
+      font-size: 0.55em;
+      color: var(--text-secondary);
+    }
+
+    /* CTA slide */
+    .cta-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.5em 2.5em;
+      max-width: 800px;
+      margin: 1.5em auto;
+    }
+
+    .cta-block p {
+      font-size: 0.9em;
+      margin: 0;
+    }
+
+    .cta-question {
+      background: var(--card-bg);
+      border: 1px solid rgba(10, 132, 255, 0.4);
+      border-radius: 16px;
+      padding: 1.5em 2.5em;
+      max-width: 800px;
+      margin: 1.5em auto;
+      box-shadow: 0 0 60px rgba(10, 132, 255, 0.15);
+    }
+
+    .cta-question p {
+      font-size: 1.2em;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* References */
+    .references {
+      text-align: left;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .references h3 {
+      font-size: 0.8em;
+      color: var(--text-secondary);
+      margin-bottom: 0.8em;
+    }
+
+    .references ul {
+      list-style: none;
+      padding: 0;
+      font-size: 0.6em;
+      color: var(--text-secondary);
+      line-height: 2;
+    }
+
+    .references .contact {
+      margin-top: 2em;
+      padding-top: 1.5em;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.7em;
+    }
+
+    .references .contact .name {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Title + Thesis -->
+      <section>
+        <h1>The AI Innovator's Dilemma</h1>
+        <p class="subtitle">What Do You Do With a Tool That Can Do Anything?</p>
+
+        <div class="thesis-card">
+          <p>"The same forces that made incumbents powerful now prevent them from going AI-first."</p>
+        </div>
+
+        <p class="speaker-info">
+          Philip O'Donnell · Jax Tech · January 2026
+        </p>
+      </section>
+
+      <!-- Slide 2: The Promise vs. Reality -->
+      <section>
+        <h2>The Promise vs. Reality</h2>
+
+        <div class="comparison">
+          <div class="comparison-card promise">
+            <div class="icon">✨</div>
+            <div class="label text-blue">The Promise</div>
+            <div class="description">
+              "AI will transform everything"<br>
+              Glowing keynotes, infinite potential
+            </div>
+          </div>
+
+          <div class="comparison-card reality">
+            <div class="icon">📊</div>
+            <div class="label text-amber">The Reality</div>
+            <div class="description">
+              Underwhelming pilots<br>
+              Beige dashboards, 6-month timelines
+            </div>
+          </div>
+        </div>
+
+        <p class="punchline">
+          Why? It's not the technology.<br>
+          <span class="highlight">It's structural.</span>
+        </p>
+      </section>
+
+      <!-- Slide 3: Why Now — AI Crossed a Threshold -->
+      <section>
+        <h2>Why Now: AI Crossed a Threshold</h2>
+
+        <div class="threshold-bar">
+          <div class="filled"></div>
+          <span class="marker at-80">80%</span>
+          <span class="marker at-95">95%</span>
+          <span class="marker at-100">100%</span>
+          <span class="label at-80">"Good enough"<br>Same business</span>
+          <span class="label at-100">Different<br>business</span>
+        </div>
+
+        <p class="big-statement" style="margin-top: 2.5em;">
+          95% → 100% is not 5%.<br>
+          <span class="highlight-green">It's a new company.</span>
+        </p>
+
+        <p class="text-secondary" style="font-size: 0.7em; margin-top: 1.5em;">
+          This is where startups win.
+        </p>
+      </section>
+
+      <!-- Slide 4: The 4 Structural Barriers (Overview) -->
+      <section>
+        <h2>The Hero's Journey of Enterprise AI</h2>
+        <p class="text-secondary" style="font-size: 0.65em; margin-bottom: 0.5em;">And where it breaks down</p>
+
+        <div class="story-circle">
+          <div class="stage" style="grid-column: 2;">
+            <div class="name">GO</div>
+          </div>
+          <div class="stage failure" style="grid-column: 1; grid-row: 2;">
+            <div class="name">1 · SCOPE PROBLEM</div>
+            <div class="barrier">"Won't fully cross"</div>
+          </div>
+          <div class="center" style="grid-column: 2; grid-row: 2;">
+            Enterprise<br>AI Journey
+          </div>
+          <div class="stage failure" style="grid-column: 3; grid-row: 2;">
+            <div class="name">2 · UPSIDE DOWN</div>
+            <div class="barrier">"Unfamiliar world"</div>
+          </div>
+          <div class="stage failure" style="grid-column: 1; grid-row: 3;">
+            <div class="name">4 · SACRIFICE</div>
+            <div class="barrier">"Must let go"</div>
+          </div>
+          <div class="stage" style="grid-column: 2; grid-row: 3;">
+            <div class="name">RETURN</div>
+          </div>
+          <div class="stage failure" style="grid-column: 3; grid-row: 3;">
+            <div class="name">3 · SHORTEST PATH</div>
+            <div class="barrier">"Tempted to flee"</div>
+          </div>
+        </div>
+
+        <p class="text-secondary" style="font-size: 0.6em; margin-top: 1em;">
+          Enterprises fail at 4 specific moments. Startups skip the journey entirely.
+        </p>
+      </section>
+
+      <!-- Slide 5: Barrier #1 — The Scope Problem -->
+      <section>
+        <div class="barrier-header">
+          <span class="barrier-number">1</span>
+          <span class="barrier-title">The Scope Problem</span>
+        </div>
+        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0;">They never fully cross the threshold.</p>
+
+        <div class="ent-vs-startup">
+          <div class="side enterprise">
+            <div class="side-label text-amber">Enterprise</div>
+            <div class="visual">
+              <div class="bar partial"></div>
+              <span class="bar-label">80% automated</span>
+            </div>
+            <div class="detail">
+              Entire process scope<br>
+              Stops at diminishing returns
+            </div>
+          </div>
+          <div class="side startup">
+            <div class="side-label text-green">Startup</div>
+            <div class="visual">
+              <div class="bar full"></div>
+              <span class="bar-label">100% automated</span>
+            </div>
+            <div class="detail">
+              Narrow slice only<br>
+              Serves nonconsumption
+            </div>
+          </div>
+        </div>
+
+        <ul class="key-points">
+          <li>Diminishing returns create a ceiling at 80-95%</li>
+          <li>Startups pick slices; enterprises run everything</li>
+          <li>Serve customers below the "$50K floor"</li>
+        </ul>
+      </section>
+
+      <!-- Slide 6: Barrier #2 — The Upside Down -->
+      <section>
+        <div class="barrier-header">
+          <span class="barrier-number">2</span>
+          <span class="barrier-title">The Upside Down</span>
+        </div>
+        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0;">The unfamiliar world is ugly and uncomfortable.</p>
+
+        <div class="image-container">
+          <img src="img/stanley-trunk-chaos.jpg" alt="Stanley's trunk - 2005 DARPA Challenge winner">
+        </div>
+        <p class="image-caption">"This won the 2005 DARPA Challenge. Ugly. Necessary."</p>
+
+        <ul class="key-points">
+          <li>Hybrid handoff systems don't exist — you build them</li>
+          <li>Legacy wasn't built for AI; AI wasn't built for legacy</li>
+          <li>The throwaway code becomes permanent before you notice</li>
+        </ul>
+      </section>
+
+      <!-- Slide 7: Barrier #3 — The Shortest Path -->
+      <section>
+        <div class="barrier-header">
+          <span class="barrier-number">3</span>
+          <span class="barrier-title">The Shortest Path</span>
+        </div>
+        <p class="text-secondary" style="font-size: 0.55em; margin-top: 0;">$30M revenue · $1M AI investment · Creates 10% efficiency ($3M savings)</p>
+
+        <div class="two-paths" style="margin-top: 1em;">
+          <div class="path temptation" style="width: 440px; text-align: left; padding: 1.2em 1.8em;">
+            <div style="display: flex; align-items: center; gap: 0.5em; margin-bottom: 0.8em;">
+              <span style="font-size: 1.5em;">✂️</span>
+              <span class="path-label text-amber" style="margin: 0;">Cut Costs</span>
+            </div>
+            <div style="font-size: 0.55em; line-height: 1.9; color: var(--text-secondary);">
+              <div><span style="color: var(--text-primary);">Save:</span> $3M in labor costs</div>
+              <div><span style="color: var(--text-primary);">Profit impact:</span> <span style="color: var(--accent-green);">+$3M</span> (100% to bottom line)</div>
+              <div><span style="color: var(--text-primary);">Timeline:</span> This quarter</div>
+              <div><span style="color: var(--text-primary);">Certainty:</span> ~95%</div>
+            </div>
+          </div>
+          <div class="path prize" style="width: 440px; text-align: left; padding: 1.2em 1.8em;">
+            <div style="display: flex; align-items: center; gap: 0.5em; margin-bottom: 0.8em;">
+              <span style="font-size: 1.5em;">📈</span>
+              <span class="path-label" style="margin: 0;">Invest in Growth</span>
+            </div>
+            <div style="font-size: 0.55em; line-height: 1.9; color: var(--text-secondary);">
+              <div><span style="color: var(--text-primary);">Keep:</span> $3M capacity, chase revenue</div>
+              <div><span style="color: var(--text-primary);">At 60% gross margin:</span> Need <span style="color: var(--text-primary);">$5M new revenue</span></div>
+              <div><span style="color: var(--text-primary);">That's:</span> 17% growth to break even</div>
+              <div><span style="color: var(--text-primary);">Certainty:</span> ~35%</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.3em; text-align: center; background: var(--card-bg); border-radius: 12px; padding: 1em 1.5em; max-width: 700px; margin-left: auto; margin-right: auto;">
+          <div style="font-size: 0.6em; color: var(--text-secondary); margin-bottom: 0.5em;">The Math</div>
+          <div style="font-size: 0.75em; line-height: 1.6;">
+            <span class="text-amber">$3M saved</span> = $3M profit <span class="text-secondary">(certain)</span><br>
+            <span style="opacity: 0.6;">$3M reinvested</span> ÷ 60% margin = need $5M revenue <span class="text-secondary">(speculative)</span>
+          </div>
+        </div>
+
+        <p class="punchline" style="margin-top: 1em; font-size: 0.95em;">
+          Cost cutting is <span class="highlight">17% growth</span> — guaranteed, today.
+        </p>
+      </section>
+
+      <!-- Slide 8: Barrier #4 — The Sacrifice -->
+      <section>
+        <div class="barrier-header">
+          <span class="barrier-number">4</span>
+          <span class="barrier-title">The Sacrifice</span>
+        </div>
+        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0;">To return transformed, you must leave behind:</p>
+
+        <div class="sacrifice-cards">
+          <div class="card">
+            <div class="card-icon">👥</div>
+            <div class="card-title">Existing Customers</div>
+            <div class="card-detail">They want the old way</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">💰</div>
+            <div class="card-title">Current Revenue</div>
+            <div class="card-detail">It pays the bills</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">⚙️</div>
+            <div class="card-title">Legacy Processes</div>
+            <div class="card-detail">They define who we are</div>
+          </div>
+        </div>
+
+        <p class="punchline" style="margin-top: 1.5em;">
+          Enterprises can't sacrifice.<br>
+          Startups have nothing to sacrifice.<br>
+          <span class="highlight">That's why startups win.</span>
+        </p>
+      </section>
+
+      <!-- Slide 9: The Long Tail -->
+      <section>
+        <h2>The Long Tail: More Barriers</h2>
+        <p class="text-secondary" style="font-size: 0.6em;">These compound with the four main barriers</p>
+
+        <div class="card-grid">
+          <div class="mini-card">
+            <div class="icon">📋</div>
+            <div class="title">Procurement Broken</div>
+          </div>
+          <div class="mini-card">
+            <div class="icon">🗄️</div>
+            <div class="title">Data Silos</div>
+          </div>
+          <div class="mini-card">
+            <div class="icon">📊</div>
+            <div class="title">Capability Gradients</div>
+          </div>
+          <div class="mini-card">
+            <div class="icon">👥</div>
+            <div class="title">Workforce Resistance</div>
+          </div>
+          <div class="mini-card">
+            <div class="icon">📏</div>
+            <div class="title">Baseline Tax</div>
+          </div>
+          <div class="mini-card">
+            <div class="icon">📦</div>
+            <div class="title">Distribution Bundling</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 10: The Framework -->
+      <section>
+        <h2>The Framework: Finding Your Opportunity</h2>
+
+        <div class="framework-list">
+          <div class="item">
+            <span class="item-number">1</span>
+            <span class="item-label">PROCESS</span>
+            <span class="item-criteria">→ AI can do 100%</span>
+          </div>
+          <div class="item">
+            <span class="item-number">2</span>
+            <span class="item-label">MARKET</span>
+            <span class="item-criteria">→ Incumbents can't serve</span>
+          </div>
+          <div class="item">
+            <span class="item-number">3</span>
+            <span class="item-label">IMPROVEMENT</span>
+            <span class="item-criteria">→ 10x, not 20%</span>
+          </div>
+          <div class="item">
+            <span class="item-number">4</span>
+            <span class="item-label">STRENGTHS</span>
+            <span class="item-criteria">→ Text, async, scale</span>
+          </div>
+        </div>
+
+        <p class="text-secondary" style="font-size: 0.7em; margin-top: 1em;">
+          Each filter narrows to your opportunity.
+        </p>
+      </section>
+
+      <!-- Slide 11: Framework in Action -->
+      <section>
+        <h2>Example: Recruiting Under $50K</h2>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Incumbent</th>
+              <th>AI Startup</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Market</td>
+              <td class="dim-cell">Won't touch &lt;$50K salary<br>(commission = $5K)</td>
+              <td class="highlight-cell">Only serves &lt;$50K<br>(price = $500)</td>
+            </tr>
+            <tr>
+              <td>Channel</td>
+              <td class="dim-cell">Phone, meetings, high-touch</td>
+              <td class="highlight-cell">Text, email, 100% async</td>
+            </tr>
+            <tr>
+              <td>Defense</td>
+              <td class="dim-cell">Can't respond: margin compression</td>
+              <td class="highlight-cell">Protected by: their own margins</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="punchline" style="margin-top: 1.5em;">
+          What's the <span class="highlight">"$50K floor"</span> in YOUR industry?
+        </p>
+      </section>
+
+      <!-- Slide 12: Defending the Niche -->
+      <section>
+        <h2>Why Incumbents Won't Just Copy You</h2>
+
+        <div class="moat-visual">
+          <div class="castle">🏰 YOUR MOAT 🏰</div>
+
+          <div class="moat-traps">
+            <div class="trap">
+              <div class="trap-title">Margin Trap</div>
+              <div class="trap-detail">Can't lower margins without destroying valuation</div>
+            </div>
+            <div class="trap">
+              <div class="trap-title">Loss Leader Trap</div>
+              <div class="trap-detail">Can't sustain losses in non-core segments</div>
+            </div>
+            <div class="trap">
+              <div class="trap-title">Bundle Trap</div>
+              <div class="trap-detail">Can't unbundle without threatening core</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="punchline" style="margin-top: 1.5em;">
+          The harder it is to build,<br>
+          <span class="highlight">the safer you are.</span>
+        </p>
+      </section>
+
+      <!-- Slide 13: Call to Action -->
+      <section>
+        <h2>Your Domain Advantage</h2>
+
+        <div class="cta-block">
+          <p>You know your industry's pain points<br>better than any AI researcher.</p>
+        </div>
+
+        <div class="cta-question">
+          <p>What's the "$50K floor" in YOUR industry?</p>
+        </div>
+
+        <p class="text-secondary" style="font-size: 0.6em; margin-top: 2em;">
+          Find the process. Find the underserved market. Build AI-first.
+        </p>
+      </section>
+
+      <!-- Slide 14: References -->
+      <section>
+        <div class="references">
+          <h3>Sources</h3>
+          <ul>
+            <li>Clayton Christensen, <em>The Innovator's Dilemma</em></li>
+            <li>Innosight, <em>Dual Transformation</em></li>
+            <li>a16z, "AI Wedges"</li>
+            <li>Bain, "Defending Against Disruption"</li>
+          </ul>
+
+          <div class="contact">
+            <p class="name">Philip O'Donnell</p>
+            <p style="color: var(--text-secondary); margin-top: 0.5em;">
+              <!-- Add your contact info here -->
+              Jax Tech · January 2026
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      width: 1920,
+      height: 1080,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2.0,
+      transition: 'fade',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      center: true,
+      controls: true,
+      progress: true,
+      slideNumber: false,
+      keyboard: true,
+      overview: true
+    });
+  </script>
+</body>
+</html>
