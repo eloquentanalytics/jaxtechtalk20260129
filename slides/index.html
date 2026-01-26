@@ -209,6 +209,59 @@
       line-height: 1.4;
     }
 
+    /* Automation Timeline */
+    .automation-timeline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5em;
+      margin-top: 1.5em;
+    }
+
+    .era {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.2em 1.5em;
+      text-align: center;
+      min-width: 180px;
+    }
+
+    .era.current {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 20px rgba(10, 132, 255, 0.2);
+    }
+
+    .era-date {
+      font-size: 0.55em;
+      color: var(--text-secondary);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3em;
+    }
+
+    .era-name {
+      font-size: 0.8em;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.2em;
+    }
+
+    .era.current .era-name {
+      color: var(--accent-blue);
+    }
+
+    .era-target {
+      font-size: 0.55em;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .era-arrow {
+      font-size: 1.5em;
+      color: var(--text-secondary);
+      opacity: 0.5;
+    }
+
     /* Punchline */
     .punchline {
       margin-top: 2em;
@@ -945,56 +998,60 @@
         </p>
       </section>
 
-      <!-- Slide 2: The Promise vs. Reality -->
+      <!-- Slide 2: Everything Old Is New Again -->
       <section>
-        <h2>The Promise vs. Reality</h2>
+        <h2>Everything Old Is New Again</h2>
 
-        <div class="comparison">
-          <div class="comparison-card promise">
-            <div class="icon">✨</div>
-            <div class="label text-blue">The Promise</div>
-            <div class="description">
-              "AI will transform everything"<br>
-              Glowing keynotes, infinite potential
-            </div>
+        <div class="automation-timeline">
+          <div class="era">
+            <div class="era-date">1913</div>
+            <div class="era-name">Assembly Line</div>
+            <div class="era-target">Manual Labor</div>
           </div>
-
-          <div class="comparison-card reality">
-            <div class="icon">📊</div>
-            <div class="label text-amber">The Reality</div>
-            <div class="description">
-              Underwhelming pilots<br>
-              Beige dashboards, 6-month timelines
-            </div>
+          <div class="era-arrow">→</div>
+          <div class="era">
+            <div class="era-date">2006</div>
+            <div class="era-name">Cloud Computing</div>
+            <div class="era-target">Infrastructure</div>
+          </div>
+          <div class="era-arrow">→</div>
+          <div class="era current">
+            <div class="era-date">2024</div>
+            <div class="era-name">AI / LLMs</div>
+            <div class="era-target">Knowledge Work</div>
           </div>
         </div>
 
-        <p class="punchline">
-          Why? It's not the technology.<br>
-          <span class="highlight">It's structural.</span>
+        <p class="big-statement" style="margin-top: 2em;">
+          AI is a step change in automating<br>
+          <span class="highlight">information and communication.</span>
+        </p>
+
+        <p class="punchline" style="margin-top: 1.5em;">
+          But the economic patterns?<br>
+          <span class="text-secondary">Same as they ever were.</span>
         </p>
       </section>
 
       <!-- Slide 3: Why Now — AI Crossed a Threshold -->
       <section>
-        <h2>Why Now: AI Crossed a Threshold</h2>
+        <h2>The Usual Approach to Automation</h2>
 
         <div class="threshold-bar">
           <div class="filled"></div>
           <span class="marker at-80">80%</span>
-          <span class="marker at-95">95%</span>
           <span class="marker at-100">100%</span>
-          <span class="label at-80">"Good enough"<br>Same business</span>
-          <span class="label at-100">Different<br>business</span>
+          <span class="label at-80">The Usual Approach<br><span class="text-secondary">Incremental change</span></span>
+          <span class="label at-100">Full Transformation<br><span class="text-secondary">New business model</span></span>
         </div>
 
         <p class="big-statement" style="margin-top: 2.5em;">
-          95% → 100% is not 5%.<br>
-          <span class="highlight-green">It's a new company.</span>
+          80% → 100% is not 20%.<br>
+          <span class="highlight-green">It's the difference between improvement and transformation.</span>
         </p>
 
         <p class="text-secondary" style="font-size: 0.7em; margin-top: 1.5em;">
-          This is where startups win.
+          That 20% is where the structural barriers live.
         </p>
       </section>
 

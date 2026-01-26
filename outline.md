@@ -40,64 +40,68 @@
 - Thesis in a subtle card/box toward bottom
 - Name and event small at footer
 
-### Slide 2: Hook — The Promise vs. Reality (1:30)
-- Everyone's been promised AI transformation
-- Reality: most enterprise AI deployments feel underwhelming
-- Why? It's not the technology—it's structural
+### Slide 2: Hook — Everything Old Is New Again (1:30)
+- AI represents a step change in automating knowledge work (information + communication)
+- But the economic patterns follow the same path as previous automation waves
+- Assembly line (1913) → Cloud computing (2006) → AI/LLMs (2024)
+- Same structural barriers, same disruption patterns
 
 **Visual Layout:**
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  The Promise vs. Reality                                │
+│  Everything Old Is New Again                            │
 │                                                         │
-│   ┌────────────────────┐    ┌────────────────────┐     │
-│   │                    │    │                    │     │
-│   │   [Glowing robot   │    │   [Sad beige      │     │
-│   │    keynote slide]  │    │    enterprise     │     │
-│   │                    │    │    dashboard]     │     │
-│   │    "THE PROMISE"   │    │    "THE REALITY"  │     │
-│   │                    │    │                    │     │
-│   └────────────────────┘    └────────────────────┘     │
+│  ┌──────────┐      ┌──────────┐      ┌──────────┐      │
+│  │   1913   │      │   2006   │      │   2024   │      │
+│  │ Assembly │  →   │  Cloud   │  →   │ AI/LLMs  │      │
+│  │   Line   │      │Computing │      │          │      │
+│  │          │      │          │      │ Knowledge│      │
+│  │  Manual  │      │ Infra-   │      │   Work   │      │
+│  │  Labor   │      │ structure│      │          │      │
+│  └──────────┘      └──────────┘      └──────────┘      │
 │                                                         │
-│            Why? It's not the technology.                │
-│                  It's structural.                       │
+│     AI is a step change in automating                   │
+│        information and communication.                   │
 │                                                         │
+│     But the economic patterns? Same as they ever were.  │
 └─────────────────────────────────────────────────────────┘
 ```
-- Two-column comparison layout
-- Left: aspirational AI imagery (vendor keynote vibes)
-- Right: underwhelming reality (generic dashboard, loading spinner)
-- Punchline centered below: "It's structural"
+- Timeline showing three automation eras
+- Current era (AI) highlighted with accent color
+- Punchline: the patterns repeat, only the target changes
 
-### Slide 3: Why Now — AI Crossed a Threshold (1:30)
-- AI can now handle 100% of certain processes (not just 80%)
-- The difference between 95% and 100% automation is not 5%—it's a different business entirely
-- This is where startups win
+### Slide 3: The Usual Approach to Automation (1:30)
+- 80% automation is the usual approach—incremental improvement
+- 100% automation is full transformation—a new business model
+- The difference between 80% and 100% is not 20%—it's the gap between improvement and transformation
+- That 20% is where all the structural barriers live
 
 **Visual Layout:**
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  Why Now: AI Crossed a Threshold                        │
+│  The Usual Approach to Automation                       │
 │                                                         │
 │   ┌─────────────────────────────────────────────────┐  │
 │   │                                                 │  │
-│   │  0%────────────────80%───95%─────────────100%  │  │
-│   │  ░░░░░░░░░░░░░░░░░░████████░░░░░░░░░░░░░░████  │  │
-│   │                     ▲                     ▲    │  │
-│   │              "good enough"          different  │  │
-│   │              (same business)         business  │  │
+│   │  0%────────────────────80%──────────────100%   │  │
+│   │  ████████████████████████░░░░░░░░░░░░░░░████   │  │
+│   │                         ▲                 ▲    │  │
+│   │                  The Usual Approach  Full      │  │
+│   │                  Incremental change  Transform │  │
 │   │                                                 │  │
 │   └─────────────────────────────────────────────────┘  │
 │                                                         │
-│         95% → 100% is not 5%. It's a new company.       │
+│   80% → 100% is not 20%.                                │
+│   It's the difference between improvement               │
+│            and transformation.                          │
 │                                                         │
-│              This is where startups win.                │
+│   That 20% is where the structural barriers live.       │
 └─────────────────────────────────────────────────────────┘
 ```
 - Single horizontal progress bar visualization
-- Mark 80% as "where enterprises stop"
-- Mark 95-100% gap with callout: "not 5%—a different business"
-- Bold conclusion statement at bottom
+- Mark 80% as "The Usual Approach" / incremental change
+- Mark 100% as "Full Transformation" / new business model
+- The 20% gap contains all the structural barriers we'll discuss
 
 ### Slide 4: The 4 Structural Barriers (Overview) (1:00)
 
