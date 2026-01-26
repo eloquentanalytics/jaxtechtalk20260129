@@ -9,7 +9,7 @@
 
 ---
 
-## Timed Slide Skeleton (14 slides, ~20 min)
+## Timed Slide Skeleton (11 slides, ~18 min)
 
 ### Slide 1: Title + Thesis (0:45)
 - The AI Innovator's Dilemma
@@ -101,51 +101,142 @@
 
 ### Slide 4: The 4 Structural Barriers (Overview) (1:00)
 
-**Framing:** The enterprise AI transformation follows the Dan Harmon Story Circle—but most enterprises fail at specific stages. Each barrier represents where the hero's journey breaks down.
+**Framing:** The enterprise AI transformation follows the Hero's Journey—but most enterprises fail at specific stages. Each barrier represents where the journey breaks down.
 
-- **The Scope Problem** → "Go" — They never fully cross the threshold (stop at 80%)
-- **The Upside Down** → "Search" — The unfamiliar world is ugly and uncomfortable
-- **The Shortest Path** → "Find" — Tempted to grab meager winnings and flee home
-- **The Sacrifice** → "Return" — Must kill part of themselves to be reborn; they can't
+- **Choosing the Right Path** → Deciding what to sacrifice to enable transformation
+- **Preparing for the Journey** → Understanding the full scope of what's needed
+- **Navigating the Labyrinth** → The ugly, uncomfortable transition phase
+- **Resisting Temptation** → The pull of easy, short-term wins
 
 **Visual Layout:**
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  The Story Circle of Enterprise AI (and where it breaks)│
+│  The Hero's Journey of Enterprise AI                    │
 │                                                         │
-│                       1. SCOPE PROBLEM                  │
-│                        "Won't cross"                    │
-│                            ↓ GO                         │
-│                    ╱───────────────╲                    │
-│               YOU                    SEARCH             │
-│              ╱                           ╲              │
-│            ╱                         2. UPSIDE DOWN     │
-│                                      "Unfamiliar world" │
-│         CHANGE                              ╲           │
-│           ↑                                 FIND        │
-│    4. SACRIFICE                               ↓         │
-│    "Must let go"                      3. SHORTEST PATH  │
-│            ╲                          "Tempted to flee" │
-│             ╲       RETURN ← TAKE       ╱               │
-│              ╲─────────────────────────╱                │
+│              1 · CHOOSING THE RIGHT PATH                │
+│                         ↓                               │
+│     4 · RESISTING       ←        2 · PREPARING          │
+│        TEMPTATION              FOR THE JOURNEY          │
+│                         ↑                               │
+│              3 · NAVIGATING THE LABYRINTH               │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 ```
-- Story circle diagram with barriers at each failure point
-- Clockwise journey: Go → Search → Find → Take → Return → Change
-- Enterprises fail at 4 specific moments; startups skip the first half entirely
+- Continuous circle showing the 4 barriers clockwise
+- Flow: 1 (top) → 2 (right) → 3 (bottom) → 4 (left) → back to 1
+- Enterprises fail at each of these moments; startups can navigate differently
 
-### Slide 5: Barrier #1 — The Scope Problem (2:00)
+### Slide 5a: Barrier #1 — Choosing the Right Path: LinkedIn Example (0:45)
 
-**Story Circle Stage: "GO"** — The hero must cross the threshold into the unfamiliar world. Enterprises refuse to fully cross—they stop at 80% automation, keeping one foot in the comfort zone. They never truly enter the transformative space.
+**Summary:** Why doesn't LinkedIn do recruiting? They have all the data, all the relationships. The answer: their customers ARE recruiters. This is a concrete example of how existing customer relationships create structural constraints on what you can build.
 
-**Summary:** Enterprises naturally seek 80/20 solutions, but AI's transformative value only unlocks at 100% automation. Startups should target the most automatable subset of an enterprise's scope and serve customers who only need that slice at far lower prices. Enterprises should respond by identifying customer segments whose entire experience is automatable and building exclusively for them before expanding.
+**Speaker Notes:** "Why doesn't LinkedIn just do recruiting themselves? They have all the data, all the relationships. The answer: their customers ARE recruiters. If LinkedIn launched an AI recruiting service, they'd be directly competing with the people who pay them $10K+ per year for Recruiter licenses. This isn't a strategic choice they're making — it's a structural constraint. Their existing customer base defines what they cannot build."
 
-- Enterprises stop at 80-95% because diminishing returns make the last 5% look like a bad investment—but that final 5% is where the business model transforms
-- Startups can pick only the process slices AI excels at; enterprises must run entire end-to-end processes they can't abandon
-- The path forward is serving nonconsumption: customers below the "$50K floor" that incumbents rationally ignore
+**Visual:** Single card with the LinkedIn example. Message: "Your existing customers define what you can't build."
 
-**Leverage Points (Scope Problem):**
+### Slide 5b: Barrier #1 — Enterprise Structural Constraints (0:45)
+
+**Summary:** Beyond customer relationships, enterprises are hemmed in by their current structures in multiple ways. These constraints define how they can attack and defend in the market.
+
+**Speaker Notes:** "Enterprises are hemmed in by their current structures in three key ways. These aren't obstacles to overcome with enough willpower — they're the boundaries of the playing field."
+
+**Example Bank (pick and choose live):**
+
+*Existing Customers:*
+- LinkedIn: customers ARE recruiters — launching AI recruiting would directly compete with $10K/year Recruiter license holders.
+- AWS: they DO compete with customers (Dropbox, Elastic, Tableau) — Walmart and Gap moved to Microsoft/Google clouds.
+- Salesforce: acquires companies (Steelbrick, MuleSoft) that compete with AppExchange ISV partners.
+- Intuit: customers are accountants — won't launch accounting firm even though they have all the data.
+
+*Cannibalization:*
+- Kodak: invented digital camera in 1975, execs said "don't tell anyone" — shelved it, bankruptcy 2012.
+- Blockbuster: refused Netflix for $50M — late fees were $800M/year, couldn't sacrifice it, went bankrupt.
+- Blockbuster's online service required in-store returns to protect foot traffic — undermined the value proposition.
+- Counter-example — Apple: iPhone would cannibalize iPod, Jobs did it anyway ("if we don't, someone else will").
+
+*Channel Conflicts:*
+- Ford/GM: all 50 states have franchise laws — Ford CANNOT sell EVs direct, dealers have contractual protection.
+- Tesla won exemptions in 26 states only because they NEVER had franchised dealers.
+- Rivian CEO called dealership laws "as close as you can get to corruption" — legacy automakers stuck with them.
+- Dell: direct sales undercut partner's $250K deal — partner lost commission and trust.
+- Cisco 1996: adding direct sales caused resentment, had to create three-tier structure.
+
+**Visual:** Three cards showing Existing Customers ("They vote loudly. Future customers are silent."), Current Revenue ("Cannibalization hits this quarter. New revenue is a spreadsheet."), and Channel Conflicts ("Partners and resellers have contractual protection."). Message: "These aren't obstacles to overcome. They're the boundaries of the playing field."
+
+**Additional Constraint Categories (bonus material in speaker notes):**
+
+*Talent & Skills:*
+- AT&T: workforce with outdated skills — launched $1B "Workforce 2020" reskilling initiative, took years.
+- 67% of execs think AI skills important, only 3% plan to invest in training.
+- One in three employees never trained on new tech they're expected to use.
+
+*Compensation Structures:*
+- If reps get paid to chase logos but business depends on multi-year contracts — misalignment.
+- Gross margin commissions encourage reps to only sell high-margin products.
+- Changing comp plans mid-year is organizational warfare.
+
+*Brand Position:*
+- Packard: went downmarket in 1930s-40s, destroyed patrician image, killed brand.
+- Cadillac Cimarron: disastrous downmarket attempt in 1980s.
+- Mercedes A-Class: went downmarket, failed moose test, quality criticized.
+- BMW created Mini as SEPARATE brand to go downmarket without dilution.
+
+*Investor Expectations:*
+- Amazon: stock crashed 94% in dot-com bust, Bezos said "stock is not the company," kept investing.
+- Broadcom: beat Q4, strong AI forecast, stock dropped 11% on margin compression concerns.
+- Figma: punished by Wall Street for saying AI investments would cut into profit.
+
+*Existing Contracts:*
+- SAP RISE: must commit for term, no early exit without penalty.
+- Multi-year enterprise deals lock you into delivering the old way.
+- SLAs requiring human oversight can't be changed unilaterally.
+
+*Pricing Model Lock-in:*
+- IDC: "By 2028, pure seat-based pricing will be obsolete."
+- Per-seat problem: more successful automation is, fewer seats needed — self-cannibalization.
+- 65% of vendors now use hybrid (AI meter on top of seats) — Adobe, Salesforce.
+
+### Slide 5c: Barrier #1 — What To Do About It (0:30)
+
+**Summary:** For enterprises: map your constraints explicitly and build in the negative space. For startups: map their constraints and build exactly there—they can't follow.
+
+**Speaker Notes:** "So what do you do about it? For enterprises: map your constraints explicitly. Don't pretend they don't exist. Which customers would you compete with? Which revenue would you cannibalize? Then build in the negative space — the areas where these constraints don't apply. For startups: do the same analysis, but in reverse. Map their constraints. Who are their sacred customers? What revenue streams can't they risk? Then build exactly there. They structurally cannot follow you. Startups have nothing to sacrifice — no existing customers, no revenue to protect, no channel conflicts. That's not a weakness. That's the moat."
+
+**Visual:** Two-column comparison. Enterprise: "Map your constraints. Build in the negative space." Startup: "Map their constraints. Build exactly there — they can't follow." Message: "Startups have nothing to sacrifice. That's the moat."
+
+**Leverage Points (Choosing the Right Path):**
+- C1: Processes, Values, and Profit Targets Are Structural — the org's identity is the constraint
+- C2: Resource Dependence on Existing Customers — you can't serve two masters
+- D1: Cannibalization Fear — killing your own revenue is organizational suicide
+- N1: No Legacy to Defend — startups have nothing to sacrifice; that's their advantage
+- C5: Autonomous Units/Spinouts Rarely Work — parent can't let the child kill the parent
+- J1: "Replacing People with Algorithms" = Bad Press — the human cost of sacrifice is visible
+
+### Slide 6a: Barrier #2 — Preparing for the Journey: Enterprise Reality (0:45)
+
+**Summary:** A complex enterprise has a variety of processes serving different customer groups. Each process has differing levels of automation opportunity—some steps are easy to automate, others aren't. The automation opportunities are scattered across the landscape.
+
+**Speaker Notes:** "A complex enterprise has a variety of processes serving different customer groups. Each has differing levels of automation opportunity. Some steps are easy to automate, others aren't. The green shows where AI could help — but notice how scattered it is across the landscape. No single process is fully automatable except one..."
+
+**Visual:** Grid showing 5 processes (A-E) with 10 steps each. Green highlights scattered randomly across all rows showing automation opportunities. Process D happens to be fully green, but it's not called out yet.
+
+### Slide 6b: Barrier #2 — Preparing for the Journey: Startup Opportunity (0:45)
+
+**Summary:** Startups look at the enterprise landscape differently. They find the steps that are automatable ACROSS all processes—the cross-cutting capability—and build a product that does ONLY that slice. They sell it to customers who only need that slice at a fraction of the price.
+
+**Speaker Notes:** "A startup looks at this landscape differently. They find the steps that are automatable ACROSS all processes — the cross-cutting capability. Then they build a product that does ONLY that, and sell it to customers who only need that slice. At a fraction of the price. The enterprise can't respond because their cost structure requires the full process."
+
+**Visual:** Same grid, but columns 3-4 are now highlighted in amber across ALL rows, showing the cross-process automation opportunity. These are the steps that work everywhere—the startup wedge.
+
+### Slide 6c: Barrier #2 — Preparing for the Journey: Enterprise Response (0:30)
+
+**Summary:** The enterprise response should NOT be to chase automation opportunities everywhere—that's scattershot, and you'll never cross the threshold. Instead, find the ONE process that can be 100% automated. Focus there. Use it as a leverage point to expand.
+
+**Speaker Notes:** "The enterprise response should NOT be to chase automation opportunities everywhere — that's scattershot, and you'll never cross the threshold. Instead, find the ONE process that can be 100% automated. Focus there. Use it as a leverage point. Once you've proven the model, expand to adjacent processes. Process D becomes your beachhead."
+
+**Visual:** Same grid, but now Process D is fully highlighted in blue (including the label "Process D"). Columns 3-4 return to green like the rest. The message: focus on the 100% opportunity, not scattered wins.
+
+**Leverage Points (Preparing for the Journey):**
 - B1: The 95%→100% Threshold Is Non-Linear — the difference isn't 5%, it's a categorically different business
 - B3: AI Rarely Covers 100% of Enterprise Processes — edge cases accumulate over decades
 - B4: Diminishing Returns Create a Ceiling — management consultant playbook rewards 80% and moving on
@@ -154,37 +245,7 @@
 - N4: Target Non-Customers First — build for people who've never used the service category
 - D4: Moving Downmarket = Moving to Lower Margins — incumbent cost structures can't support it profitably
 
-**Visual Layout:**
-```
-┌─────────────────────────────────────────────────────────┐
-│  1 · THE SCOPE PROBLEM                                  │
-│                                                         │
-│  ┌────────────────────────────────────────────────────┐│
-│  │  ENTERPRISE                    STARTUP             ││
-│  │  ┌─────────────────────┐      ┌──────────┐        ││
-│  │  │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ │      │ ▓▓▓▓▓▓▓▓ │        ││
-│  │  │  entire process     │      │  slice   │        ││
-│  │  │  (80% automated)    │      │  (100%)  │        ││
-│  │  └─────────────────────┘      └──────────┘        ││
-│  │       stops here ───┘              │               ││
-│  │                                 serves             ││
-│  │                              nonconsumption        ││
-│  └────────────────────────────────────────────────────┘│
-│                                                         │
-│  • Diminishing returns create a ceiling at 80-95%       │
-│  • Startups pick slices; enterprises run everything     │
-│  • Serve customers below the "$50K floor"               │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
-- Barrier number + name as header badge
-- Central diagram: wide enterprise bar (partial fill) vs. narrow startup bar (full fill)
-- Three bullet points below diagram
-- Visual emphasis on "slice" concept
-
-### Slide 6: Barrier #2 — The Upside Down (2:00)
-
-**Story Circle Stage: "SEARCH"** — The hero enters the unfamiliar world and must navigate its strange rules. The AI transformation landscape is ugly, uncomfortable, and alien. Everything works differently here. Most enterprises can't stomach the disorientation and retreat.
+### Slide 7a: Barrier #3 — Navigating the Labyrinth: The Problem (2:00)
 
 **Summary:** Transitioning to AI-driven processes requires significant investment in disposable software—systems designed solely to bridge the gap while humans and AI still overlap. Think of early Waymo prototypes: ugly, wire-covered, transitional. Enterprises struggle to justify building infrastructure they know will be thrown away, while startups can build AI-native from day one.
 
@@ -192,7 +253,7 @@
 - Legacy systems were built for humans clicking through workflows; AI needs APIs, structured data, and different interfaces entirely
 - The "vibe-coded" throwaway systems that bridge old and new become permanent technical debt before anyone notices
 
-**Leverage Points (Upside Down):**
+**Leverage Points (Navigating the Labyrinth):**
 - B2: Hybrid Handoff Systems Don't Exist — new engineering project with no direct revenue
 - B5: Vibe-Coded Throwaway Systems — prototypes promoted to production without proper engineering
 - F1: Legacy Systems Weren't Built for AI — expose UIs not APIs, human-centric workflows
@@ -203,7 +264,7 @@
 **Visual Layout:**
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  2 · THE UPSIDE DOWN                                    │
+│  3 · NAVIGATING THE LABYRINTH                           │
 │                                                         │
 │   ┌─────────────────────────────────────────────────┐  │
 │   │                                                 │  │
@@ -226,9 +287,27 @@
 - Three bullets at bottom
 - The visual metaphor carries the slide
 
-### Slide 7: Barrier #3 — The Shortest Path (2:00)
+### Slide 7b: Barrier #3 — Navigating the Labyrinth: Startup Opportunity (0:45)
 
-**Story Circle Stage: "FIND"** — The hero finds something valuable, but is tempted to grab the easy prize and flee. Enterprises find cost savings and are tempted to take them and run home—declaring victory with their meager winnings instead of pressing on to the true treasure.
+**Summary:** Startups don't have legacy systems to integrate with. They can build AI-native from day one, avoiding the ugly transitional phase entirely.
+
+**Visual:** Clean architecture diagram vs. spaghetti integration diagram.
+
+### Slide 7c: Barrier #3 — Navigating the Labyrinth: What To Do (0:30)
+
+**Summary:** For enterprises: budget for the ugliness, plan for throwaway bridges. For startups: AI-native architecture is your competitive advantage.
+
+**Enterprise Guidance:**
+- Go microservices: Isolate AI experiments in separate services
+- Budget the writeoff: Explicitly plan for transitional software depreciation
+- Vibe code the greenfield: Use AI to rapidly prototype the throwaway bridges
+- Name decommission owner: Someone must be accountable for killing the old system
+
+**Startup Guidance:**
+- Easier markets: High employee turnover (less institutional resistance), industries with less legacy software
+- Harder markets: Heavily regulated industries, deep legacy integration requirements
+
+### Slide 8a: Barrier #4 — Resisting Temptation: The Math (2:00)
 
 **Summary:** When AI delivers productivity gains, enterprises face a choice: cut costs (fire people) or invest in growth (do more with the same headcount). Cost cutting wins almost every time—not because leaders lack vision, but because it's the rational risk-adjusted choice. Growth is speculative and uncertain; headcount reduction delivers immediate, quantifiable savings that flow straight to the bottom line.
 
@@ -290,7 +369,7 @@ Why would any rational CFO choose Option B?
 
 ---
 
-**Leverage Points (Shortest Path):**
+**Leverage Points (Resisting Temptation):**
 - K1: Efficiency vs. Volume Mindset — incumbents see cost reduction; startups see 100x volume expansion
 - J1: "Replacing People with Algorithms" = Bad Press — yet cost cutting remains the default because it's certain
 - J2: Shareholder Pressure Creates Mixed Signals — cut costs AND maintain good PR simultaneously
@@ -301,7 +380,7 @@ Why would any rational CFO choose Option B?
 **Visual Layout:**
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  3 · THE SHORTEST PATH                                  │
+│  4 · RESISTING TEMPTATION                               │
 │                                                         │
 │  $30M revenue · $1M AI investment · 10% efficiency ($3M)│
 │                                                         │
@@ -329,276 +408,132 @@ Why would any rational CFO choose Option B?
 - Right card (faded): the speculative bet
 - Math box showing the gross margin calculation
 - Punchline: cost cutting IS the equivalent of 17% growth
-- Real examples cited verbally (Workday, HP, Microsoft)
 
-### Slide 8: Barrier #4 — The Sacrifice (2:00)
+### Slide 8b: The Market Agrees (0:45)
 
-**Story Circle Stage: "RETURN/CHANGE"** — To return transformed, the hero must leave something behind. The enterprise must sacrifice part of itself to be reborn—existing customers, revenue streams, processes, people. But enterprises are structurally incapable of self-cannibalization. They try to transform while preserving everything, which is impossible.
+**Summary:** Four real examples of companies that announced AI-related layoffs and saw immediate stock price increases the same day.
 
-**Summary:** Transformation requires killing part of yourself. Enterprises must sacrifice existing customers who demand the old way, revenue streams that will be cannibalized, processes and values that define who they are, and sometimes the people whose roles depend on the current model. Startups win because they have nothing to sacrifice—they're born on the other side.
+| Company | Revenue | Layoffs | Est. Savings | Stock |
+|---------|---------|---------|--------------|-------|
+| Workday | $8.4B | 1,750 (8.5%) | ~$300M | +6.3% |
+| IBM | $63B | 3,900 | ~$580M | +9.5% |
+| Dropbox | $2.5B | 528 (20%) | ~$95M | +2.5% |
+| Cisco | $54B | 5,600 (7%) | ~$840M | +6.5% |
 
-- To be reborn, something must die: existing customers, current revenue, legacy processes, familiar roles—enterprises can't willingly let go
-- Resource allocation is democratic: existing customers vote loudly, future customers are silent, non-customers don't exist yet
-- Cannibalization appears in this quarter's P&L; new revenue is a spreadsheet fantasy—business unit leaders protect what's real
+**Speaker Notes / References:**
 
-**Leverage Points (Sacrifice):**
-- C1: Processes, Values, and Profit Targets Are Structural — the org's identity is the constraint
-- C2: Resource Dependence on Existing Customers — you can't serve two masters
-- D1: Cannibalization Fear — killing your own revenue is organizational suicide
-- N1: No Legacy to Defend — startups have nothing to sacrifice; that's their advantage
-- C5: Autonomous Units/Spinouts Rarely Work — parent can't let the child kill the parent
-- J1: "Replacing People with Algorithms" = Bad Press — the human cost of sacrifice is visible
+Layoff announcements & stock reactions:
+- Workday (Feb 2025): https://www.fastcompany.com/91273866/workday-layoffs-hundreds-job-cuts-ai-push-stock-price
+- IBM (Jan 2024): https://finance.yahoo.com/news/ibm-sees-strong-2024-free-210924223.html
+- Dropbox (Oct 2024): https://www.cnbc.com/2024/10/30/dropbox-slashes-20percent-of-global-workforce-eliminating-500-roles.html
+- Cisco (Aug 2024): https://futurism.com/the-byte/cisco-layoff-ai-profit
 
-**Visual Layout:**
-```
-┌─────────────────────────────────────────────────────────┐
-│  4 · THE SACRIFICE                                      │
-│                                                         │
-│         To return transformed, you must leave behind:   │
-│                                                         │
-│    ┌────────────┐ ┌────────────┐ ┌────────────┐        │
-│    │  EXISTING  │ │  CURRENT   │ │   LEGACY   │        │
-│    │ CUSTOMERS  │ │  REVENUE   │ │ PROCESSES  │        │
-│    │            │ │            │ │            │        │
-│    │   👥 → ❌   │ │   💰 → ❌   │ │   ⚙️ → ❌   │        │
-│    │            │ │            │ │            │        │
-│    │ They want  │ │ It pays    │ │ They define│        │
-│    │ the old way│ │ the bills  │ │  who we are│        │
-│    └────────────┘ └────────────┘ └────────────┘        │
-│                                                         │
-│    Enterprises can't sacrifice. Startups have nothing   │
-│    to sacrifice. That's why startups win.               │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
-- Three sacrifice cards showing what must be given up
-- Each card: icon, label, why it's hard to let go
-- Stark visual: things being crossed out / left behind
-- Punchline: startups win by having nothing to lose
-
-### Slide 9: Remaining Leverage Points — The Long Tail (1:30)
-
-**Summary:** Beyond the four barriers, enterprises face additional structural challenges: compensation systems that steer employees toward work AI should handle, data trapped in silos that prevents effective AI deployment, and the fundamental mismatch between AI's current strengths (text, async) and where enterprises want to deploy it (voice, real-time).
-
-**Key Remaining Leverage Points:**
-- **Procurement & Vendor Selection:** Demos optimize for wow factor not reliability; enterprises blame "AI" rather than their selection process when projects fail (A2, F6, F3)
-- **Data & Feedback Constraints:** Enterprise data is siloed, feedback loops aren't instrumented, domain-specific data is unorganized (G1, G2, G3)
-- **Capability Gradients:** AI excels at text over voice, async over real-time—but enterprises want it everywhere (M1, M2, M3)
-- **Workforce Dynamics:** Labor protections, high-salary employees, and the soul-crushing nature of AI training work create resistance (C4, C6, E5)
-- **Baseline Measurement:** Knowing if AI beats humans requires constantly measuring both—a permanent cost center with no finish line (A1, A4)
-- **Shareholder & Market Forces:** Common ownership creates disincentives for disruption; only shocks overcome inertia (C3, C7)
-- **Distribution & Bundling:** Incumbents still control relationships and can bundle AI as a feature rather than compete head-on (I1, I3, L2)
+Revenue sources:
+- Workday FY2025 ($8.4B): https://investor.workday.com/2025-02-25-Workday-Announces-Fiscal-2025-Fourth-Quarter-and-Full-Year-Financial-Results
+- IBM 2024 ($63B): https://newsroom.ibm.com/2025-01-29-IBM-RELEASES-FOURTH-QUARTER-RESULTS
+- Dropbox 2024 ($2.5B): https://dropbox.gcs-web.com/news-releases/news-release-details/dropbox-announces-fourth-quarter-and-fiscal-2024-results
+- Cisco FY2024 ($54B): https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2024/m08/cisco-reports-fourth-quarter-and-fiscal-year-2024-earnings.html
 
 **Visual Layout:**
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  The Long Tail: More Barriers                           │
+│  The market agrees.                                     │
 │                                                         │
-│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐    │
-│  │ Procurement  │ │    Data      │ │  Capability  │    │
-│  │   Broken     │ │   Silos      │ │  Gradients   │    │
-│  │     📋       │ │     🗄️       │ │     📊       │    │
-│  └──────────────┘ └──────────────┘ └──────────────┘    │
+│  ┌─────────┬──────────┬─────────┬───────────┬────────┐ │
+│  │ Company │ Revenue  │ Layoffs │ Est. Save │ Stock  │ │
+│  ├─────────┼──────────┼─────────┼───────────┼────────┤ │
+│  │ Workday │ $8.4B    │ 1,750   │ ~$300M    │ +6.3%  │ │
+│  │ IBM     │ $63B     │ 3,900   │ ~$580M    │ +9.5%  │ │
+│  │ Dropbox │ $2.5B    │ 528     │ ~$95M     │ +2.5%  │ │
+│  │ Cisco   │ $54B     │ 5,600   │ ~$840M    │ +6.5%  │ │
+│  └─────────┴──────────┴─────────┴───────────┴────────┘ │
 │                                                         │
-│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐    │
-│  │  Workforce   │ │   Baseline   │ │ Distribution │    │
-│  │  Resistance  │ │     Tax      │ │   Bundling   │    │
-│  │     👥       │ │     📏       │ │     📦       │    │
-│  └──────────────┘ └──────────────┘ └──────────────┘    │
-│                                                         │
-│        (These compound with the four main barriers)     │
+│  All same-day stock reactions. The pattern is consistent│
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 ```
-- 2x3 grid of small cards with icons
-- Each card: short label + icon
-- De-emphasized compared to main barriers (smaller, muted colors)
-- Footer note: "These compound with the four main barriers"
-- Speed through verbally—visual is for reference
+- Simple data table showing the pattern
+- All stock numbers in green
+- Footer note about same-day reactions
 
-### Slide 10: The Framework — Finding Your Opportunity (2:00)
-- Pick a process where AI can do 100% (not 80%)
-- Target a market incumbents can't profitably serve
-- Require 10x improvement to drive switching (not incremental)
-- Build on AI's strengths: text over voice, async over real-time, scale over customization
+### Slide 8c: Strategic Response (0:45)
+
+**Summary:** The key insight is not to save in one area and invest in growth elsewhere. Instead, direct AI investments into business units that are already growing. These units are more likely to reinvest the savings into accelerating their growth, creating a multiplier effect. For startups, the layoff announcements are a roadmap to opportunities—every area where enterprises cut headcount is an area they've decided not to compete in.
+
+**Key Points:**
+- **Enterprise Strategy:** Don't fight the math—use it. Direct AI investments to growing units because they're more likely to reinvest savings into accelerating growth (multiplier effect), not just cutting costs.
+- **Startup Strategy:** Follow the layoffs. Every area where enterprises cut headcount is an area they've decided not to compete in. Build AI-native solutions for the customers they're abandoning.
 
 **Visual Layout:**
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  The Framework: Finding Your Opportunity                │
+│  So what do you do?                                      │
 │                                                         │
-│   ┌─────────────────────────────────────────────────┐  │
-│   │                                                 │  │
-│   │    1. PROCESS        →  AI can do 100%         │  │
-│   │       ○───────────────●                        │  │
-│   │                                                 │  │
-│   │    2. MARKET         →  Incumbents can't serve │  │
-│   │       ○───────────────●                        │  │
-│   │                                                 │  │
-│   │    3. IMPROVEMENT    →  10x, not 20%           │  │
-│   │       ○───────────────●                        │  │
-│   │                                                 │  │
-│   │    4. STRENGTHS      →  Text, async, scale     │  │
-│   │       ○───────────────●                        │  │
-│   │                                                 │  │
-│   └─────────────────────────────────────────────────┘  │
-│                                                         │
-│           Each filter narrows to your opportunity.      │
+│  ┌──────────────────────┐  ┌──────────────────────┐    │
+│  │    ENTERPRISE        │  │     STARTUP         │    │
+│  │                      │  │                      │    │
+│  │  Direct AI to        │  │  Follow the layoffs  │    │
+│  │  growing units       │  │                      │    │
+│  │                      │  │  Build where they    │    │
+│  │  They reinvest       │  │  won't               │    │
+│  │  → multiplier        │  │                      │    │
+│  └──────────────────────┘  └──────────────────────┘    │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 ```
-- Four-step vertical checklist/funnel
-- Each step as a row with label → criteria
-- Visual sense of filtering/narrowing
-- Clean, simple, actionable
-- This is the "take home" framework
+- Two-column comparison with concise messaging
+- Enterprise: Focus on growing units for multiplier effect
+- Startup: Follow layoffs to find opportunities
+- Large, clear text for visual aid (not take-home document)
 
-### Slide 11: Framework in Action — Recruiting Under $50K (2:00)
-- Recruiters won't touch jobs <$50K (commission math doesn't work)
-- AI can handle: text-based communication, async response times, basic matching
-- Service: 100% AI recruiting for underserved market at 1/10th the price ($500 vs $5,000)
-- Incumbents can't respond: margin compression, process complexity, loss-leader trap
+### Slide 9: The Startup Playbook (1:30)
 
-**Visual Layout:**
-```
-┌─────────────────────────────────────────────────────────┐
-│  Example: Recruiting Under $50K                         │
-│                                                         │
-│   ┌────────────────────────┬────────────────────────┐  │
-│   │      INCUMBENT         │      AI STARTUP        │  │
-│   ├────────────────────────┼────────────────────────┤  │
-│   │  Won't touch <$50K     │  Only serves <$50K     │  │
-│   │  (commission = $5K)    │  (price = $500)        │  │
-│   ├────────────────────────┼────────────────────────┤  │
-│   │  Phone, meetings,      │  Text, email, async    │  │
-│   │  high-touch            │  100% automated        │  │
-│   ├────────────────────────┼────────────────────────┤  │
-│   │  Can't respond:        │  Protected by:         │  │
-│   │  margin compression    │  their own margins     │  │
-│   └────────────────────────┴────────────────────────┘  │
-│                                                         │
-│              The "$50K floor" in YOUR industry?         │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
-- Two-column comparison table
-- Left: Incumbent (why they can't/won't serve)
-- Right: AI Startup (how you win)
-- Row structure: market, channel, defense
-- Bottom callout: prompt audience to find their own $50K floor
+**Summary:** Consolidate all startup advice from the four barriers into one actionable framework. Every barrier becomes an advantage when you have nothing to lose.
 
-### Slide 12: Defending the Niche (1:30)
-- Why incumbents won't just copy you:
-  - Can't match your margin freedom (percentage-based valuation)
-  - Can't offer at a loss without significant investment
-  - Can't unbundle without threatening core business
-- The harder it is to build, the safer you are
+**The Four Plays:**
+1. **CHOOSING THE RIGHT PATH:** Map their constraints → build exactly there (they can't follow)
+2. **PREPARING FOR THE JOURNEY:** 100% of a narrow slice → serve the "$50K floor" (customers incumbents rationally ignore)
+3. **NAVIGATING THE LABYRINTH:** AI-native from day one → no legacy to integrate
+4. **RESISTING TEMPTATION:** Follow the layoffs → build where they're cutting
 
-**Visual Layout:**
-```
-┌─────────────────────────────────────────────────────────┐
-│  Why Incumbents Won't Just Copy You                     │
-│                                                         │
-│   ┌─────────────────────────────────────────────────┐  │
-│   │                                                 │  │
-│   │            🏰  YOUR MOAT  🏰                    │  │
-│   │                                                 │  │
-│   │   ┌─────────┐  ┌─────────┐  ┌─────────┐       │  │
-│   │   │ MARGIN  │  │  LOSS   │  │ BUNDLE  │       │  │
-│   │   │  TRAP   │  │ LEADER  │  │  TRAP   │       │  │
-│   │   │         │  │  TRAP   │  │         │       │  │
-│   │   │ Can't   │  │ Can't   │  │ Can't   │       │  │
-│   │   │ lower   │  │ sustain │  │ unbundle│       │  │
-│   │   │ margins │  │ losses  │  │ cleanly │       │  │
-│   │   └─────────┘  └─────────┘  └─────────┘       │  │
-│   │                                                 │  │
-│   └─────────────────────────────────────────────────┘  │
-│                                                         │
-│        The harder it is to build, the safer you are.    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
-- Castle/moat metaphor as header
-- Three "trap" cards showing why incumbents can't respond
-- Each trap = a structural barrier to copying you
-- Punchline at bottom: complexity = protection
+**Speaker Notes:** "For startups, every barrier becomes an advantage. CHOOSING THE RIGHT PATH: Map their constraints explicitly — who are their sacred customers? Build exactly there. PREPARING FOR THE JOURNEY: Don't try to automate 80% of everything — automate 100% of one thing. Find the '$50K floor' in your industry. NAVIGATING THE LABYRINTH: You don't have legacy systems to integrate with — build AI-native from day one. RESISTING TEMPTATION: When enterprises announce layoffs, they're telling you where they've decided not to compete — follow the layoffs."
 
-### Slide 13: Your Domain Advantage + Call to Action (1:15)
+**Punchline:** You have nothing to sacrifice. That's not a weakness. That's the moat.
 
-**Story Circle Insight:** Startups win because they begin already transformed. No threshold to cross (Scope Problem), no unfamiliar world to fear (Upside Down), no temptation to flee with meager winnings (Shortest Path), and nothing to sacrifice (The Sacrifice). They're born on the other side of the hero's journey.
+### Slide 10: The Enterprise Playbook (1:30)
 
-- You know an industry's pain points better than any AI researcher
-- The framework: find the process, find the underserved market, build AI-first
-- Question to leave with: What's the "$50K floor" in your industry?
+**Summary:** Consolidate all enterprise advice from the four barriers. The barriers are real — navigate them, don't pretend they don't exist.
 
-**Visual Layout:**
-```
-┌─────────────────────────────────────────────────────────┐
-│  Your Domain Advantage                                  │
-│                                                         │
-│                                                         │
-│     ┌─────────────────────────────────────────────┐    │
-│     │                                             │    │
-│     │   You know your industry's pain points      │    │
-│     │   better than any AI researcher.            │    │
-│     │                                             │    │
-│     └─────────────────────────────────────────────┘    │
-│                                                         │
-│                                                         │
-│     ┌─────────────────────────────────────────────┐    │
-│     │                                             │    │
-│     │   What's the "$50K floor" in YOUR industry? │    │
-│     │                                             │    │
-│     └─────────────────────────────────────────────┘    │
-│                                                         │
-│                                                         │
-│                    [QR code or contact]                 │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
-- Minimal, clean slide
-- Two large text blocks as the focus
-- First: "You know your industry..."
-- Second (emphasized): The $50K floor question
-- Optional QR code at bottom for follow-up
-- Pause for effect—let them think
+**The Four Plays:**
+1. **CHOOSING THE RIGHT PATH:** Map constraints explicitly → build in the negative space
+2. **PREPARING FOR THE JOURNEY:** Find ONE process that's 100% automatable → make it your beachhead
+3. **NAVIGATING THE LABYRINTH:** Accept ugly transitions → budget for throwaway bridges
+4. **RESISTING TEMPTATION:** Direct AI to growing units → they reinvest the gains (not dying units)
 
-### Slide 14: References / Backup (0:30)
-- Citations
-- Contact info
-- Further reading
+**Speaker Notes:** "For enterprises, the barriers are real. Don't pretend they don't exist. CHOOSING THE RIGHT PATH: Map your constraints explicitly — which customers would you compete with? Build in the negative space where constraints don't apply. PREPARING FOR THE JOURNEY: Stop scattershotting pilots — find the ONE process that can be 100% automated, make it your beachhead. NAVIGATING THE LABYRINTH: Accept that the transition will be ugly — budget for throwaway infrastructure. RESISTING TEMPTATION: Don't direct AI to dying business units hoping to save them — direct it to growing units who will reinvest."
 
-**Visual Layout:**
-```
-┌─────────────────────────────────────────────────────────┐
-│  References & Contact                                   │
-│                                                         │
-│  Sources:                                               │
-│  • Clayton Christensen, The Innovator's Dilemma         │
-│  • Innosight, Dual Transformation                       │
-│  • a16z, "AI Wedges"                                    │
-│  • Bain, "Defending Against Disruption"                 │
-│                                                         │
-│  ─────────────────────────────────────────────────────  │
-│                                                         │
-│     Philip O'Donnell                                    │
-│     [email]                                             │
-│     [LinkedIn / Twitter]                                │
-│                                                         │
-│                    [QR code]                            │
-│                                                         │
-│           Slides available at: [URL]                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
-- Simple reference list (key sources)
-- Contact info with social handles
-- QR code linking to slides/further reading
-- Keep on screen during Q&A
+**Punchline:** Don't fight the structure. Work within it — or around it.
+
+### Slide 11: References & Close (0:30)
+
+**Visual:** Simple reference list + contact info + Claude skill callout
+
+**Sources:**
+- Clayton Christensen, *The Innovator's Dilemma*
+- Innosight, *Dual Transformation*
+- a16z, "AI Wedges"
+- Bain, "Defending Against Disruption"
+
+**Interactive Follow-up:**
+- Claude skill to walk through the framework interactively
+- Two modes: "As a startup finding a market" or "As an enterprise defending against disruption"
+- Guides user through identifying processes, mapping constraints, finding the negative space
+
+**Contact:** Philip O'Donnell, Jax Tech · January 2026
 
 ---
 
-**Total runtime:** ~21:30 (tight on 20 min target—may need to trim framework slides or combine barriers)
+**Total runtime:** ~18:00 (tightened from original ~21:30 by consolidating framework slides)
 
 ---
 
@@ -607,3 +542,6 @@ Why would any rational CFO choose Option B?
 - [ ] Draft slide text (headline + bullets) and speaker notes
 - [x] Visual guidance for each slide
 - [ ] Rehearsal plan & Q&A prep
+- [ ] **Generate Claude skill before talk** — interactive framework walkthrough with two modes:
+  - "As a startup finding a market" (identify $50K floor, map incumbent constraints, find the wedge)
+  - "As an enterprise defending against disruption" (map your constraints, find the 100% process, build in negative space)
