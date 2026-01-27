@@ -15,60 +15,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ===== DESIGN TOKENS (per style guide) ===== */
     :root {
-      /* Colors */
       --bg-primary: #0A0A0F;
       --text-primary: #F5F5F7;
       --text-secondary: #8E8E93;
       --accent-blue: #0A84FF;
       --accent-amber: #FF9F0A;
       --accent-green: #30D158;
-
-      /* Cards */
       --card-bg: rgba(255, 255, 255, 0.05);
       --card-border: rgba(255, 255, 255, 0.1);
+      --margin: 80px;
     }
 
-    .reveal-viewport {
-      background: var(--bg-primary);
-    }
-
-    .reveal .slides {
-      width: 100vw !important;
-      height: 100vh !important;
-      left: 0 !important;
-      top: 0 !important;
-      transform: none !important;
-    }
-
-    .reveal .slides > section {
-      width: 100vw !important;
-      height: 100vh !important;
-      padding: 60px 5vw;
-      box-sizing: border-box;
-      display: flex !important;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .reveal .slides > section > * {
-      flex-shrink: 0;
-      max-width: 100%;
-    }
-
-    .reveal .slides > section h2,
-    .reveal .slides > section h3 {
-      margin-top: 0;
-    }
-
-    .reveal .progress {
-      position: fixed !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      width: 100vw !important;
-    }
+    /* ===== BASE REVEAL OVERRIDES ===== */
+    .reveal-viewport { background: var(--bg-primary); }
 
     .reveal {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -82,252 +43,315 @@
       text-transform: none;
       letter-spacing: -0.02em;
       color: var(--text-primary);
+      margin: 0;
     }
 
-    .reveal h1 {
-      font-size: 2.4em;
+    .reveal .slides {
+      width: 100vw !important;
+      height: 100vh !important;
+      left: 0 !important;
+      top: 0 !important;
+      transform: none !important;
+    }
+
+    .reveal .slides > section {
+      width: 100vw !important;
+      height: 100vh !important;
+      box-sizing: border-box;
+    }
+
+    .reveal .progress {
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+    }
+
+    /* ===== TEXT UTILITIES ===== */
+    .text-secondary { color: var(--text-secondary); }
+    .text-blue { color: var(--accent-blue); }
+    .text-amber { color: var(--accent-amber); }
+    .text-green { color: var(--accent-green); }
+
+    /* ===== SLIDE LAYOUTS ===== */
+
+    /* Title slide (first) - centered */
+    .slide-title-page {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: var(--margin);
+    }
+
+    .slide-title-page h1 {
+      font-size: 72px;
       line-height: 1.1;
+      margin-bottom: 8px;
     }
 
-    .reveal h2 {
-      font-size: 1.8em;
+    .slide-title-page .subtitle {
+      font-size: 32px;
+      color: var(--text-secondary);
+      margin-bottom: 48px;
+    }
+
+    .slide-title-page .thesis-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(10, 132, 255, 0.4);
+      border-radius: 16px;
+      padding: 24px 32px;
+      max-width: 800px;
+      box-shadow: 0 0 40px rgba(10, 132, 255, 0.15);
+    }
+
+    .slide-title-page .thesis-card p {
+      font-size: 24px;
+      font-style: italic;
+      margin: 0;
+    }
+
+    .slide-title-page .speaker-info {
+      margin-top: 48px;
+      font-size: 20px;
+      color: var(--text-secondary);
+    }
+
+    /* Standard content slide - 3 zones: header, content, takeaway */
+    .slide-standard {
+      display: flex !important;
+      flex-direction: column;
+      padding: var(--margin);
+    }
+
+    .slide-standard .slide-header {
+      flex-shrink: 0;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .slide-standard .slide-header h2 {
+      font-size: 48px;
       font-weight: 600;
       line-height: 1.2;
     }
 
-    .reveal h3 {
-      font-size: 1.6em;
-      font-weight: 600;
-    }
-
-    .reveal p {
-      line-height: 1.5;
-    }
-
-    .reveal .text-secondary {
+    .slide-standard .slide-header .slide-subtitle {
+      font-size: 20px;
       color: var(--text-secondary);
+      margin-top: 8px;
     }
 
-    .reveal .text-blue {
-      color: var(--accent-blue);
-    }
-
-    .reveal .text-amber {
-      color: var(--accent-amber);
-    }
-
-    .reveal .text-green {
-      color: var(--accent-green);
-    }
-
-    /* Slide label (e.g., "1 · THE SCOPE PROBLEM") */
-    .slide-label {
-      font-size: 0.6em;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-bottom: 1em;
-    }
-
-    /* Thesis card */
-    .thesis-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(10, 132, 255, 0.4);
-      border-radius: 16px;
-      padding: 0.8em 1.2em;
-      margin-top: 1.5em;
-      box-shadow: 0 0 60px rgba(10, 132, 255, 0.15);
-      max-width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .thesis-card p {
-      font-size: 0.75em;
-      font-style: italic;
-      color: var(--text-primary);
-      margin: 0;
-    }
-
-    /* Speaker info */
-    .speaker-info {
-      margin-top: 2.5em;
-      font-size: 0.55em;
-      color: var(--text-secondary);
-    }
-
-    /* Subtitle */
-    .subtitle {
-      font-size: 0.5em;
-      font-weight: 400;
-      color: var(--text-secondary);
-      margin-top: 0.3em;
-    }
-
-    /* Two-column comparison */
-    .comparison {
+    .slide-standard .slide-content {
+      flex: 1;
       display: flex;
-      gap: 60px;
+      flex-direction: column;
       justify-content: center;
-      margin-top: 1.5em;
+      align-items: center;
+      min-height: 0;
     }
 
-    .comparison-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1em 1.2em;
-      width: 400px;
+    .slide-standard .slide-takeaway {
+      flex-shrink: 0;
       text-align: center;
+      padding-top: 24px;
     }
 
-    .comparison-card.promise {
-      border-color: rgba(10, 132, 255, 0.3);
-    }
-
-    .comparison-card.reality {
-      border-color: rgba(255, 159, 10, 0.3);
-    }
-
-    .comparison-card .icon {
-      font-size: 3em;
-      margin-bottom: 0.3em;
-    }
-
-    .comparison-card .label {
-      font-size: 0.7em;
+    .slide-standard .slide-takeaway p {
+      font-size: 28px;
       font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 0.5em;
-    }
-
-    .comparison-card .description {
-      font-size: 0.65em;
-      color: var(--text-secondary);
+      margin: 0;
       line-height: 1.4;
     }
 
-    /* Automation Timeline */
-    .automation-timeline {
+    /* Barrier header (number + title combo) */
+    .barrier-header {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1.5em;
-      margin-top: 1.5em;
+      gap: 16px;
     }
 
-    .era {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 0.8em 1em;
-      text-align: center;
-      min-width: 160px;
+    .barrier-number {
+      background: var(--text-secondary);
+      color: var(--bg-primary);
+      font-weight: 700;
+      font-size: 18px;
+      padding: 6px 14px;
+      border-radius: 8px;
     }
 
-    .era.current {
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 20px rgba(10, 132, 255, 0.2);
+    /* Closing slide */
+    .slide-closing {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: var(--margin);
     }
 
-    .era-date {
-      font-size: 0.55em;
+    .slide-closing .references {
+      text-align: left;
+      max-width: 700px;
+    }
+
+    .slide-closing .references h3 {
+      font-size: 24px;
       color: var(--text-secondary);
-      letter-spacing: 0.1em;
-      margin-bottom: 0.3em;
+      margin-bottom: 16px;
     }
 
-    .era-name {
-      font-size: 0.8em;
+    .slide-closing .references ul {
+      list-style: none;
+      padding: 0;
+      font-size: 20px;
+      color: var(--text-secondary);
+      line-height: 2;
+    }
+
+    .slide-closing .contact {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 20px;
+    }
+
+    .slide-closing .contact .name {
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 0.2em;
+      font-size: 28px;
     }
 
-    .era.current .era-name {
-      color: var(--accent-blue);
+    .slide-closing .cta-box {
+      margin: 24px 0;
+      padding: 20px 24px;
+      background: rgba(10, 132, 255, 0.1);
+      border: 1px solid rgba(10, 132, 255, 0.3);
+      border-radius: 16px;
+      font-size: 18px;
     }
 
-    .era-target {
-      font-size: 0.55em;
-      color: var(--text-secondary);
-      font-style: italic;
+    /* ===== REUSABLE CONTENT COMPONENTS ===== */
+
+    /* Card - basic container (per style guide: 16px radius, 32px padding) */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px 20px;
+      text-align: center;
     }
 
-    .era-arrow {
-      font-size: 1.5em;
-      color: var(--text-secondary);
-      opacity: 0.5;
+    .card.card-amber { border-color: rgba(255, 159, 10, 0.4); }
+    .card.card-green { border-color: rgba(48, 209, 88, 0.4); }
+    .card.card-blue { border-color: rgba(10, 132, 255, 0.4); }
+
+    .card .card-icon { font-size: 36px; margin-bottom: 6px; }
+    .card .card-title { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+    .card .card-detail { font-size: 15px; color: var(--text-secondary); line-height: 1.4; }
+
+    /* Two-column layout */
+    .two-col {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      align-items: stretch;
+      width: 100%;
+      max-width: 1000px;
     }
 
-    /* Punchline */
-    .punchline {
-      margin-top: 2em;
-      font-size: 1.1em;
-      font-weight: 600;
+    .two-col .col {
+      flex: 1;
+      max-width: 450px;
     }
 
-    .punchline .highlight {
-      color: var(--accent-blue);
+    /* Three-column card row */
+    .three-cards {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      max-width: 100%;
     }
 
-    /* Slide transitions - removed conflicting padding rule */
+    .three-cards .card {
+      width: 220px;
+      flex-shrink: 1;
+    }
 
-    /* Progress bar / threshold visualization */
+    /* Timeline row */
+    .timeline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .timeline .era {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      text-align: center;
+      min-width: 180px;
+    }
+
+    .timeline .era.current {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 30px rgba(10, 132, 255, 0.2);
+    }
+
+    .timeline .era-date { font-size: 18px; color: var(--text-secondary); }
+    .timeline .era-name { font-size: 24px; font-weight: 600; margin: 8px 0; }
+    .timeline .era.current .era-name { color: var(--accent-blue); }
+    .timeline .era-target { font-size: 18px; color: var(--text-secondary); }
+    .timeline .era-arrow { font-size: 32px; color: var(--text-secondary); opacity: 0.5; }
+
+    /* Progress bar */
     .threshold-bar {
       background: rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
+      border-radius: 12px;
       height: 40px;
       width: 100%;
-      max-width: 900px;
-      margin: 2em auto;
+      max-width: 700px;
       position: relative;
       overflow: visible;
     }
 
     .threshold-bar .filled {
-      background: linear-gradient(90deg, var(--accent-amber) 0%, var(--accent-amber) 84%, var(--accent-green) 84%, var(--accent-green) 100%);
+      background: linear-gradient(90deg, var(--accent-amber) 0%, var(--accent-amber) 80%, var(--accent-green) 80%, var(--accent-green) 100%);
       height: 100%;
-      border-radius: 8px;
+      border-radius: 12px;
       width: 100%;
     }
 
     .threshold-bar .marker {
       position: absolute;
-      top: -30px;
-      font-size: 0.5em;
+      top: -28px;
+      font-size: 16px;
       color: var(--text-secondary);
       transform: translateX(-50%);
     }
 
     .threshold-bar .marker.at-80 { left: 80%; }
-    .threshold-bar .marker.at-95 { left: 95%; }
     .threshold-bar .marker.at-100 { left: 100%; }
 
     .threshold-bar .label {
       position: absolute;
-      bottom: -50px;
-      font-size: 0.55em;
+      bottom: -55px;
+      font-size: 14px;
       transform: translateX(-50%);
+      white-space: nowrap;
     }
 
-    .threshold-bar .label.at-80 {
-      left: 80%;
-      color: var(--accent-amber);
-    }
-    .threshold-bar .label.at-100 {
-      left: 100%;
-      color: var(--accent-green);
-    }
+    .threshold-bar .label.at-80 { left: 80%; color: var(--accent-amber); }
+    .threshold-bar .label.at-100 { left: 100%; color: var(--accent-green); }
 
-    /* Journey circle visualization */
+    /* Journey circle */
     .journey-circle {
       position: relative;
       width: 700px;
-      height: 420px;
-      margin: 0.8em auto;
+      height: 400px;
     }
 
     .journey-center {
@@ -336,245 +360,196 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      font-size: 0.55em;
+      font-size: 20px;
       font-weight: 600;
       color: var(--text-secondary);
-      line-height: 1.4;
       z-index: 10;
-    }
-
-    .journey-arrows {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
     }
 
     .journey-node {
       position: absolute;
       text-align: center;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 0.4em 0.6em;
-      min-width: 90px;
-    }
-
-    .journey-node.failure {
-      border-color: rgba(255, 159, 10, 0.5);
       background: rgba(255, 159, 10, 0.08);
-    }
-
-    .journey-node .node-name {
-      font-size: 0.45em;
-      font-weight: 600;
-    }
-
-    .journey-node .node-barrier {
-      font-size: 0.35em;
-      color: var(--accent-amber);
-      margin-top: 0.2em;
-    }
-
-    /* Position nodes around the circle - clock positions */
-    .journey-node.node-top {
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .journey-node.node-top-right {
-      top: 5%;
-      right: 8%;
-    }
-
-    .journey-node.node-right {
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-    }
-
-    .journey-node.node-bottom-right {
-      bottom: 5%;
-      right: 8%;
-    }
-
-    .journey-node.node-bottom {
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .journey-node.node-bottom-left {
-      bottom: 5%;
-      left: 8%;
-    }
-
-    .journey-node.node-left {
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-    }
-
-    /* Big statement */
-    .big-statement {
-      font-size: 1.8em;
-      font-weight: 700;
-      line-height: 1.3;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .big-statement .highlight-green {
-      color: var(--accent-green);
-    }
-
-    /* Story circle */
-    .story-circle {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, auto);
-      gap: 20px;
-      max-width: 1000px;
-      margin: 1.5em auto;
-      font-size: 0.7em;
-    }
-
-    .story-circle .stage {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      border: 1px solid rgba(255, 159, 10, 0.5);
       border-radius: 12px;
-      padding: 0.6em;
-      text-align: center;
+      padding: 12px 16px;
+      min-width: 100px;
     }
 
-    .story-circle .stage.failure {
-      border-color: rgba(255, 159, 10, 0.5);
-      background: rgba(255, 159, 10, 0.08);
+    .journey-node .node-name { font-size: 14px; font-weight: 600; }
+
+    .journey-node.node-top { top: 0; left: 50%; transform: translateX(-50%); }
+    .journey-node.node-right { top: 50%; right: 0; transform: translateY(-50%); }
+    .journey-node.node-bottom { bottom: 0; left: 50%; transform: translateX(-50%); }
+    .journey-node.node-left { top: 50%; left: 0; transform: translateY(-50%); }
+
+    .journey-arrows {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
     }
 
-    .story-circle .stage .name {
-      font-weight: 600;
-      font-size: 0.9em;
-      margin-bottom: 0.3em;
-    }
+    /* Scope visualization grid */
+    .scope-visual { max-width: 800px; }
 
-    .story-circle .stage .barrier {
-      font-size: 0.75em;
-      color: var(--accent-amber);
-    }
-
-    .story-circle .center {
+    .scope-row {
       display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
       align-items: center;
-      justify-content: center;
-      font-weight: 600;
+    }
+
+    .scope-row .row-label {
+      font-size: 14px;
       color: var(--text-secondary);
+      width: 80px;
+      text-align: right;
+      padding-right: 12px;
     }
 
-    /* Barrier slide header */
-    .barrier-header {
+    .scope-row .steps { display: flex; gap: 6px; }
+
+    .scope-row .step {
+      width: 52px;
+      height: 32px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .scope-row .step.highlight {
+      background: var(--accent-green);
+      border-color: var(--accent-green);
+    }
+
+    .scope-row .step.cross-process {
+      background: var(--accent-amber);
+      border-color: var(--accent-amber);
+    }
+
+    .scope-row .step.enterprise-focus {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+    }
+
+    .scope-legend {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .scope-legend .legend-item { display: flex; align-items: center; gap: 8px; }
+    .scope-legend .legend-box { width: 20px; height: 20px; border-radius: 4px; }
+
+    /* Framework list */
+    .framework-list {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .framework-list .item {
       display: flex;
       align-items: center;
-      gap: 0.5em;
-      margin-bottom: 0.5em;
-    }
-
-    .barrier-number {
-      background: var(--accent-amber);
-      color: var(--bg-primary);
-      font-weight: 700;
-      font-size: 0.5em;
-      padding: 0.3em 0.6em;
-      border-radius: 6px;
-    }
-
-    .barrier-title {
-      font-size: 1.8em;
-      font-weight: 700;
-    }
-
-    /* Enterprise vs Startup comparison */
-    .ent-vs-startup {
-      display: flex;
-      gap: 40px;
-      justify-content: center;
-      margin: 1.5em 0;
-    }
-
-    .ent-vs-startup .side {
+      gap: 20px;
+      margin-bottom: 16px;
+      padding: 16px 24px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      padding: 1em 1.2em;
-      width: 380px;
     }
 
-    .ent-vs-startup .side.enterprise {
-      border-color: rgba(255, 159, 10, 0.3);
+    .framework-list .item-number {
+      font-size: 24px;
+      font-weight: 700;
+      min-width: 32px;
     }
 
-    .ent-vs-startup .side.startup {
-      border-color: rgba(48, 209, 88, 0.3);
-    }
-
-    .ent-vs-startup .side-label {
-      font-size: 0.6em;
+    .framework-list .item-label {
+      font-size: 18px;
       font-weight: 600;
+      min-width: 180px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1em;
+      letter-spacing: 0.5px;
     }
 
-    .ent-vs-startup .visual {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 1em;
-    }
-
-    .ent-vs-startup .bar {
-      height: 24px;
-      border-radius: 6px;
-    }
-
-    .ent-vs-startup .bar.partial {
-      background: linear-gradient(90deg, var(--accent-amber) 0%, var(--accent-amber) 80%, rgba(255,255,255,0.1) 80%);
-      width: 200px;
-    }
-
-    .ent-vs-startup .bar.full {
-      background: var(--accent-green);
-      width: 120px;
-    }
-
-    .ent-vs-startup .bar-label {
-      font-size: 0.55em;
+    .framework-list .item-criteria {
+      font-size: 18px;
       color: var(--text-secondary);
     }
 
-    .ent-vs-startup .detail {
-      font-size: 0.6em;
-      color: var(--text-secondary);
-      line-height: 1.6;
+    /* Comparison table */
+    .comparison-table {
+      width: 100%;
+      max-width: 900px;
+      border-collapse: collapse;
+      font-size: 18px;
     }
 
-    /* Key points list */
+    .comparison-table th,
+    .comparison-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .comparison-table th {
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 14px;
+    }
+
+    .comparison-table td:first-child { font-weight: 600; }
+    .comparison-table .dim-cell { color: var(--text-secondary); }
+
+    /* Big statement text */
+    .big-statement {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.3;
+      max-width: 900px;
+      text-align: center;
+      margin: 24px 0;
+    }
+
+    .big-statement .highlight { color: var(--accent-blue); }
+    .big-statement .highlight-green { color: var(--accent-green); }
+
+    /* Image container */
+    .image-container {
+      max-width: 600px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+
+    .image-container img { width: 100%; display: block; }
+
+    .image-caption {
+      font-size: 18px;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-top: 12px;
+    }
+
+    /* Key points list (max 3 items per style guide) */
     .key-points {
       list-style: none;
       padding: 0;
-      margin: 1.5em auto;
+      margin: 20px auto;
       max-width: 800px;
       text-align: left;
     }
 
     .key-points li {
-      font-size: 0.75em;
+      font-size: 20px;
       color: var(--text-secondary);
-      margin-bottom: 0.8em;
-      padding-left: 1.5em;
+      margin-bottom: 12px;
+      padding-left: 28px;
       position: relative;
     }
 
@@ -585,398 +560,18 @@
       color: var(--accent-blue);
     }
 
-    /* Image slide */
-    .image-container {
-      max-width: 700px;
-      margin: 1em auto;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--card-border);
-    }
-
-    .image-container img {
+    /* Simple data table */
+    .data-table {
+      max-width: 600px;
       width: 100%;
-      display: block;
+      font-size: 24px;
     }
 
-    .image-caption {
-      font-size: 0.6em;
-      color: var(--text-secondary);
-      font-style: italic;
-      margin-top: 0.8em;
-    }
-
-    /* Two-path choice */
-    .two-paths {
+    .data-table .row {
       display: flex;
-      gap: 60px;
-      justify-content: center;
-      margin: 1.5em 0;
-    }
-
-    .two-paths .path {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1em 1.2em;
-      width: 360px;
-      text-align: center;
-    }
-
-    .two-paths .path.temptation {
-      border-color: rgba(255, 159, 10, 0.4);
-      box-shadow: 0 0 40px rgba(255, 159, 10, 0.1);
-    }
-
-    .two-paths .path.prize {
-      border-color: rgba(255, 255, 255, 0.15);
-      opacity: 0.6;
-    }
-
-    .two-paths .path-icon {
-      font-size: 2.5em;
-      margin-bottom: 0.3em;
-    }
-
-    .two-paths .path-label {
-      font-size: 0.65em;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.8em;
-    }
-
-    .two-paths .path-points {
-      font-size: 0.6em;
-      color: var(--text-secondary);
-      line-height: 1.8;
-    }
-
-    /* Sacrifice cards */
-    .sacrifice-cards {
-      display: flex;
-      gap: 30px;
-      justify-content: center;
-      margin: 1.5em 0;
-    }
-
-    .sacrifice-cards .card {
-      background: var(--card-bg);
-      border: 1px solid rgba(255, 159, 10, 0.3);
-      border-radius: 16px;
-      padding: 0.8em 1em;
-      width: 260px;
-      text-align: center;
-    }
-
-    .sacrifice-cards .card-icon {
-      font-size: 2em;
-      margin-bottom: 0.3em;
-    }
-
-    .sacrifice-cards .card-title {
-      font-size: 0.7em;
-      font-weight: 600;
-      margin-bottom: 0.5em;
-    }
-
-    .sacrifice-cards .card-detail {
-      font-size: 0.55em;
-      color: var(--text-secondary);
-    }
-
-    /* Grid of small cards */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 900px;
-      margin: 1.5em auto;
-    }
-
-    .card-grid .mini-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 0.8em;
-      text-align: center;
-    }
-
-    .card-grid .mini-card .icon {
-      font-size: 1.8em;
-      margin-bottom: 0.3em;
-    }
-
-    .card-grid .mini-card .title {
-      font-size: 0.6em;
-      font-weight: 600;
-    }
-
-    /* Framework list */
-    .framework-list {
-      max-width: 800px;
-      margin: 1.5em auto;
-      text-align: left;
-    }
-
-    .framework-list .item {
-      display: flex;
-      align-items: center;
-      gap: 1em;
-      margin-bottom: 0.8em;
-      padding: 0.7em 1em;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-    }
-
-    .framework-list .item-number {
-      font-size: 0.8em;
-      font-weight: 700;
-      color: var(--accent-blue);
-      min-width: 30px;
-    }
-
-    .framework-list .item-label {
-      font-size: 0.75em;
-      font-weight: 600;
-      min-width: 140px;
-    }
-
-    .framework-list .item-criteria {
-      font-size: 0.7em;
-      color: var(--text-secondary);
-    }
-
-    /* Comparison table */
-    .comparison-table {
-      width: 100%;
-      max-width: 1000px;
-      margin: 1.5em auto;
-      border-collapse: collapse;
-      font-size: 0.65em;
-    }
-
-    .comparison-table th,
-    .comparison-table td {
-      padding: 1em 1.2em;
-      text-align: left;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .comparison-table th {
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.85em;
-    }
-
-    .comparison-table td:first-child {
-      font-weight: 600;
-    }
-
-    .comparison-table .highlight-cell {
-      color: var(--accent-green);
-    }
-
-    .comparison-table .dim-cell {
-      color: var(--text-secondary);
-    }
-
-    /* Moat visualization */
-    .moat-visual {
-      text-align: center;
-      margin: 1.5em 0;
-    }
-
-    .moat-visual .castle {
-      font-size: 1.2em;
-      margin-bottom: 1em;
-      letter-spacing: 0.3em;
-    }
-
-    .moat-traps {
-      display: flex;
-      gap: 30px;
-      justify-content: center;
-    }
-
-    .moat-traps .trap {
-      background: var(--card-bg);
-      border: 1px solid rgba(48, 209, 88, 0.3);
-      border-radius: 12px;
-      padding: 0.8em 1em;
-      width: 220px;
-      text-align: center;
-    }
-
-    .moat-traps .trap-title {
-      font-size: 0.7em;
-      font-weight: 600;
-      color: var(--accent-green);
-      margin-bottom: 0.5em;
-    }
-
-    .moat-traps .trap-detail {
-      font-size: 0.55em;
-      color: var(--text-secondary);
-    }
-
-    /* Scope visualization - 5 rows of 10 steps */
-    .scope-visual {
-      margin: 1.5em auto;
-      max-width: 800px;
-    }
-
-    .scope-row {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 8px;
-      align-items: center;
-    }
-
-    .scope-row .row-label {
-      font-size: 0.4em;
-      color: var(--text-secondary);
-      width: 80px;
-      text-align: right;
-      padding-right: 12px;
-    }
-
-    .scope-row .steps {
-      display: flex;
-      gap: 6px;
-    }
-
-    .scope-row .step {
-      width: 48px;
-      height: 32px;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .scope-row .step.highlight {
-      background: var(--accent-green);
-      border-color: var(--accent-green);
-      box-shadow: 0 0 8px rgba(48, 209, 88, 0.4);
-    }
-
-    .scope-row .step.cross-process {
-      background: var(--accent-amber);
-      border-color: var(--accent-amber);
-      box-shadow: 0 0 8px rgba(255, 159, 10, 0.4);
-    }
-
-    .scope-row .step.enterprise-focus {
-      background: var(--accent-blue);
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 8px rgba(10, 132, 255, 0.4);
-    }
-
-    .scope-row.full-row .step {
-      background: var(--accent-green);
-      border-color: var(--accent-green);
-      box-shadow: 0 0 8px rgba(48, 209, 88, 0.4);
-    }
-
-    .scope-legend {
-      display: flex;
-      gap: 30px;
-      justify-content: center;
-      margin-top: 1.2em;
-      font-size: 0.5em;
-    }
-
-    .scope-legend .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .scope-legend .legend-box {
-      width: 16px;
-      height: 16px;
-      border-radius: 3px;
-    }
-
-    .scope-legend .legend-box.consistent {
-      background: var(--accent-blue);
-    }
-
-    .scope-legend .legend-box.random {
-      background: var(--accent-green);
-    }
-
-    .scope-legend .legend-box.empty {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* CTA slide */
-    .cta-block {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1em 1.5em;
-      max-width: 800px;
-      margin: 1em auto;
-    }
-
-    .cta-block p {
-      font-size: 0.9em;
-      margin: 0;
-    }
-
-    .cta-question {
-      background: var(--card-bg);
-      border: 1px solid rgba(10, 132, 255, 0.4);
-      border-radius: 16px;
-      padding: 1em 1.5em;
-      max-width: 800px;
-      margin: 1em auto;
-      box-shadow: 0 0 60px rgba(10, 132, 255, 0.15);
-    }
-
-    .cta-question p {
-      font-size: 1.2em;
-      font-weight: 600;
-      margin: 0;
-    }
-
-    /* References */
-    .references {
-      text-align: left;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .references h3 {
-      font-size: 0.8em;
-      color: var(--text-secondary);
-      margin-bottom: 0.8em;
-    }
-
-    .references ul {
-      list-style: none;
-      padding: 0;
-      font-size: 0.6em;
-      color: var(--text-secondary);
-      line-height: 2;
-    }
-
-    .references .contact {
-      margin-top: 2em;
-      padding-top: 1.5em;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.7em;
-    }
-
-    .references .contact .name {
-      font-weight: 600;
-      color: var(--text-primary);
-      font-size: 1.1em;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding: 12px 0;
     }
   </style>
 </head>
@@ -984,908 +579,695 @@
   <div class="reveal">
     <div class="slides">
 
-      <!-- Slide 1: Title + Thesis -->
-      <section>
+      <!-- ===== SLIDE 1: TITLE ===== -->
+      <section class="slide-title-page">
         <h1>The AI Innovator's Dilemma</h1>
         <p class="subtitle">What Do You Do With a Tool That Can Do Anything?</p>
-
         <div class="thesis-card">
           <p>"The same forces that made incumbents powerful now prevent them from going AI-first."</p>
         </div>
-
-        <p class="speaker-info">
-          Philip O'Donnell · Jax Tech · January 2026
-        </p>
+        <p class="speaker-info">Philip O'Donnell · Jax Tech · January 2026</p>
       </section>
 
-      <!-- Slide 2: Everything Old Is New Again -->
-      <section>
-        <h2>Everything Old Is New Again</h2>
-
-        <div class="automation-timeline">
-          <div class="era">
-            <div class="era-date">1913</div>
-            <div class="era-name">Assembly Line</div>
-            <div class="era-target">Manual Labor</div>
-          </div>
-          <div class="era-arrow">→</div>
-          <div class="era">
-            <div class="era-date">2006</div>
-            <div class="era-name">Cloud Computing</div>
-            <div class="era-target">Infrastructure</div>
-          </div>
-          <div class="era-arrow">→</div>
-          <div class="era current">
-            <div class="era-date">2024</div>
-            <div class="era-name">AI / LLMs</div>
-            <div class="era-target">Knowledge Work</div>
-          </div>
+      <!-- ===== SLIDE 2: EVERYTHING OLD IS NEW ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <h2>Everything Old Is New Again</h2>
         </div>
-
-        <p class="big-statement" style="margin-top: 2em;">
-          AI is a step change in automating<br>
-          <span class="highlight">information and communication.</span>
-        </p>
-
-        <p class="punchline" style="margin-top: 1.5em;">
-          But the economic patterns?<br>
-          <span class="text-secondary">Same as they ever were.</span>
-        </p>
+        <div class="slide-content">
+          <div class="timeline">
+            <div class="era">
+              <div class="era-date">1913</div>
+              <div class="era-name">Assembly Line</div>
+              <div class="era-target">Manual Labor</div>
+            </div>
+            <div class="era-arrow">→</div>
+            <div class="era">
+              <div class="era-date">2006</div>
+              <div class="era-name">Cloud Computing</div>
+              <div class="era-target">Infrastructure</div>
+            </div>
+            <div class="era-arrow">→</div>
+            <div class="era current">
+              <div class="era-date">2024</div>
+              <div class="era-name">AI / LLMs</div>
+              <div class="era-target">Knowledge Work</div>
+            </div>
+          </div>
+          <p class="big-statement">
+            AI is a step change in automating<br>
+            <span class="highlight">information and communication.</span>
+          </p>
+        </div>
+        <div class="slide-takeaway">
+          <p>But the economic patterns? <span class="text-secondary">Same as they ever were.</span></p>
+        </div>
       </section>
 
-      <!-- Slide 3: Why Now — AI Crossed a Threshold -->
-      <section>
-        <h2>The Usual Approach to Automation</h2>
-
-        <div class="threshold-bar">
-          <div class="filled"></div>
-          <span class="marker at-80">80%</span>
-          <span class="marker at-100">100%</span>
-          <span class="label at-80">The Usual Approach<br><span class="text-secondary">Incremental change</span></span>
-          <span class="label at-100">Full Transformation<br><span class="text-secondary">New business model</span></span>
+      <!-- ===== SLIDE 3: 80/20 THRESHOLD ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <h2>The Usual Approach to Automation</h2>
         </div>
-
-        <p class="big-statement" style="margin-top: 2.5em;">
-          80% → 100% is not 20%.<br>
-          <span class="highlight-green">It's the difference between improvement and transformation.</span>
-        </p>
-
-        <p class="text-secondary" style="font-size: 0.7em; margin-top: 1.5em;">
-          That 20% is where the structural barriers live.
-        </p>
+        <div class="slide-content">
+          <div class="threshold-bar">
+            <div class="filled"></div>
+            <span class="marker at-80">80%</span>
+            <span class="marker at-100">100%</span>
+            <span class="label at-80">Incremental</span>
+            <span class="label at-100">Transformational</span>
+          </div>
+          <p class="big-statement" style="margin-top: 64px;">
+            80% → 100% is not 20%.<br>
+            <span class="highlight-green">It's the difference between improvement and transformation.</span>
+          </p>
+        </div>
+        <div class="slide-takeaway">
+          <p>That 20% is where the <span class="text-amber">structural barriers</span> live.</p>
+        </div>
       </section>
 
-      <!-- Slide 4: The 4 Structural Barriers (Overview) -->
-      <section>
-        <h2>The Hero's Journey of Enterprise AI</h2>
-        <p class="text-secondary" style="font-size: 0.65em; margin-bottom: 0.5em;">And where it breaks down</p>
-
-        <div class="journey-circle">
-          <div class="journey-center">
-            Enterprise<br>AI Journey
-          </div>
-
-          <!-- Top: Barrier 1 - Choosing the Right Path -->
-          <div class="journey-node node-top failure">
-            <div class="node-name">1 · CHOOSING THE RIGHT PATH</div>
-          </div>
-
-          <!-- Right: Barrier 2 - Preparing for the Journey -->
-          <div class="journey-node node-right failure">
-            <div class="node-name">2 · PREPARING FOR THE JOURNEY</div>
-          </div>
-
-          <!-- Bottom: Barrier 3 - Navigating the Labyrinth -->
-          <div class="journey-node node-bottom failure">
-            <div class="node-name">3 · NAVIGATING THE LABYRINTH</div>
-          </div>
-
-          <!-- Left: Barrier 4 - Resisting Temptation -->
-          <div class="journey-node node-left failure">
-            <div class="node-name">4 · RESISTING TEMPTATION</div>
-          </div>
-
-          <!-- SVG arrows - continuous clockwise circle -->
-          <svg class="journey-arrows" viewBox="0 0 700 420">
-            <defs>
-              <marker id="arrow-amber" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-                <polygon points="0 0, 8 3, 0 6" fill="#FF9F0A" />
-              </marker>
-            </defs>
-            <!-- Clockwise: 1→2→3→4→1 -->
-            <path d="M 420 50 Q 580 80, 620 180" stroke="#FF9F0A" stroke-width="2" fill="none" marker-end="url(#arrow-amber)" />
-            <path d="M 620 240 Q 580 350, 420 380" stroke="#FF9F0A" stroke-width="2" fill="none" marker-end="url(#arrow-amber)" />
-            <path d="M 280 380 Q 120 350, 80 240" stroke="#FF9F0A" stroke-width="2" fill="none" marker-end="url(#arrow-amber)" />
-            <path d="M 80 180 Q 120 80, 280 50" stroke="#FF9F0A" stroke-width="2" fill="none" marker-end="url(#arrow-amber)" />
-          </svg>
+      <!-- ===== SLIDE 4: HERO'S JOURNEY OVERVIEW ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <h2>The Hero's Journey of Enterprise AI</h2>
         </div>
-
-        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0.8em;">
-          Enterprises fail at 4 specific moments. Startups skip the journey entirely.
-        </p>
+        <div class="slide-content">
+          <div class="journey-circle">
+            <div class="journey-center">Enterprise<br>AI Journey</div>
+            <div class="journey-node node-top">
+              <div class="node-name">1 · CHOOSING THE RIGHT PATH</div>
+            </div>
+            <div class="journey-node node-right">
+              <div class="node-name">2 · PREPARING FOR THE JOURNEY</div>
+            </div>
+            <div class="journey-node node-bottom">
+              <div class="node-name">3 · NAVIGATING THE LABYRINTH</div>
+            </div>
+            <div class="journey-node node-left">
+              <div class="node-name">4 · RESISTING TEMPTATION</div>
+            </div>
+            <svg class="journey-arrows" viewBox="0 0 700 400">
+              <defs>
+                <marker id="arrow-amber" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                  <polygon points="0 0, 8 3, 0 6" fill="#FF9F0A" />
+                </marker>
+              </defs>
+              <path d="M 420 45 Q 580 70, 620 170" stroke="#FF9F0A" stroke-width="2" fill="none" marker-end="url(#arrow-amber)" />
+              <path d="M 620 230 Q 580 330, 420 360" stroke="#FF9F0A" stroke-width="2" fill="none" marker-end="url(#arrow-amber)" />
+              <path d="M 280 360 Q 120 330, 80 230" stroke="#FF9F0A" stroke-width="2" fill="none" marker-end="url(#arrow-amber)" />
+              <path d="M 80 170 Q 120 70, 280 45" stroke="#FF9F0A" stroke-width="2" fill="none" marker-end="url(#arrow-amber)" />
+            </svg>
+          </div>
+        </div>
+        <div class="slide-takeaway">
+          <p>Enterprises fail at 4 specific moments. <span class="text-green">Startups skip the journey entirely.</span></p>
+        </div>
       </section>
 
-      <!-- Barrier #1: Choosing the Right Path (was Sacrifice) -->
-      <section>
-        <div class="barrier-header">
-          <span class="barrier-number">1</span>
-          <span class="barrier-title">Choosing the Right Path</span>
+      <!-- ===== SLIDE 5: BARRIER 1 - INTRO ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">1</span>
+            <h2>Choosing the Right Path</h2>
+          </div>
         </div>
-        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0;">Why doesn't LinkedIn do recruiting?</p>
+        <div class="slide-content">
+          <div class="card card-amber" style="max-width: 700px; text-align: left;">
+            <p style="font-size: 28px; margin-bottom: 16px;"><span class="text-amber">Why doesn't LinkedIn do recruiting?</span></p>
+            <p style="font-size: 22px; font-style: italic; margin: 0;">LinkedIn's customers are recruiters.</p>
+          </div>
+        </div>
+        <div class="slide-takeaway">
+          <p>Existing customers provide a <span class="text-amber">structural constraint</span> on growth.</p>
+        </div>
+      </section>
 
-        <div class="comparison" style="margin-top: 1.5em;">
-          <div class="comparison-card" style="width: 700px; border-color: rgba(255, 159, 10, 0.4);">
-            <div style="font-size: 0.75em; line-height: 1.6; text-align: left;">
-              <p style="margin-bottom: 1em;"><span class="text-amber">LinkedIn's customers are recruiters.</span></p>
-              <p style="margin-bottom: 1em; color: var(--text-secondary);">If LinkedIn launched an AI recruiting service, they'd be competing directly with the people who pay them.</p>
-              <p style="margin: 0; color: var(--text-secondary);">This isn't a strategic choice. It's a <span style="color: var(--text-primary);">structural constraint</span>.</p>
+      <!-- ===== SLIDE 6: BARRIER 1 - CONSTRAINTS ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">1</span>
+            <h2>Choosing the Right Path</h2>
+          </div>
+        </div>
+        <div class="slide-content">
+          <div class="three-cards">
+            <div class="card card-amber">
+              <div class="card-icon">👥</div>
+              <div class="card-title">Existing Customers</div>
+              <div class="card-detail">They vote loudly.<br>Future customers are silent.</div>
+              <div style="font-size: 11px; color: var(--text-secondary); margin-top: 10px; line-height: 1.4;">
+                LinkedIn → recruiters<br>
+                Intuit → accountants<br>
+                Shopify → merchants
+              </div>
+            </div>
+            <div class="card card-amber">
+              <div class="card-icon">💰</div>
+              <div class="card-title">Current Revenue</div>
+              <div class="card-detail">Cannibalization hits this quarter.<br>New revenue is a spreadsheet.</div>
+              <div style="font-size: 11px; color: var(--text-secondary); margin-top: 10px; line-height: 1.4;">
+                Kodak → digital camera<br>
+                Nokia → touch prototypes<br>
+                Newspapers → print ads
+              </div>
+            </div>
+            <div class="card card-amber">
+              <div class="card-icon">⚙️</div>
+              <div class="card-title">Channel Conflicts</div>
+              <div class="card-detail">Partners and resellers<br>have contractual protection.</div>
+              <div style="font-size: 11px; color: var(--text-secondary); margin-top: 10px; line-height: 1.4;">
+                Nike → Foot Locker<br>
+                Microsoft → resellers<br>
+                Samsung → Best Buy
+              </div>
             </div>
           </div>
         </div>
-
-        <p class="punchline" style="margin-top: 1.5em; font-size: 0.9em;">
-          Your existing customers define what you <span class="text-amber">can't</span> build.
-        </p>
-
+        <div class="slide-takeaway">
+          <p>These aren't obstacles to overcome. They're the <span class="text-amber">boundaries of the playing field</span>.</p>
+        </div>
         <aside class="notes">
-          Why doesn't LinkedIn just do recruiting themselves? They have all the data, all the relationships. The answer: their customers ARE recruiters. If LinkedIn launched an AI recruiting service, they'd be directly competing with the people who pay them $10K+ per year for Recruiter licenses. This isn't a strategic choice they're making — it's a structural constraint. Their existing customer base defines what they cannot build.
+          <h4>EXISTING CUSTOMERS</h4>
+          <ul>
+            <li><strong>LinkedIn:</strong> Recruiters pay for premium, job posts, InMail credits. If LinkedIn launched AI recruiting, they'd be competing directly with the people who pay them $10K+/year for Recruiter licenses.</li>
+            <li><strong>Intuit:</strong> Accountants are a huge referral channel for QuickBooks. In 2024, Intuit ran an ad campaign suggesting "you might not need an accountant" - massive backlash from partner accountants who felt betrayed after decades of partnership. Now trying to rebuild trust.</li>
+            <li><strong>Shopify:</strong> Merchants are the entire business. Unlike Amazon, Shopify can't sell products directly to consumers - they'd be competing with every store on their platform. This is actually their competitive advantage vs Amazon.</li>
+            <li><strong>Salesforce:</strong> AppExchange has 7,000+ apps from partners. If Salesforce built competing features, the ecosystem would collapse. They have to be very careful about what they build vs. what they leave to partners.</li>
+            <li><strong>Stripe:</strong> Can't compete with the businesses using their payment processing. Their "platform risk" docs explicitly address how they won't compete with customers.</li>
+          </ul>
+
+          <h4>COUNTER-EXAMPLE: What happens when you DO compete with customers</h4>
+          <ul>
+            <li><strong>Amazon:</strong> Actively competes with its own merchants via AmazonBasics. Merchants are fleeing to Shopify because Amazon copies their best-selling products and undercuts them. This is why "Shopify vs Amazon" is framed as "merchant-first vs consumer-first."</li>
+            <li><strong>Apple App Store:</strong> Built Screen Time (competed with parental control apps), built Notes/Reminders (competed with productivity apps). Developers constantly fear being "Sherlocked."</li>
+          </ul>
+
+          <h4>CURRENT REVENUE</h4>
+          <ul>
+            <li>Kodak: Invented the digital camera in 1975, shelved it to protect film business. Filed bankruptcy 2012.</li>
+            <li>Nokia: Had touchscreen prototypes in 2004, but Symbian licensing was too profitable. Went from 50% to 3% smartphone share by 2013.</li>
+            <li>Newspapers: Print ads were 80%+ of revenue. Couldn't pivot to digital fast enough - lost $40B in ad revenue 2000-2015.</li>
+            <li>Blockbuster: Passed on buying Netflix for $50M in 2000. Late fees alone were $800M/year.</li>
+            <li>Cable companies: Knew streaming was coming, but couldn't unbundle $100/month packages.</li>
+            <li>BlackBerry: Physical keyboard was the brand. Couldn't abandon it even as iPhone dominated.</li>
+          </ul>
+
+          <h4>COUNTER-EXAMPLES (Companies that DID self-cannibalize)</h4>
+          <ul>
+            <li>Apple: Killed the iPod with iPhone. Killed iPhone sales with bigger iPads. Keeps cannibalizing itself.</li>
+            <li>Netflix: Killed their own DVD business to go streaming before the tech was even ready.</li>
+            <li>Amazon: Launched Prime Video knowing it would hurt DVD/Blu-ray sales.</li>
+          </ul>
+
+          <h4>CHANNEL CONFLICTS</h4>
+          <ul>
+            <li>Nike: When they pushed DTC too hard, Foot Locker reduced Nike shelf space. Had to find balance.</li>
+            <li>Microsoft: 95% of enterprise sales go through partners. Can't bypass them without destroying the channel.</li>
+            <li>Samsung: Needs Best Buy for displays, demos, returns. Can't undercut them on Samsung.com.</li>
+            <li>Adidas: Online exclusives angered retail partners who invested in inventory and floor space.</li>
+            <li>Apple: Even with Apple Stores, still needs Best Buy, carriers for reach. Strict MAP pricing to keep peace.</li>
+            <li>Cisco: Entire business built on VAR (value-added reseller) channel. Going direct would collapse the model.</li>
+          </ul>
+
+          <p><strong>Key insight:</strong> The problem isn't seeing the disruption coming - most incumbents DO see it. The problem is that their current revenue makes it economically irrational to respond.</p>
         </aside>
       </section>
 
-      <section>
-        <div class="barrier-header">
-          <span class="barrier-number">1</span>
-          <span class="barrier-title">Choosing the Right Path</span>
-        </div>
-        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0;">Structural constraints on attack and defense</p>
-
-        <div class="sacrifice-cards">
-          <div class="card">
-            <div class="card-icon">👥</div>
-            <div class="card-title">Existing Customers</div>
-            <div class="card-detail">They vote loudly.<br>Future customers are silent.</div>
-          </div>
-          <div class="card">
-            <div class="card-icon">💰</div>
-            <div class="card-title">Current Revenue</div>
-            <div class="card-detail">Cannibalization hits this quarter.<br>New revenue is a spreadsheet.</div>
-          </div>
-          <div class="card">
-            <div class="card-icon">⚙️</div>
-            <div class="card-title">Channel Conflicts</div>
-            <div class="card-detail">Partners and resellers<br>have contractual protection.</div>
+      <!-- ===== SLIDE 7: BARRIER 1 - TACTICS ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">1</span>
+            <h2>Choosing the Right Path</h2>
           </div>
         </div>
+        <div class="slide-content">
+          <div class="two-col">
+            <div class="col">
+              <div class="card card-amber" style="text-align: left; height: 100%;">
+                <div class="card-title text-amber">Enterprise</div>
+                <div style="font-size: 18px; color: var(--text-secondary); line-height: 1.6;">
+                  <p style="margin-bottom: 12px;"><span style="color: var(--text-primary);">Map your constraints explicitly.</span></p>
+                  <p style="margin-bottom: 12px;">Which customers would you compete with?</p>
+                  <p style="margin-bottom: 12px;">Which revenue would you cannibalize?</p>
+                  <p style="margin: 0;">Build in the <span style="color: var(--text-primary);">negative space</span>.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card card-green" style="text-align: left; height: 100%;">
+                <div class="card-title text-green">Startup</div>
+                <div style="font-size: 18px; color: var(--text-secondary); line-height: 1.6;">
+                  <p style="margin-bottom: 12px;"><span style="color: var(--text-primary);">Map their constraints explicitly.</span></p>
+                  <p style="margin-bottom: 12px;">Who are their sacred customers?</p>
+                  <p style="margin-bottom: 12px;">What revenue can't they risk?</p>
+                  <p style="margin: 0;">Build <span style="color: var(--text-primary);">exactly there</span> — they can't follow.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-takeaway">
+          <p>Startups have nothing to sacrifice. <span class="highlight">That's the moat.</span></p>
+        </div>
+      </section>
 
-        <p class="punchline" style="margin-top: 1.2em; font-size: 0.85em;">
-          These aren't obstacles to overcome.<br>
-          They're the <span class="text-amber">boundaries of the playing field</span>.
-        </p>
+      <!-- ===== SLIDE 8: BARRIER 2 - INTRO ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">2</span>
+            <h2>Preparing for the Journey</h2>
+          </div>
+        </div>
+        <div class="slide-content">
+          <div class="scope-visual">
+            <div class="scope-row">
+              <span class="row-label">Process A</span>
+              <div class="steps">
+                <div class="step highlight"></div><div class="step"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process B</span>
+              <div class="steps">
+                <div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process C</span>
+              <div class="steps">
+                <div class="step"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process D</span>
+              <div class="steps">
+                <div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process E</span>
+              <div class="steps">
+                <div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div>
+              </div>
+            </div>
+            <div class="scope-legend">
+              <div class="legend-item"><div class="legend-box" style="background: var(--accent-green);"></div><span>Likely Automation</span></div>
+              <div class="legend-item"><div class="legend-box" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);"></div><span>Likely Manual</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-takeaway">
+          <p>Many small pilots derisk investment by <span class="text-green">making it incremental</span>.</p>
+        </div>
+      </section>
 
+      <!-- ===== SLIDE 9: BARRIER 2 - STARTUP VIEW ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">2</span>
+            <h2>Preparing for the Journey</h2>
+          </div>
+        </div>
+        <div class="slide-content">
+          <div class="scope-visual">
+            <div class="scope-row">
+              <span class="row-label">Process A</span>
+              <div class="steps">
+                <div class="step highlight"></div><div class="step"></div><div class="step cross-process"></div><div class="step cross-process"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process B</span>
+              <div class="steps">
+                <div class="step"></div><div class="step"></div><div class="step cross-process"></div><div class="step cross-process"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process C</span>
+              <div class="steps">
+                <div class="step"></div><div class="step highlight"></div><div class="step cross-process"></div><div class="step cross-process"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process D</span>
+              <div class="steps">
+                <div class="step highlight"></div><div class="step highlight"></div><div class="step cross-process"></div><div class="step cross-process"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process E</span>
+              <div class="steps">
+                <div class="step"></div><div class="step"></div><div class="step cross-process"></div><div class="step cross-process"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div>
+              </div>
+            </div>
+            <div class="scope-legend">
+              <div class="legend-item"><div class="legend-box" style="background: var(--accent-amber);"></div><span>Cross-process automation (startup wedge)</span></div>
+              <div class="legend-item"><div class="legend-box" style="background: var(--accent-green);"></div><span>Other automation</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-takeaway">
+          <p>Startups find the <span class="text-amber">cross-cutting slice</span> AI can fully automate. Offer it at 1/10th the price.</p>
+        </div>
+      </section>
+
+      <!-- ===== SLIDE 10: BARRIER 2 - ENTERPRISE VIEW ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">2</span>
+            <h2>Preparing for the Journey</h2>
+          </div>
+        </div>
+        <div class="slide-content">
+          <div class="scope-visual">
+            <div class="scope-row">
+              <span class="row-label">Process A</span>
+              <div class="steps">
+                <div class="step highlight"></div><div class="step"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process B</span>
+              <div class="steps">
+                <div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process C</span>
+              <div class="steps">
+                <div class="step"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label" style="color: var(--accent-blue); font-weight: 600;">Process D</span>
+              <div class="steps">
+                <div class="step enterprise-focus"></div><div class="step enterprise-focus"></div><div class="step enterprise-focus"></div><div class="step enterprise-focus"></div><div class="step enterprise-focus"></div><div class="step enterprise-focus"></div><div class="step enterprise-focus"></div><div class="step enterprise-focus"></div><div class="step enterprise-focus"></div><div class="step enterprise-focus"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process E</span>
+              <div class="steps">
+                <div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div>
+              </div>
+            </div>
+            <div class="scope-legend">
+              <div class="legend-item"><div class="legend-box" style="background: var(--accent-blue);"></div><span>100% automation focus</span></div>
+              <div class="legend-item"><div class="legend-box" style="background: var(--accent-green);"></div><span>Opportunistic automation</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-takeaway">
+          <p>Focus on the <span class="text-blue">100% opportunity</span>. Expand into areas of strength.</p>
+        </div>
+      </section>
+
+      <!-- ===== SLIDE 11: BARRIER 3 - INTRO ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">3</span>
+            <h2>Navigating the Labyrinth</h2>
+          </div>
+        </div>
+        <div class="slide-content">
+          <div class="image-container">
+            <img src="img/stanley-trunk-chaos.jpg" alt="Stanley's trunk - 2005 DARPA Challenge winner">
+          </div>
+          <p class="image-caption">"This won the 2005 DARPA Challenge. Ugly. Necessary."</p>
+          <ul class="key-points">
+            <li>Legacy systems expose UIs, not APIs — AI needs APIs</li>
+            <li>You need a middle layer for handoffs — it doesn't exist</li>
+            <li>The throwaway bridge becomes load-bearing before you notice</li>
+          </ul>
+        </div>
+        <div class="slide-takeaway">
+          <p>The handoff layer becomes <span class="text-amber">permanent technical debt</span>.</p>
+        </div>
+      </section>
+
+      <!-- ===== SLIDE 12: BARRIER 3 - FINANCE ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">3</span>
+            <h2>Navigating the Labyrinth</h2>
+          </div>
+        </div>
+        <div class="slide-content">
+          <div class="two-col">
+            <div class="col">
+              <div class="card card-amber" style="text-align: left; height: 100%;">
+                <div class="card-title text-amber">The Finance Problem</div>
+                <div style="font-size: 16px; color: var(--text-secondary); line-height: 1.6;">
+                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">CapEx rules:</span> Must capitalize software > $X</p>
+                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">OpEx pressure:</span> "Temporary" has no budget line</p>
+                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Decommission fantasy:</span> Old systems don't turn off</p>
+                  <p style="margin: 0; color: var(--accent-amber);">Dual-running costs hidden in different budgets</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card card-green" style="text-align: left; height: 100%;">
+                <div class="card-title text-green">The Vibe Code Opportunity</div>
+                <div style="font-size: 16px; color: var(--text-secondary); line-height: 1.6;">
+                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Greenfield only:</span> No legacy dependencies</p>
+                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">New segments:</span> Customers with no existing systems</p>
+                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Internal tools:</span> Where ugly is acceptable</p>
+                  <p style="margin: 0; color: var(--accent-green);">Fast, cheap, experimental — and disposable</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-takeaway">
+          <p>Vibe coding is made for throwaway stuff. <span class="highlight">Enterprise finance isn't.</span></p>
+        </div>
+      </section>
+
+      <!-- ===== SLIDE 13: BARRIER 3 - TACTICS ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">3</span>
+            <h2>Navigating the Labyrinth</h2>
+          </div>
+        </div>
+        <div class="slide-content">
+          <div class="two-col">
+            <div class="col">
+              <div class="card card-amber" style="text-align: left; height: 100%;">
+                <div class="card-title text-amber">Enterprise</div>
+                <div style="font-size: 16px; color: var(--text-secondary); line-height: 1.6;">
+                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Go microservices:</span> smaller pieces depreciate faster</p>
+                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Budget the writeoff:</span> bridges are infrastructure</p>
+                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Vibe code the greenfield:</span> new segments, internal tools</p>
+                  <p style="margin: 0;"><span style="color: var(--text-primary);">Name the decommission owner</span> with hard dates</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card card-green" style="text-align: left; height: 100%;">
+                <div class="card-title text-green">Startup</div>
+                <div style="font-size: 16px; color: var(--text-secondary); line-height: 1.6;">
+                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Easier:</span> Markets with deep legacy (banking, healthcare)</p>
+                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Easier:</span> Long sales cycles — you iterate faster</p>
+                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Harder:</span> Cloud-native incumbents</p>
+                  <p style="margin: 0;"><span style="color: var(--text-primary);">Harder:</span> Tight regulatory review of changes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-takeaway">
+          <p>The startup is born in the upside down. <span class="highlight">The enterprise has to find a door.</span></p>
+        </div>
+      </section>
+
+      <!-- ===== SLIDE 14: BARRIER 4 - INTRO ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">4</span>
+            <h2>Resisting Temptation</h2>
+          </div>
+        </div>
+        <div class="slide-content">
+          <div class="data-table">
+            <div class="row"><span class="text-secondary">Revenue</span><span>$63B</span></div>
+            <div class="row"><span class="text-secondary">AI automation savings</span><span>$3.5B saved</span></div>
+            <div class="row"><span class="text-secondary">Cut costs → profit</span><span class="text-green">$3.5B (100%)</span></div>
+            <div class="row"><span class="text-secondary">Grow @ 57% margin</span><span>need <span class="text-amber">$6.1B</span> revenue</span></div>
+          </div>
+          <p style="font-size: 36px; font-weight: 700; margin-top: 32px;">
+            $6.1B ÷ $63B = <span class="text-amber">~10%</span>
+          </p>
+        </div>
+        <div class="slide-takeaway">
+          <p>Same profit boost from cutting or <span class="text-amber">10% revenue growth</span>. Cutting is easier.</p>
+        </div>
+      </section>
+
+      <!-- ===== SLIDE 15: BARRIER 4 - MARKET DATA ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <h2>The market agrees.</h2>
+        </div>
+        <div class="slide-content">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th style="text-align: right;">Revenue</th>
+                <th>Layoffs</th>
+                <th style="text-align: right;">Est. Savings</th>
+                <th style="text-align: right;">Stock</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cisco</td>
+                <td style="text-align: right;" class="dim-cell">$54B</td>
+                <td>5,600 (7%)</td>
+                <td style="text-align: right;">~$840M</td>
+                <td style="text-align: right;" class="text-green">+6.5%</td>
+              </tr>
+              <tr>
+                <td>IBM</td>
+                <td style="text-align: right;" class="dim-cell">$63B</td>
+                <td>3,900</td>
+                <td style="text-align: right;">~$580M</td>
+                <td style="text-align: right;" class="text-green">+9.5%</td>
+              </tr>
+              <tr>
+                <td>Workday</td>
+                <td style="text-align: right;" class="dim-cell">$8.4B</td>
+                <td>1,750 (8.5%)</td>
+                <td style="text-align: right;">~$300M</td>
+                <td style="text-align: right;" class="text-green">+6.3%</td>
+              </tr>
+              <tr>
+                <td>Dropbox</td>
+                <td style="text-align: right;" class="dim-cell">$2.5B</td>
+                <td>528 (20%)</td>
+                <td style="text-align: right;">~$95M</td>
+                <td style="text-align: right;" class="text-green">+2.5%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="slide-takeaway">
+          <p>Markets reward the <span class="text-green">shortest path to profit</span>.</p>
+        </div>
         <aside class="notes">
-          Enterprises are hemmed in by their current structures in three key ways. These aren't obstacles to overcome with enough willpower — they're the boundaries of the playing field.
-
-          EXISTING CUSTOMERS: LinkedIn's customers ARE recruiters. AWS competes with customers (Dropbox, Elastic) — Walmart moved to Microsoft/Google. Intuit won't launch accounting firm because their customers are accountants.
-
-          CANNIBALIZATION: Kodak invented digital camera in 1975, shelved it, went bankrupt 2012. Blockbuster refused Netflix for $50M — late fees were $800M/year.
-
-          CHANNEL CONFLICTS: Ford/GM can't sell direct — franchise laws in all 50 states. Tesla won exemptions only because they never had franchised dealers.
+          <p>Savings estimated at ~$150-180K fully-loaded cost per employee. All same-day stock reactions.</p>
         </aside>
       </section>
 
-      <section>
-        <div class="barrier-header">
-          <span class="barrier-number">1</span>
-          <span class="barrier-title">Choosing the Right Path</span>
+      <!-- ===== SLIDE 16: BARRIER 4 - TACTICS ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <h2>So what do you do?</h2>
         </div>
-        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0;">Recognizing the constraints</p>
-
-        <div class="comparison" style="gap: 50px;">
-          <div class="comparison-card" style="width: 420px; text-align: left; border-color: rgba(255, 159, 10, 0.3);">
-            <div class="label text-amber" style="margin-bottom: 0.8em;">Enterprise</div>
-            <div style="font-size: 0.6em; line-height: 1.7; color: var(--text-secondary);">
-              <p style="margin-bottom: 0.6em;"><span style="color: var(--text-primary);">Map your constraints explicitly.</span></p>
-              <p style="margin-bottom: 0.6em;">Which customers would you compete with?</p>
-              <p style="margin-bottom: 0.6em;">Which revenue would you cannibalize?</p>
-              <p style="margin: 0;">Build in the <span style="color: var(--text-primary);">negative space</span> — where constraints don't apply.</p>
+        <div class="slide-content">
+          <div class="two-col">
+            <div class="col">
+              <div class="card card-amber" style="text-align: center;">
+                <div class="card-title text-amber">Enterprise</div>
+                <p style="font-size: 24px; font-weight: 600; margin-bottom: 8px;">Direct AI to growing units</p>
+                <p style="font-size: 18px; color: var(--text-secondary); margin: 0;">They reinvest → multiplier</p>
+              </div>
             </div>
-          </div>
-
-          <div class="comparison-card" style="width: 420px; text-align: left; border-color: rgba(48, 209, 88, 0.3);">
-            <div class="label text-green" style="margin-bottom: 0.8em;">Startup</div>
-            <div style="font-size: 0.6em; line-height: 1.7; color: var(--text-secondary);">
-              <p style="margin-bottom: 0.6em;"><span style="color: var(--text-primary);">Map their constraints explicitly.</span></p>
-              <p style="margin-bottom: 0.6em;">Who are their sacred customers?</p>
-              <p style="margin-bottom: 0.6em;">What revenue can't they risk?</p>
-              <p style="margin: 0;">Build <span style="color: var(--text-primary);">exactly there</span> — they can't follow.</p>
+            <div class="col">
+              <div class="card card-green" style="text-align: center;">
+                <div class="card-title text-green">Startup</div>
+                <p style="font-size: 24px; font-weight: 600; margin-bottom: 8px;">Follow the layoffs</p>
+                <p style="font-size: 18px; color: var(--text-secondary); margin: 0;">Build where they won't</p>
+              </div>
             </div>
           </div>
         </div>
-
-        <p class="punchline" style="margin-top: 1.2em; font-size: 0.85em;">
-          Startups have nothing to sacrifice.<br>
-          <span class="highlight">That's the moat.</span>
-        </p>
-
-        <aside class="notes">
-          For enterprises: map your constraints explicitly. Which customers would you compete with? Which revenue would you cannibalize? Build in the negative space.
-
-          For startups: map THEIR constraints. Who are their sacred customers? What revenue can't they risk? Build exactly there — they structurally cannot follow you.
-        </aside>
-      </section>
-
-      <!-- Barrier #2: Preparing for the Journey (was Scope Problem) -->
-      <section>
-        <div class="barrier-header">
-          <span class="barrier-number">2</span>
-          <span class="barrier-title">Preparing for the Journey</span>
-        </div>
-        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0;">The default: lots of small pilots</p>
-
-        <div class="scope-visual">
-          <div class="scope-row">
-            <span class="row-label">Process A</span>
-            <div class="steps">
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-            </div>
-          </div>
-          <div class="scope-row">
-            <span class="row-label">Process B</span>
-            <div class="steps">
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-            </div>
-          </div>
-          <div class="scope-row">
-            <span class="row-label">Process C</span>
-            <div class="steps">
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-            </div>
-          </div>
-          <div class="scope-row">
-            <span class="row-label">Process D</span>
-            <div class="steps">
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-            </div>
-          </div>
-          <div class="scope-row">
-            <span class="row-label">Process E</span>
-            <div class="steps">
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-            </div>
-          </div>
-
-          <div class="scope-legend">
-            <div class="legend-item">
-              <div class="legend-box random"></div>
-              <span>Likely Automation</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-box empty"></div>
-              <span>Likely Manual</span>
-            </div>
-          </div>
-        </div>
-
-        <p class="punchline" style="margin-top: 1em;">
-          AI is hard to extrapolate: demo → pilot → rollout
-        </p>
-
-        <aside class="notes">
-          The default enterprise approach is lots of small pilots. A complex enterprise has a variety of processes serving different customer groups. Each has differing levels of automation opportunity. The problem: AI is extremely challenging to extrapolate from the demo to the pilot to the rollout. What works in a controlled demo often fails at scale. So enterprises scatter their bets across many pilots, hoping something sticks.
-        </aside>
-      </section>
-
-      <section>
-        <div class="barrier-header">
-          <span class="barrier-number">2</span>
-          <span class="barrier-title">Preparing for the Journey</span>
-        </div>
-        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0;">The startup opportunity</p>
-
-        <div class="scope-visual">
-          <div class="scope-row">
-            <span class="row-label">Process A</span>
-            <div class="steps">
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step cross-process"></div>
-              <div class="step cross-process"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-            </div>
-          </div>
-          <div class="scope-row">
-            <span class="row-label">Process B</span>
-            <div class="steps">
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step cross-process"></div>
-              <div class="step cross-process"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-            </div>
-          </div>
-          <div class="scope-row">
-            <span class="row-label">Process C</span>
-            <div class="steps">
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step cross-process"></div>
-              <div class="step cross-process"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-            </div>
-          </div>
-          <div class="scope-row">
-            <span class="row-label">Process D</span>
-            <div class="steps">
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step cross-process"></div>
-              <div class="step cross-process"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-            </div>
-          </div>
-          <div class="scope-row">
-            <span class="row-label">Process E</span>
-            <div class="steps">
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step cross-process"></div>
-              <div class="step cross-process"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-            </div>
-          </div>
-
-          <div class="scope-legend">
-            <div class="legend-item">
-              <div class="legend-box" style="background: var(--accent-amber);"></div>
-              <span>Cross-process automation (startup wedge)</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-box random"></div>
-              <span>Other automation</span>
-            </div>
-          </div>
-        </div>
-
-        <p class="punchline" style="margin-top: 1em; font-size: 0.85em;">
-          Startups find the <span class="text-amber">cross-cutting slice</span> AI can fully automate.<br>
-          Offer it at 1/10th the price to customers who only need that.
-        </p>
-
-        <aside class="notes">
-          A startup looks at this landscape differently. They find the steps that are automatable ACROSS all processes — the cross-cutting capability. Then they build a product that does ONLY that, and sell it to customers who only need that slice. At a fraction of the price. The enterprise can't respond because their cost structure requires the full process.
-        </aside>
-      </section>
-
-      <section>
-        <div class="barrier-header">
-          <span class="barrier-number">2</span>
-          <span class="barrier-title">Preparing for the Journey</span>
-        </div>
-        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0;">The enterprise response</p>
-
-        <div class="scope-visual">
-          <div class="scope-row">
-            <span class="row-label">Process A</span>
-            <div class="steps">
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-            </div>
-          </div>
-          <div class="scope-row">
-            <span class="row-label">Process B</span>
-            <div class="steps">
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-            </div>
-          </div>
-          <div class="scope-row">
-            <span class="row-label">Process C</span>
-            <div class="steps">
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-            </div>
-          </div>
-          <div class="scope-row">
-            <span class="row-label" style="color: var(--accent-blue); font-weight: 600;">Process D</span>
-            <div class="steps">
-              <div class="step enterprise-focus"></div>
-              <div class="step enterprise-focus"></div>
-              <div class="step enterprise-focus"></div>
-              <div class="step enterprise-focus"></div>
-              <div class="step enterprise-focus"></div>
-              <div class="step enterprise-focus"></div>
-              <div class="step enterprise-focus"></div>
-              <div class="step enterprise-focus"></div>
-              <div class="step enterprise-focus"></div>
-              <div class="step enterprise-focus"></div>
-            </div>
-          </div>
-          <div class="scope-row">
-            <span class="row-label">Process E</span>
-            <div class="steps">
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step highlight"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step"></div>
-              <div class="step highlight"></div>
-            </div>
-          </div>
-
-          <div class="scope-legend">
-            <div class="legend-item">
-              <div class="legend-box" style="background: var(--accent-blue);"></div>
-              <span>100% automation focus</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-box random"></div>
-              <span>Opportunistic automation</span>
-            </div>
-          </div>
-        </div>
-
-        <p class="punchline" style="margin-top: 1em;">
-          Don't scattershot. Find the <span class="text-blue">100% opportunity</span>.<br>
-          Use it as a leverage point to expand.
-        </p>
-
-        <aside class="notes">
-          The enterprise response should NOT be to chase automation opportunities everywhere — that's scattershot, and you'll never cross the threshold. Instead, find the ONE process that can be 100% automated. Focus there. Use it as a leverage point. Once you've proven the model, expand to adjacent processes. Process D becomes your beachhead.
-        </aside>
-      </section>
-
-      <!-- Barrier #3: Navigating the Labyrinth (was Upside Down) -->
-      <section>
-        <div class="barrier-header">
-          <span class="barrier-number">3</span>
-          <span class="barrier-title">Navigating the Labyrinth</span>
-        </div>
-        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0;">The middle layer that shouldn't exist</p>
-
-        <div class="image-container">
-          <img src="img/stanley-trunk-chaos.jpg" alt="Stanley's trunk - 2005 DARPA Challenge winner">
-        </div>
-        <p class="image-caption">"This won the 2005 DARPA Challenge. Ugly. Necessary."</p>
-
-        <ul class="key-points">
-          <li>Legacy systems expose UIs, not APIs — AI needs APIs</li>
-          <li>You need a middle layer for handoffs — it doesn't exist</li>
-          <li>The throwaway bridge becomes load-bearing before you notice</li>
-        </ul>
-
-        <aside class="notes">
-          This is Stanley's trunk — the car that won the 2005 DARPA Grand Challenge. A mess of wires, duct tape, and improvisation. This is what AI transformation actually looks like in the middle.
-
-          The core problem: your existing systems were built for humans clicking through workflows. They expose UIs, not APIs. AI needs structured, API-friendly interfaces. New AI systems aren't built for humans either. So you need something in the middle — a handoff layer that satisfies both.
-
-          That handoff layer doesn't exist. You build it. And here's the trap: building it is a significant engineering project with no direct revenue. Ownership is unclear — is this an AI project or an IT project? Budget battles ensue. The "throwaway" code you vibe code to bridge them gets promoted to production without proper engineering. It becomes load-bearing before anyone notices.
-
-          The handoff layer becomes permanent technical debt that slows all future changes.
-        </aside>
-      </section>
-
-      <section>
-        <div class="barrier-header">
-          <span class="barrier-number">3</span>
-          <span class="barrier-title">Navigating the Labyrinth</span>
-        </div>
-        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0;">Why enterprises can't build throwaway code</p>
-
-        <div class="comparison" style="gap: 40px; margin-top: 1.2em;">
-          <div class="comparison-card" style="width: 380px; text-align: left; border-color: rgba(255, 159, 10, 0.3);">
-            <div class="label text-amber" style="margin-bottom: 0.6em; font-size: 0.6em;">The Finance Problem</div>
-            <div style="font-size: 0.5em; line-height: 1.6; color: var(--text-secondary);">
-              <p style="margin-bottom: 0.5em;"><span style="color: var(--text-primary);">CapEx rules:</span> Must capitalize software > $X</p>
-              <p style="margin-bottom: 0.5em;"><span style="color: var(--text-primary);">OpEx pressure:</span> "Temporary" has no budget line</p>
-              <p style="margin-bottom: 0.5em;"><span style="color: var(--text-primary);">Decommission fantasy:</span> Finance assumes old systems turn off. They don't.</p>
-              <p style="margin: 0; color: var(--accent-amber);">Dual-running costs hidden in different budgets</p>
-            </div>
-          </div>
-
-          <div class="comparison-card" style="width: 380px; text-align: left; border-color: rgba(48, 209, 88, 0.3);">
-            <div class="label text-green" style="margin-bottom: 0.6em; font-size: 0.6em;">The Vibe Code Opportunity</div>
-            <div style="font-size: 0.5em; line-height: 1.6; color: var(--text-secondary);">
-              <p style="margin-bottom: 0.5em;"><span style="color: var(--text-primary);">Greenfield only:</span> No legacy dependencies</p>
-              <p style="margin-bottom: 0.5em;"><span style="color: var(--text-primary);">New segments:</span> Customers with no existing systems</p>
-              <p style="margin-bottom: 0.5em;"><span style="color: var(--text-primary);">Internal tools:</span> Where ugly is acceptable</p>
-              <p style="margin: 0; color: var(--accent-green);">Fast, cheap, experimental — and disposable</p>
-            </div>
-          </div>
-        </div>
-
-        <p class="punchline" style="margin-top: 1.2em; font-size: 0.85em;">
-          Vibe coding is made for throwaway stuff.<br>
-          <span class="highlight">Enterprise finance isn't.</span>
-        </p>
-
-        <aside class="notes">
-          Here's why enterprises struggle with the ugly middle: corporate finance rules.
-
-          CapEx rules require capitalizing software projects over a threshold — which means documentation, approval chains, depreciation schedules. But vibe-coded bridges are "temporary." There's no budget line for temporary.
-
-          OpEx pressure means every dollar spent needs ongoing justification. Technical debt budgets don't exist — "refactoring is never funded because the system works."
-
-          The decommission fantasy: every business case assumes old systems will be turned off and savings will materialize. In practice, edge cases require legacy to remain. Data migration is incomplete. Legacy becomes "system of record" by accident. No one is accountable for shutdown — it's everyone's problem.
-
-          Result: dual-running costs are hidden across different budgets. The promised savings never materialize.
-
-          The opportunity for enterprises: find the projects that CAN be vibe coded. Greenfield. New customer segments. Internal tools where ugly is acceptable. That's where you can move fast.
-        </aside>
-      </section>
-
-      <section>
-        <div class="barrier-header">
-          <span class="barrier-number">3</span>
-          <span class="barrier-title">Navigating the Labyrinth</span>
-        </div>
-        <p class="text-secondary" style="font-size: 0.6em; margin-top: 0;">Navigating the ugly transition</p>
-
-        <div class="comparison" style="gap: 40px;">
-          <div class="comparison-card" style="width: 440px; text-align: left; border-color: rgba(255, 159, 10, 0.3);">
-            <div class="label text-amber" style="margin-bottom: 0.6em;">Enterprise</div>
-            <div style="font-size: 0.48em; line-height: 1.6; color: var(--text-secondary);">
-              <p style="margin-bottom: 0.4em;"><span style="color: var(--text-primary);">Go microservices:</span> smaller pieces depreciate faster, more can be reused</p>
-              <p style="margin-bottom: 0.4em;"><span style="color: var(--text-primary);">Budget the writeoff:</span> bridges are infrastructure, not projects</p>
-              <p style="margin-bottom: 0.4em;"><span style="color: var(--text-primary);">Vibe code the greenfield:</span> new segments, internal tools</p>
-              <p style="margin: 0;"><span style="color: var(--text-primary);">Name the decommission owner</span> with hard sunset dates</p>
-            </div>
-          </div>
-
-          <div class="comparison-card" style="width: 440px; text-align: left; border-color: rgba(48, 209, 88, 0.3);">
-            <div class="label text-green" style="margin-bottom: 0.6em;">Startup</div>
-            <div style="font-size: 0.48em; line-height: 1.6; color: var(--text-secondary);">
-              <p style="margin-bottom: 0.4em;"><span style="color: var(--text-primary);">Easier:</span> Markets where incumbents have deep legacy (banking, healthcare, logistics)</p>
-              <p style="margin-bottom: 0.4em;"><span style="color: var(--text-primary);">Easier:</span> Industries with long sales cycles — you iterate faster</p>
-              <p style="margin-bottom: 0.4em;"><span style="color: var(--text-primary);">Harder:</span> Markets where incumbents are already cloud-native</p>
-              <p style="margin: 0;"><span style="color: var(--text-primary);">Harder:</span> Industries with tight regulatory review of changes</p>
-            </div>
-          </div>
-        </div>
-
-        <p class="punchline" style="margin-top: 1.2em; font-size: 0.85em;">
-          The startup is born in the upside down.<br>
-          <span class="highlight">The enterprise has to find a door.</span>
-        </p>
-
-        <aside class="notes">
-          For enterprises:
-
-          GO MICROSERVICES: Corporate finance rules about depreciation and writeoffs work in your favor if you break things into smaller pieces. A monolith has to be fully deprecated over 5-7 years. Microservices can be swapped out piece by piece — smaller writeoffs, faster depreciation, and more components can be reused in the new architecture.
-
-          BUDGET THE WRITEOFF: Accept that bridges become permanent. Budget for them as infrastructure, not projects. The business case should assume dual-running costs, not decommissioning savings. This is depreciation on an asset, not a failed project.
-
-          VIBE CODE THE GREENFIELD: Find projects that CAN be vibe coded — new customer segments, internal tools, new markets. These can be AI-native from the start without legacy integration headaches.
-
-          NAME THE DECOMMISSION OWNER: If you DO plan to decommission, name a person accountable for shutdown. Set hard sunset dates. Accept some functionality loss to avoid dual systems forever.
-
-          For startups — where the upside down is easier vs harder:
-
-          EASIER markets:
-          - Where incumbents have deep legacy systems (banking, healthcare, logistics, insurance). They're stuck with decades of technical debt. You're not.
-          - Industries with long enterprise sales cycles. While they're doing 18-month procurement, you're iterating weekly. By the time they choose a vendor, you've shipped 50 versions.
-
-          HARDER markets:
-          - Where incumbents are already cloud-native (newer SaaS companies, digital-first businesses). They can move almost as fast as you.
-          - Highly regulated industries with slow approval processes for any changes. Your iteration speed advantage disappears if every change needs 6 months of compliance review.
-
-          The key insight: your advantage isn't just that you're starting fresh — it's that you're starting fresh in markets where THEY can't start fresh.
-        </aside>
-      </section>
-
-      <!-- Barrier #4: Resisting Temptation (was Shortest Path) -->
-      <section>
-        <div class="slide-label">4 · Resisting Temptation</div>
-
-        <h2 style="margin-bottom: 0.6em;">Cost cutting <span class="text-amber">is</span> 10% growth.</h2>
-
-        <div style="margin: 1em auto; max-width: 600px; text-align: left; font-size: 0.7em; line-height: 1.5;">
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.15); padding: 0.7em 0;">
-            <span class="text-secondary">Revenue</span>
-            <span>$63B</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.15); padding: 0.7em 0;">
-            <span class="text-secondary">AI automation savings</span>
-            <span>$3.5B saved</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.15); padding: 0.7em 0;">
-            <span class="text-secondary">Cut costs → profit</span>
-            <span class="text-green">$3.5B (100%)</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; padding: 0.7em 0;">
-            <span class="text-secondary">Grow @ 57%</span>
-            <span style="text-align: right;">need <span class="text-amber">$6.1B</span> revenue</span>
-          </div>
-        </div>
-
-        <p style="font-size: 1.3em; font-weight: 700; margin-top: 0.8em;">
-          $6.1B ÷ $63B = <span class="text-amber">~10%</span>
-        </p>
-
-      </section>
-
-      <!-- Slide 7b: The Market Agrees -->
-      <section style="text-align: center;">
-        <h2 style="font-size: 1.8em; margin-bottom: 1.2em;">The market agrees.</h2>
-
-        <table class="comparison-table" style="max-width: 900px; width: 90%; font-size: 0.6em; margin-left: auto; margin-right: auto;">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th style="text-align: right;">Revenue</th>
-              <th>Layoffs</th>
-              <th style="text-align: right;">Est. Savings</th>
-              <th style="text-align: right;">Stock</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Cisco</td>
-              <td style="text-align: right;" class="dim-cell">$54B</td>
-              <td>5,600 (7%)</td>
-              <td style="text-align: right;">~$840M</td>
-              <td style="text-align: right;" class="text-green">+6.5%</td>
-            </tr>
-            <tr>
-              <td>IBM</td>
-              <td style="text-align: right;" class="dim-cell">$63B</td>
-              <td>3,900</td>
-              <td style="text-align: right;">~$580M</td>
-              <td style="text-align: right;" class="text-green">+9.5%</td>
-            </tr>
-            <tr>
-              <td>Workday</td>
-              <td style="text-align: right;" class="dim-cell">$8.4B</td>
-              <td>1,750 (8.5%)</td>
-              <td style="text-align: right;">~$300M</td>
-              <td style="text-align: right;" class="text-green">+6.3%</td>
-            </tr>
-            <tr>
-              <td>Dropbox</td>
-              <td style="text-align: right;" class="dim-cell">$2.5B</td>
-              <td>528 (20%)</td>
-              <td style="text-align: right;">~$95M</td>
-              <td style="text-align: right;" class="text-green">+2.5%</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p class="text-secondary" style="font-size: 0.5em; margin-top: 2em;">
-          Savings estimated at ~$150-180K fully-loaded cost per employee. All same-day stock reactions.
-        </p>
-      </section>
-
-      <!-- Slide 7c: Strategic Response -->
-      <section>
-        <h2 style="font-size: 1.8em; margin-bottom: 1.2em;">So what do you do?</h2>
-
-        <div class="comparison" style="gap: 60px;">
-          <div class="comparison-card" style="width: 500px; text-align: center; border-color: rgba(255, 159, 10, 0.4);">
-            <div class="label text-amber" style="margin-bottom: 0.8em; font-size: 0.75em;">Enterprise</div>
-            <div style="font-size: 0.85em; line-height: 1.4; color: var(--text-primary);">
-              <p style="margin-bottom: 0.6em; font-weight: 600;">Direct AI to growing units</p>
-              <p style="margin: 0; color: var(--text-secondary);">They reinvest → multiplier</p>
-            </div>
-          </div>
-
-          <div class="comparison-card" style="width: 500px; text-align: center; border-color: rgba(48, 209, 88, 0.4);">
-            <div class="label text-green" style="margin-bottom: 0.8em; font-size: 0.75em;">Startup</div>
-            <div style="font-size: 0.85em; line-height: 1.4; color: var(--text-primary);">
-              <p style="margin-bottom: 0.6em; font-weight: 600;">Follow the layoffs</p>
-              <p style="margin: 0; color: var(--text-secondary);">Build where they won't</p>
-            </div>
-          </div>
+        <div class="slide-takeaway">
+          <p>Don't let AI become a <span class="text-amber">cost-cutting tool only</span>.</p>
         </div>
       </section>
 
-      <!-- Reference notes (hidden)
-          Sources:
-          - Workday: https://www.fastcompany.com/91273866/workday-layoffs-hundreds-job-cuts-ai-push-stock-price
-          - IBM: https://finance.yahoo.com/news/ibm-sees-strong-2024-free-210924223.html
-          - Dropbox: https://www.cnbc.com/2024/10/30/dropbox-slashes-20percent-of-global-workforce-eliminating-500-roles.html
-          - Cisco: https://futurism.com/the-byte/cisco-layoff-ai-profit
-          Revenue sources:
-          - Workday FY2025: $8.4B - https://investor.workday.com/2025-02-25-Workday-Announces-Fiscal-2025-Fourth-Quarter-and-Full-Year-Financial-Results
-          - IBM 2024: $63B - https://newsroom.ibm.com/2025-01-29-IBM-RELEASES-FOURTH-QUARTER-RESULTS
-          - Dropbox 2024: $2.5B - https://dropbox.gcs-web.com/news-releases/news-release-details/dropbox-announces-fourth-quarter-and-fiscal-2024-results
-          - Cisco FY2024: $54B - https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2024/m08/cisco-reports-fourth-quarter-and-fiscal-year-2024-earnings.html
-      -->
-
-      <!-- Slide 9: The Startup Playbook -->
-      <section>
-        <h2 style="color: var(--accent-green);">The Startup Playbook</h2>
-        <p class="text-secondary" style="font-size: 0.55em; margin-top: 0;">Turn every barrier into your advantage</p>
-
-        <div class="framework-list" style="max-width: 900px;">
-          <div class="item" style="border-color: rgba(48, 209, 88, 0.3);">
-            <span class="item-number" style="color: var(--accent-green);">1</span>
-            <span class="item-label">CHOOSING THE PATH</span>
-            <span class="item-criteria">Map their constraints → build exactly there</span>
-          </div>
-          <div class="item" style="border-color: rgba(48, 209, 88, 0.3);">
-            <span class="item-number" style="color: var(--accent-green);">2</span>
-            <span class="item-label">PREPARING</span>
-            <span class="item-criteria">100% of a narrow slice → serve the "$50K floor"</span>
-          </div>
-          <div class="item" style="border-color: rgba(48, 209, 88, 0.3);">
-            <span class="item-number" style="color: var(--accent-green);">3</span>
-            <span class="item-label">NAVIGATING</span>
-            <span class="item-criteria">AI-native from day one → no legacy to integrate</span>
-          </div>
-          <div class="item" style="border-color: rgba(48, 209, 88, 0.3);">
-            <span class="item-number" style="color: var(--accent-green);">4</span>
-            <span class="item-label">RESISTING</span>
-            <span class="item-criteria">Follow the layoffs → build where they're cutting</span>
+      <!-- ===== SLIDE 17: STARTUP PLAYBOOK ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <h2 style="color: var(--accent-green);">The Startup Playbook</h2>
+        </div>
+        <div class="slide-content">
+          <div class="framework-list">
+            <div class="item" style="border-color: rgba(48, 209, 88, 0.3);">
+              <span class="item-number text-green">1</span>
+              <span class="item-label">CHOOSING THE PATH</span>
+              <span class="item-criteria">Build behind structural constraints</span>
+            </div>
+            <div class="item" style="border-color: rgba(48, 209, 88, 0.3);">
+              <span class="item-number text-green">2</span>
+              <span class="item-label">PREPARING</span>
+              <span class="item-criteria">Fewer services at a lower price</span>
+            </div>
+            <div class="item" style="border-color: rgba(48, 209, 88, 0.3);">
+              <span class="item-number text-green">3</span>
+              <span class="item-label">NAVIGATING</span>
+              <span class="item-criteria">Natural for AI/Human Collaboration</span>
+            </div>
+            <div class="item" style="border-color: rgba(48, 209, 88, 0.3);">
+              <span class="item-number text-green">4</span>
+              <span class="item-label">RESISTING</span>
+              <span class="item-criteria">Pursue a retreating enemy</span>
+            </div>
           </div>
         </div>
-
-        <p class="punchline" style="margin-top: 1.2em; font-size: 0.85em;">
-          You have nothing to sacrifice.<br>
-          <span class="text-green">That's not a weakness. That's the moat.</span>
-        </p>
-
-        <aside class="notes">
-          For startups, every barrier becomes an advantage:
-
-          SCOPE: Don't try to automate 80% of everything. Automate 100% of one thing. Find the "$50K floor" in your industry — the customers incumbents rationally ignore because the economics don't work at their cost structure.
-
-          UPSIDE DOWN: You don't have legacy systems to integrate with. Build AI-native from day one. While enterprises are building ugly bridges between old and new, you're building the future.
-
-          SHORTEST PATH: When enterprises announce layoffs, they're telling you where they've decided not to compete. Follow the layoffs. Build AI-native solutions for the customers they're abandoning.
-
-          SACRIFICE: Map their constraints explicitly. Who are their sacred customers? What revenue can't they risk? What channels are they locked into? Build exactly there. They structurally cannot follow you.
-
-          Example: Recruiting under $50K. Recruiters won't touch jobs below $50K (commission math doesn't work). Build an AI recruiting service that ONLY serves that market at 1/10th the price. They can't respond — margin compression would destroy their valuation.
-        </aside>
+        <div class="slide-takeaway">
+          <p>Lack of resources is a <span class="text-green">strength</span> when new markets appear, not a weakness.</p>
+        </div>
       </section>
 
-      <!-- Slide 10: The Enterprise Playbook -->
-      <section>
-        <h2 style="color: var(--accent-amber);">The Enterprise Playbook</h2>
-        <p class="text-secondary" style="font-size: 0.55em; margin-top: 0;">Navigate the barriers — don't pretend they don't exist</p>
-
-        <div class="framework-list" style="max-width: 900px;">
-          <div class="item" style="border-color: rgba(255, 159, 10, 0.3);">
-            <span class="item-number" style="color: var(--accent-amber);">1</span>
-            <span class="item-label">CHOOSING THE PATH</span>
-            <span class="item-criteria">Grow in ways that don't threaten structural constraints</span>
-          </div>
-          <div class="item" style="border-color: rgba(255, 159, 10, 0.3);">
-            <span class="item-number" style="color: var(--accent-amber);">2</span>
-            <span class="item-label">PREPARING</span>
-            <span class="item-criteria">Find ONE process that's 100% automatable → beachhead</span>
-          </div>
-          <div class="item" style="border-color: rgba(255, 159, 10, 0.3);">
-            <span class="item-number" style="color: var(--accent-amber);">3</span>
-            <span class="item-label">NAVIGATING</span>
-            <span class="item-criteria">Find projects that can be vibe coded → AI-native from start</span>
-          </div>
-          <div class="item" style="border-color: rgba(255, 159, 10, 0.3);">
-            <span class="item-number" style="color: var(--accent-amber);">4</span>
-            <span class="item-label">RESISTING</span>
-            <span class="item-criteria">Direct AI within growing units → they reinvest the gains</span>
+      <!-- ===== SLIDE 18: ENTERPRISE PLAYBOOK ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <h2 style="color: var(--accent-amber);">The Enterprise Playbook</h2>
+        </div>
+        <div class="slide-content">
+          <div class="framework-list">
+            <div class="item" style="border-color: rgba(255, 159, 10, 0.3);">
+              <span class="item-number text-amber">1</span>
+              <span class="item-label">CHOOSING THE PATH</span>
+              <span class="item-criteria">Grow in ways that don't threaten structural constraints</span>
+            </div>
+            <div class="item" style="border-color: rgba(255, 159, 10, 0.3);">
+              <span class="item-number text-amber">2</span>
+              <span class="item-label">PREPARING</span>
+              <span class="item-criteria">Find ONE process that's 100% automatable → beachhead</span>
+            </div>
+            <div class="item" style="border-color: rgba(255, 159, 10, 0.3);">
+              <span class="item-number text-amber">3</span>
+              <span class="item-label">NAVIGATING</span>
+              <span class="item-criteria">Find projects that can be vibe coded → AI-native from start</span>
+            </div>
+            <div class="item" style="border-color: rgba(255, 159, 10, 0.3);">
+              <span class="item-number text-amber">4</span>
+              <span class="item-label">RESISTING</span>
+              <span class="item-criteria">Direct AI within growing units → they reinvest the gains</span>
+            </div>
           </div>
         </div>
-
-        <p class="punchline" style="margin-top: 1.2em; font-size: 0.85em;">
-          Don't fight the structure.<br>
-          <span class="text-amber">Work within it — or around it.</span>
-        </p>
-
-        <aside class="notes">
-          For enterprises, the barriers are real. Don't pretend they don't exist. Navigate them:
-
-          SCOPE: Stop scattershotting pilots across everything. Find the ONE process that can be 100% automated. Make it your beachhead. Prove the model there, then expand to adjacent processes.
-
-          UPSIDE DOWN: Find projects that can be vibe coded — greenfield, no legacy dependencies, AI-native from day one. New customer segments, new internal tools, new markets. That's where you can move like a startup.
-
-          SHORTEST PATH: Direct AI investments within growing units — they're more likely to reinvest the gains into accelerating growth rather than just cutting costs. Don't direct AI to dying units hoping to save them.
-
-          SACRIFICE: Grow in ways that don't threaten your structural constraints. Don't compete with your customers. Don't cannibalize your core revenue. Don't disrupt your channels. Find the negative space where you can grow without triggering any of those structural tripwires.
-
-          The danger: cutting your way to irrelevance while startups eat your future. The opportunity: finding the pockets of freedom within your constraints and moving fast there.
-        </aside>
+        <div class="slide-takeaway">
+          <p>Don't fight the structure. <span class="text-amber">Work within it — or around it.</span></p>
+        </div>
       </section>
 
-      <!-- Slide 11: References & Close -->
-      <section>
+      <!-- ===== SLIDE 19: CLOSING ===== -->
+      <section class="slide-closing">
         <div class="references">
           <h3>Sources</h3>
           <ul>
@@ -1894,22 +1276,15 @@
             <li>a16z, "AI Wedges"</li>
             <li>Bain, "Defending Against Disruption"</li>
           </ul>
-
-          <div style="margin: 1.5em 0; padding: 1em; background: rgba(10, 132, 255, 0.1); border: 1px solid rgba(10, 132, 255, 0.3); border-radius: 8px;">
-            <p style="font-size: 0.55em; margin: 0; color: var(--text-primary);">
-              <strong>Try it yourself:</strong> Claude skill to walk through the framework
-            </p>
-            <p style="font-size: 0.45em; margin: 0.5em 0 0 0; color: var(--text-secondary);">
+          <div class="cta-box">
+            <p style="color: var(--text-primary);"><strong>Try it yourself:</strong> Claude skill to walk through the framework</p>
+            <p style="font-size: 0.9em; margin-top: 0.3em; color: var(--text-secondary);">
               "As a startup finding a market" or "As an enterprise defending against disruption"
             </p>
-            <!-- TODO: Generate Claude skill before the talk -->
           </div>
-
           <div class="contact">
             <p class="name">Philip O'Donnell</p>
-            <p style="color: var(--text-secondary); margin-top: 0.5em;">
-              Jax Tech · January 2026
-            </p>
+            <p style="color: var(--text-secondary); margin-top: 0.3em;">Jax Tech · January 2026</p>
           </div>
         </div>
       </section>
