@@ -1,4 +1,4 @@
-# The AI Innovator's Dilemma
+# The Enterprise Strikes Back - AI Edition
 
 **Jax Tech Talk · January 2026**
 
@@ -31,7 +31,6 @@ Use arrow keys or click the navigation controls to move between slides.
 
 ## Repository Structure
 
-- `/docs` - Presentation slides (HTML/Reveal.js)
-- `/notes` - Research notes, outlines, and supporting materials
-- `/skills` - AI assistant skills and prompts used in development
+- `/docs` - Presentation slides (HTML/Reveal.js) and PDF export
+- `/skills` - Claude skills for interactive strategy consulting
 
