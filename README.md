@@ -1,6 +1,6 @@
 # The Enterprise Strikes Back - AI Edition
 
-**Jax Tech Talk · January 2026**
+**[Jax Tech Meetup](https://www.meetup.com/jax-tech-meetup/events/311538088/) · January 29, 2026**
 
 > **Looking for the interactive Claude skills?**  
 > - [Enterprise AI Competitive Strategy Consultant](skills/enterprise-ai-competitive-strategy-consultant.md) — for enterprise executives defending against disruption  
