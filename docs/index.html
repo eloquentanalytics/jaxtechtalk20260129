@@ -8,6 +8,17 @@
   <!-- Reveal.js CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+  
+  <!-- PDF Export Styles -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi)
+      ? 'https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/css/print/pdf.css'
+      : 'https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,7 +57,7 @@
       margin: 0;
     }
 
-    .reveal .slides {
+    html:not(.print-pdf) .reveal .slides {
       width: 100vw !important;
       height: 100vh !important;
       left: 0 !important;
@@ -54,9 +65,13 @@
       transform: none !important;
     }
 
-    .reveal .slides > section {
+    html:not(.print-pdf) .reveal .slides > section {
       width: 100vw !important;
       height: 100vh !important;
+      box-sizing: border-box;
+    }
+
+    html.print-pdf .reveal .slides > section {
       box-sizing: border-box;
     }
 
@@ -423,6 +438,11 @@
       border-color: var(--accent-green);
     }
 
+    .scope-row .step.highlight-potential {
+      background: rgba(48, 209, 88, 0.3);
+      border-color: rgba(48, 209, 88, 0.5);
+    }
+
     .scope-row .step.cross-process {
       background: var(--accent-amber);
       border-color: var(--accent-amber);
@@ -538,7 +558,7 @@
 
     /* Key points list (max 3 items per style guide) */
     .key-points {
-      list-style: none;
+      list-style: none !important;
       padding: 0;
       margin: 20px auto;
       max-width: 800px;
@@ -551,6 +571,7 @@
       margin-bottom: 12px;
       padding-left: 28px;
       position: relative;
+      list-style: none !important;
     }
 
     .key-points li::before {
@@ -558,6 +579,10 @@
       position: absolute;
       left: 0;
       color: var(--accent-blue);
+    }
+
+    .key-points li::marker {
+      content: none;
     }
 
     /* Simple data table */
@@ -573,6 +598,90 @@
       border-bottom: 1px solid rgba(255,255,255,0.15);
       padding: 12px 0;
     }
+
+    /* ===== PRINT-PDF MODE OVERRIDES ===== */
+    @media print {
+      .reveal .slides {
+        width: 100% !important;
+        height: auto !important;
+        left: 0 !important;
+        top: 0 !important;
+        transform: none !important;
+        overflow: visible !important;
+      }
+
+      .reveal .slides > section {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 40px !important;
+        box-sizing: border-box !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+      }
+
+      .reveal .slides > section > section {
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+      }
+
+      .slide-standard,
+      .slide-title-page,
+      .slide-closing {
+        min-height: 100vh !important;
+        height: auto !important;
+      }
+
+      .reveal .progress,
+      .reveal .controls,
+      .reveal aside.controls {
+        display: none !important;
+      }
+    }
+
+    /* Print-PDF query string mode */
+    html.print-pdf .reveal .slides {
+      width: 100% !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
+
+    html.print-pdf .reveal .slides > section {
+      width: 100% !important;
+      height: auto !important;
+      min-height: 700px !important;
+      padding: 50px 60px !important;
+      visibility: visible !important;
+      display: flex !important;
+      page-break-after: always !important;
+    }
+
+    html.print-pdf .reveal .slides > section > section {
+      width: 100% !important;
+      height: auto !important;
+      min-height: 700px !important;
+      padding: 50px 60px !important;
+      visibility: visible !important;
+      display: flex !important;
+    }
+
+    html.print-pdf .slide-standard {
+      min-height: 700px !important;
+    }
+
+    html.print-pdf .slide-title-page {
+      min-height: 700px !important;
+    }
+
+    html.print-pdf .slide-closing {
+      min-height: 700px !important;
+    }
+
+    html.print-pdf .reveal .progress,
+    html.print-pdf .reveal .controls,
+    html.print-pdf .reveal aside.controls {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -581,12 +690,12 @@
 
       <!-- ===== SLIDE 1: TITLE ===== -->
       <section class="slide-title-page">
-        <h1>The AI Innovator's Dilemma</h1>
-        <p class="subtitle">What Do You Do With a Tool That Can Do Anything?</p>
-        <div class="thesis-card">
-          <p>"The same forces that made incumbents powerful now prevent them from going AI-first."</p>
+        <h1>The Enterprise Strikes Back - AI Edition</h1>
+        <p class="subtitle">Evolving competitive strategy in the age of AI</p>        <div class="thesis-card">
+          <p>"What got you here won't get you there."</p>
+          <p style="font-size: 14px; font-style: normal; margin-top: 12px; color: var(--text-secondary);">— M. Goldsmith</p>
         </div>
-        <p class="speaker-info">Philip O'Donnell · Jax Tech · January 2026</p>
+        <p class="speaker-info">Philip S. O'Donnell<br>Principal - Eloquent Analytics<br>VP Data & AI - Supplemental Healthcare<br><span style="font-size: 0.85em; color: var(--text-secondary);">former Head of Global Data and AI Platforms, The Adecco Group</span></p>
       </section>
 
       <!-- ===== SLIDE 2: EVERYTHING OLD IS NEW ===== -->
@@ -594,40 +703,18 @@
         <div class="slide-header">
           <h2>Everything Old Is New Again</h2>
         </div>
-        <div class="slide-content">
-          <div class="timeline">
-            <div class="era">
-              <div class="era-date">1913</div>
-              <div class="era-name">Assembly Line</div>
-              <div class="era-target">Manual Labor</div>
-            </div>
-            <div class="era-arrow">→</div>
-            <div class="era">
-              <div class="era-date">2006</div>
-              <div class="era-name">Cloud Computing</div>
-              <div class="era-target">Infrastructure</div>
-            </div>
-            <div class="era-arrow">→</div>
-            <div class="era current">
-              <div class="era-date">2024</div>
-              <div class="era-name">AI / LLMs</div>
-              <div class="era-target">Knowledge Work</div>
-            </div>
-          </div>
-          <p class="big-statement">
-            AI is a step change in automating<br>
-            <span class="highlight">information and communication.</span>
-          </p>
+        <div class="slide-content" style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 0; overflow: hidden;">
+          <img src="img/transformative-technologies-timeline.jpg" alt="Timeline of transformative technologies from Industrial Revolution to AI" style="width: 100%; max-width: none; transform: scale(1.1); filter: invert(1) hue-rotate(180deg) brightness(1.1) contrast(1.1);">
         </div>
         <div class="slide-takeaway">
-          <p>But the economic patterns? <span class="text-secondary">Same as they ever were.</span></p>
+          <p>Even without knowing <span class="highlight-green">where</span> AI drives productivity</span>, we can still anticipate <span class="highlight-green">how</span>.
         </div>
       </section>
 
       <!-- ===== SLIDE 3: 80/20 THRESHOLD ===== -->
       <section class="slide-standard">
         <div class="slide-header">
-          <h2>The Usual Approach to Automation</h2>
+          <h2>Dimishing Returns is the True Enemy</h2>
         </div>
         <div class="slide-content">
           <div class="threshold-bar">
@@ -637,35 +724,31 @@
             <span class="label at-80">Incremental</span>
             <span class="label at-100">Transformational</span>
           </div>
-          <p class="big-statement" style="margin-top: 64px;">
-            80% → 100% is not 20%.<br>
-            <span class="highlight-green">It's the difference between improvement and transformation.</span>
-          </p>
         </div>
         <div class="slide-takeaway">
-          <p>That 20% is where the <span class="text-amber">structural barriers</span> live.</p>
+          <p>Incrementalism will never lead to <span class="highlight-green">transformation</span>. To avoid this trap we must understand it.</p>
         </div>
       </section>
 
       <!-- ===== SLIDE 4: HERO'S JOURNEY OVERVIEW ===== -->
       <section class="slide-standard">
         <div class="slide-header">
-          <h2>The Hero's Journey of Enterprise AI</h2>
+          <h2>Startups are no Match for the Enterprise</h2>
         </div>
         <div class="slide-content">
           <div class="journey-circle">
             <div class="journey-center">Enterprise<br>AI Journey</div>
             <div class="journey-node node-top">
-              <div class="node-name">1 · CHOOSING THE RIGHT PATH</div>
+              <div class="node-name">1 · CHOOSING THE THEATER</div>
             </div>
             <div class="journey-node node-right">
-              <div class="node-name">2 · PREPARING FOR THE JOURNEY</div>
+              <div class="node-name">2 · PLANNING LOGISTICS</div>
             </div>
             <div class="journey-node node-bottom">
-              <div class="node-name">3 · NAVIGATING THE LABYRINTH</div>
+              <div class="node-name">3 · BATTLEFIELD ENGINEERING</div>
             </div>
             <div class="journey-node node-left">
-              <div class="node-name">4 · RESISTING TEMPTATION</div>
+              <div class="node-name">4 · STAYING FOCUSED ON THE GOAL</div>
             </div>
             <svg class="journey-arrows" viewBox="0 0 700 400">
               <defs>
@@ -681,27 +764,57 @@
           </div>
         </div>
         <div class="slide-takeaway">
-          <p>Enterprises fail at 4 specific moments. <span class="text-green">Startups skip the journey entirely.</span></p>
+          <p>We must understand the startups, <span class="text-green">but never sink to their level.</span></p>
         </div>
       </section>
 
-      <!-- ===== SLIDE 5: BARRIER 1 - INTRO ===== -->
-      <section class="slide-standard">
-        <div class="slide-header">
-          <div class="barrier-header">
-            <span class="barrier-number">1</span>
-            <h2>Choosing the Right Path</h2>
+      <!-- ===== SLIDE 5: BARRIER 1 - INTRO (Vertical Stack for Build) ===== -->
+      <section>
+        <!-- 5a: The Question -->
+        <section class="slide-standard">
+          <div class="slide-header">
+            <div class="barrier-header">
+              <span class="barrier-number">1</span>
+              <h2>Choosing the Theater</h2>
+            </div>
           </div>
-        </div>
-        <div class="slide-content">
-          <div class="card card-amber" style="max-width: 700px; text-align: left;">
-            <p style="font-size: 28px; margin-bottom: 16px;"><span class="text-amber">Why doesn't LinkedIn do recruiting?</span></p>
-            <p style="font-size: 22px; font-style: italic; margin: 0;">LinkedIn's customers are recruiters.</p>
+          <div class="slide-content">
+            <div class="card card-amber" style="max-width: 700px; text-align: center;">
+              <p style="font-size: 32px; margin: 0;"><span class="text-amber">Why doesn't LinkedIn do recruiting?</span></p>
+            </div>
           </div>
-        </div>
-        <div class="slide-takeaway">
-          <p>Existing customers provide a <span class="text-amber">structural constraint</span> on growth.</p>
-        </div>
+          <div class="slide-takeaway">
+            <p>&nbsp;</p>
+          </div>
+        </section>
+
+        <!-- 5b: The Answer -->
+        <section class="slide-standard">
+          <div class="slide-header">
+            <div class="barrier-header">
+              <span class="barrier-number">1</span>
+              <h2>Choosing the Theater</h2>
+            </div>
+          </div>
+          <div class="slide-content">
+            <div class="card card-amber" style="max-width: 700px; text-align: center;">
+              <p style="font-size: 32px; margin: 0;"><span class="text-amber">Why doesn't LinkedIn do recruiting?</span></p>
+            </div>
+            <p style="font-size: 36px; margin-top: 32px; font-weight: 600;">LinkedIn's customers are recruiters.</p>
+            <p style="font-size: 24px; margin-top: 12px; color: var(--text-secondary);">~60% of revenue ($7B) comes from recruiters</p>
+          </div>
+          <div class="slide-takeaway">
+            <p>Existing customers provide a <span class="text-green">structural constraint</span> on growth.</p>
+          </div>
+          <aside class="notes">
+            <p><strong>Sources:</strong></p>
+            <ul>
+              <li>Statista: LinkedIn Revenue by Segment - https://www.statista.com/statistics/1472741/linkedin-revenue-by-business-segment/</li>
+              <li>FourWeekMBA: LinkedIn Revenue Breakdown - https://fourweekmba.com/linkedin-revenue-breakdown/</li>
+              <li>LinkedIn Business Highlights FY23 Q4 - https://news.linkedin.com/2023/july/linkedin-business-highlights-from-microsoft-s-fy23-q4-earnings</li>
+            </ul>
+          </aside>
+        </section>
       </section>
 
       <!-- ===== SLIDE 6: BARRIER 1 - CONSTRAINTS ===== -->
@@ -709,45 +822,45 @@
         <div class="slide-header">
           <div class="barrier-header">
             <span class="barrier-number">1</span>
-            <h2>Choosing the Right Path</h2>
+            <h2>Choosing the Theater</h2>
           </div>
         </div>
         <div class="slide-content">
-          <div class="three-cards">
-            <div class="card card-amber">
-              <div class="card-icon">👥</div>
-              <div class="card-title">Existing Customers</div>
-              <div class="card-detail">They vote loudly.<br>Future customers are silent.</div>
-              <div style="font-size: 11px; color: var(--text-secondary); margin-top: 10px; line-height: 1.4;">
-                LinkedIn → recruiters<br>
-                Intuit → accountants<br>
-                Shopify → merchants
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 800px; width: 100%;">
+            <div class="card card-amber" style="display: flex; padding: 0;">
+              <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; ">
+                <div class="card-title" style="margin: 0; font-size: 32px;">Existing Customers</div>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
+                <div>LinkedIn → recruiters</div>
+                <div>Intuit → accountants</div>
+                <div>Shopify → merchants</div>
               </div>
             </div>
-            <div class="card card-amber">
-              <div class="card-icon">💰</div>
-              <div class="card-title">Current Revenue</div>
-              <div class="card-detail">Cannibalization hits this quarter.<br>New revenue is a spreadsheet.</div>
-              <div style="font-size: 11px; color: var(--text-secondary); margin-top: 10px; line-height: 1.4;">
-                Kodak → digital camera<br>
-                Nokia → touch prototypes<br>
-                Newspapers → print ads
+            <div class="card card-amber" style="display: flex; padding: 0;">
+              <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; ">
+                <div class="card-title" style="margin: 0; font-size: 32px;">Current Revenue</div>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
+                <div>Kodak → film revenue</div>
+                <div>Xerox → copier revenue</div>
+                <div>Blockbuster → late fees</div>
               </div>
             </div>
-            <div class="card card-amber">
-              <div class="card-icon">⚙️</div>
-              <div class="card-title">Channel Conflicts</div>
-              <div class="card-detail">Partners and resellers<br>have contractual protection.</div>
-              <div style="font-size: 11px; color: var(--text-secondary); margin-top: 10px; line-height: 1.4;">
-                Nike → Foot Locker<br>
-                Microsoft → resellers<br>
-                Samsung → Best Buy
+            <div class="card card-amber" style="display: flex; padding: 0;">
+              <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; ">
+                <div class="card-title" style="margin: 0; font-size: 32px;">Channel Conflicts</div>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
+                <div>Nike → Foot Locker</div>
+                <div>Microsoft → resellers</div>
+                <div>Apple → carriers</div>
               </div>
             </div>
           </div>
         </div>
         <div class="slide-takeaway">
-          <p>These aren't obstacles to overcome. They're the <span class="text-amber">boundaries of the playing field</span>.</p>
+          <p>Enterprises treat these as <span class="text-green">core elements of strategy</span>, not obstacles to overcome.</p>
         </div>
         <aside class="notes">
           <h4>EXISTING CUSTOMERS</h4>
@@ -801,46 +914,38 @@
         <div class="slide-header">
           <div class="barrier-header">
             <span class="barrier-number">1</span>
-            <h2>Choosing the Right Path</h2>
+            <h2>Choosing the Theater</h2>
           </div>
         </div>
         <div class="slide-content">
           <div class="two-col">
             <div class="col">
-              <div class="card card-amber" style="text-align: left; height: 100%;">
-                <div class="card-title text-amber">Enterprise</div>
-                <div style="font-size: 18px; color: var(--text-secondary); line-height: 1.6;">
-                  <p style="margin-bottom: 12px;"><span style="color: var(--text-primary);">Map your constraints explicitly.</span></p>
-                  <p style="margin-bottom: 12px;">Which customers would you compete with?</p>
-                  <p style="margin-bottom: 12px;">Which revenue would you cannibalize?</p>
-                  <p style="margin: 0;">Build in the <span style="color: var(--text-primary);">negative space</span>.</p>
-                </div>
+              <div class="card card-blue" style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                <div class="card-title text-blue" style="font-size: 28px;">Enterprise</div>
+                <p style="font-size: 28px; font-weight: 600; color: var(--text-primary); margin: 16px 0 12px;">Commoditize your complement</p>
+                <p style="font-size: 20px; color: var(--text-secondary); margin: 0;">Automate services you don't offer → drive demand for what you do.</p>
               </div>
             </div>
             <div class="col">
-              <div class="card card-green" style="text-align: left; height: 100%;">
-                <div class="card-title text-green">Startup</div>
-                <div style="font-size: 18px; color: var(--text-secondary); line-height: 1.6;">
-                  <p style="margin-bottom: 12px;"><span style="color: var(--text-primary);">Map their constraints explicitly.</span></p>
-                  <p style="margin-bottom: 12px;">Who are their sacred customers?</p>
-                  <p style="margin-bottom: 12px;">What revenue can't they risk?</p>
-                  <p style="margin: 0;">Build <span style="color: var(--text-primary);">exactly there</span> — they can't follow.</p>
-                </div>
+              <div class="card card-amber" style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                <div class="card-title text-amber" style="font-size: 28px;">Startup</div>
+                <p style="font-size: 28px; font-weight: 600; color: var(--text-primary); margin: 16px 0 12px;">Choose your theater carefully</p>
+                <p style="font-size: 20px; color: var(--text-secondary); margin: 0;">Build where they can't follow — constraints are opportunities.</p>
               </div>
             </div>
           </div>
         </div>
         <div class="slide-takeaway">
-          <p>Startups have nothing to sacrifice. <span class="highlight">That's the moat.</span></p>
+          <p>Walls work both ways — <span class="text-green">keeping them out</span>, keeping you in.</p>
         </div>
       </section>
 
-      <!-- ===== SLIDE 8: BARRIER 2 - INTRO ===== -->
+      <!-- ===== SLIDE 8: BARRIER 2 - INTRO (Inventory View) ===== -->
       <section class="slide-standard">
         <div class="slide-header">
           <div class="barrier-header">
             <span class="barrier-number">2</span>
-            <h2>Preparing for the Journey</h2>
+            <h2>Planning Logistics</h2>
           </div>
         </div>
         <div class="slide-content">
@@ -848,41 +953,92 @@
             <div class="scope-row">
               <span class="row-label">Process A</span>
               <div class="steps">
-                <div class="step highlight"></div><div class="step"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div>
+                <div class="step highlight-potential"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step"></div>
               </div>
             </div>
             <div class="scope-row">
               <span class="row-label">Process B</span>
               <div class="steps">
-                <div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div>
+                <div class="step"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step"></div>
               </div>
             </div>
             <div class="scope-row">
               <span class="row-label">Process C</span>
               <div class="steps">
-                <div class="step"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step"></div>
+                <div class="step"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step"></div><div class="step"></div>
               </div>
             </div>
             <div class="scope-row">
               <span class="row-label">Process D</span>
               <div class="steps">
-                <div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div>
+                <div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div>
               </div>
             </div>
             <div class="scope-row">
               <span class="row-label">Process E</span>
               <div class="steps">
-                <div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step highlight"></div>
+                <div class="step"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step highlight-potential"></div>
               </div>
             </div>
             <div class="scope-legend">
-              <div class="legend-item"><div class="legend-box" style="background: var(--accent-green);"></div><span>Likely Automation</span></div>
+              <div class="legend-item"><div class="legend-box" style="background: rgba(48, 209, 88, 0.3); border: 1px solid rgba(48, 209, 88, 0.5);"></div><span>Potential Automation</span></div>
               <div class="legend-item"><div class="legend-box" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);"></div><span>Likely Manual</span></div>
             </div>
           </div>
         </div>
         <div class="slide-takeaway">
-          <p>Many small pilots derisk investment by <span class="text-green">making it incremental</span>.</p>
+          <p>Step 1: Identify <span class="text-green">where AI could help</span> across the organization.</p>
+        </div>
+      </section>
+
+      <!-- ===== SLIDE 8b: BARRIER 2 - SCATTERSHOT SELECTION ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">2</span>
+            <h2>Planning Logistics</h2>
+          </div>
+        </div>
+        <div class="slide-content">
+          <div class="scope-visual">
+            <div class="scope-row">
+              <span class="row-label">Process A</span>
+              <div class="steps">
+                <div class="step highlight"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process B</span>
+              <div class="steps">
+                <div class="step"></div><div class="step"></div><div class="step highlight"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process C</span>
+              <div class="steps">
+                <div class="step"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight"></div><div class="step"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step"></div><div class="step"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process D</span>
+              <div class="steps">
+                <div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div><div class="step highlight"></div><div class="step highlight-potential"></div><div class="step highlight-potential"></div>
+              </div>
+            </div>
+            <div class="scope-row">
+              <span class="row-label">Process E</span>
+              <div class="steps">
+                <div class="step"></div><div class="step"></div><div class="step highlight-potential"></div><div class="step highlight"></div><div class="step highlight-potential"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step highlight-potential"></div>
+              </div>
+            </div>
+            <div class="scope-legend">
+              <div class="legend-item"><div class="legend-box" style="background: var(--accent-green);"></div><span>Selected Pilots</span></div>
+              <div class="legend-item"><div class="legend-box" style="background: rgba(48, 209, 88, 0.3); border: 1px solid rgba(48, 209, 88, 0.5);"></div><span>Not Yet Selected</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-takeaway">
+          <p>Politics, timing, and relationships drive <span class="text-green">scattered experimentation</span>.</p>
         </div>
       </section>
 
@@ -891,7 +1047,7 @@
         <div class="slide-header">
           <div class="barrier-header">
             <span class="barrier-number">2</span>
-            <h2>Preparing for the Journey</h2>
+            <h2>Planning Logistics</h2>
           </div>
         </div>
         <div class="slide-content">
@@ -933,7 +1089,7 @@
           </div>
         </div>
         <div class="slide-takeaway">
-          <p>Startups find the <span class="text-amber">cross-cutting slice</span> AI can fully automate. Offer it at 1/10th the price.</p>
+          <p>Startups find the <span class="text-green">cross-cutting slice</span> AI can fully automate. Offer it at 1/10th the price.</p>
         </div>
       </section>
 
@@ -942,7 +1098,7 @@
         <div class="slide-header">
           <div class="barrier-header">
             <span class="barrier-number">2</span>
-            <h2>Preparing for the Journey</h2>
+            <h2>Planning Logistics</h2>
           </div>
         </div>
         <div class="slide-content">
@@ -978,13 +1134,13 @@
               </div>
             </div>
             <div class="scope-legend">
-              <div class="legend-item"><div class="legend-box" style="background: var(--accent-blue);"></div><span>100% automation focus</span></div>
-              <div class="legend-item"><div class="legend-box" style="background: var(--accent-green);"></div><span>Opportunistic automation</span></div>
+              <div class="legend-item"><div class="legend-box" style="background: var(--accent-blue);"></div><span>Automate customer experience 100%</span></div>
+              <div class="legend-item"><div class="legend-box" style="background: var(--accent-green);"></div><span>Buy cross-functional tools</span></div>
             </div>
           </div>
         </div>
         <div class="slide-takeaway">
-          <p>Focus on the <span class="text-blue">100% opportunity</span>. Expand into areas of strength.</p>
+          <p>Automate <span class="text-green">customer experiences</span> holistically. Cross-functional tools? <span class="text-secondary">Buy, don't build.</span></p>
         </div>
       </section>
 
@@ -993,61 +1149,58 @@
         <div class="slide-header">
           <div class="barrier-header">
             <span class="barrier-number">3</span>
-            <h2>Navigating the Labyrinth</h2>
+            <h2>Siege Engineering</h2>
           </div>
         </div>
         <div class="slide-content">
           <div class="image-container">
             <img src="img/stanley-trunk-chaos.jpg" alt="Stanley's trunk - 2005 DARPA Challenge winner">
           </div>
-          <p class="image-caption">"This won the 2005 DARPA Challenge. Ugly. Necessary."</p>
-          <ul class="key-points">
-            <li>Legacy systems expose UIs, not APIs — AI needs APIs</li>
-            <li>You need a middle layer for handoffs — it doesn't exist</li>
-            <li>The throwaway bridge becomes load-bearing before you notice</li>
+          <ul class="key-points" style="font-size: 28px; font-weight: 600;">
+            <li>Enterprises have UIs, not APIs</li>
+            <li>Missing handoff layer</li>
+            <li>Learning is an ongoing investment</li>
           </ul>
         </div>
         <div class="slide-takeaway">
-          <p>The handoff layer becomes <span class="text-amber">permanent technical debt</span>.</p>
+          <p>Enterprises don't typically build <span class="text-green">disposable software</span>.</p>
         </div>
       </section>
 
-      <!-- ===== SLIDE 12: BARRIER 3 - FINANCE ===== -->
+      <!-- ===== SLIDE 12: BARRIER 3 - FINANCE & INERTIA ===== -->
       <section class="slide-standard">
         <div class="slide-header">
           <div class="barrier-header">
             <span class="barrier-number">3</span>
-            <h2>Navigating the Labyrinth</h2>
+            <h2>Siege Engineering</h2>
           </div>
         </div>
         <div class="slide-content">
-          <div class="two-col">
+          <div class="two-col" style="max-width: 1000px;">
             <div class="col">
-              <div class="card card-amber" style="text-align: left; height: 100%;">
-                <div class="card-title text-amber">The Finance Problem</div>
-                <div style="font-size: 16px; color: var(--text-secondary); line-height: 1.6;">
-                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">CapEx rules:</span> Must capitalize software > $X</p>
-                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">OpEx pressure:</span> "Temporary" has no budget line</p>
-                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Decommission fantasy:</span> Old systems don't turn off</p>
-                  <p style="margin: 0; color: var(--accent-amber);">Dual-running costs hidden in different budgets</p>
+              <div class="card card-blue" style="text-align: left; height: 100%;">
+                <div class="card-title text-blue" style="font-size: 24px; margin-bottom: 24px;">The Finance Problem</div>
+                <div style="font-size: 20px; color: var(--text-primary); line-height: 2.4;">
+                  <p style="margin: 0;">CapEx rules</p>
+                  <p style="margin: 0;">OpEx pressure</p>
+                  <p style="margin: 0;">Dual-running costs</p>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card card-green" style="text-align: left; height: 100%;">
-                <div class="card-title text-green">The Vibe Code Opportunity</div>
-                <div style="font-size: 16px; color: var(--text-secondary); line-height: 1.6;">
-                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Greenfield only:</span> No legacy dependencies</p>
-                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">New segments:</span> Customers with no existing systems</p>
-                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Internal tools:</span> Where ugly is acceptable</p>
-                  <p style="margin: 0; color: var(--accent-green);">Fast, cheap, experimental — and disposable</p>
+              <div class="card card-blue" style="text-align: left; height: 100%;">
+                <div class="card-title text-blue" style="font-size: 24px; margin-bottom: 24px;">The Inertia Problem</div>
+                <div style="font-size: 20px; color: var(--text-primary); line-height: 2.4;">
+                  <p style="margin: 0;">Constant pressure</p>
+                  <p style="margin: 0;">Leadership changes</p>
+                  <p style="margin: 0;">Baseline requirement</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="slide-takeaway">
-          <p>Vibe coding is made for throwaway stuff. <span class="highlight">Enterprise finance isn't.</span></p>
+          <p>Enterprise finance isn't built for <span class="text-green">build-to-learn projects</span>.</p>
         </div>
       </section>
 
@@ -1056,37 +1209,35 @@
         <div class="slide-header">
           <div class="barrier-header">
             <span class="barrier-number">3</span>
-            <h2>Navigating the Labyrinth</h2>
+            <h2>Siege Engineering</h2>
           </div>
         </div>
         <div class="slide-content">
           <div class="two-col">
             <div class="col">
-              <div class="card card-amber" style="text-align: left; height: 100%;">
-                <div class="card-title text-amber">Enterprise</div>
-                <div style="font-size: 16px; color: var(--text-secondary); line-height: 1.6;">
-                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Go microservices:</span> smaller pieces depreciate faster</p>
-                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Budget the writeoff:</span> bridges are infrastructure</p>
-                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Vibe code the greenfield:</span> new segments, internal tools</p>
-                  <p style="margin: 0;"><span style="color: var(--text-primary);">Name the decommission owner</span> with hard dates</p>
+              <div class="card card-blue" style="text-align: left; height: 100%;">
+                <div class="card-title text-blue" style="font-size: 24px; margin-bottom: 24px;">Enterprise</div>
+                <div style="font-size: 20px; color: var(--text-primary); line-height: 2.4;">
+                  <p style="margin: 0;">Go microservices for portability</p>
+                  <p style="margin: 0;">Vibe code the throwaway layers</p>
+                  <p style="margin: 0;">External partners for architecture</p>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card card-green" style="text-align: left; height: 100%;">
-                <div class="card-title text-green">Startup</div>
-                <div style="font-size: 16px; color: var(--text-secondary); line-height: 1.6;">
-                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Easier:</span> Markets with deep legacy (banking, healthcare)</p>
-                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Easier:</span> Long sales cycles — you iterate faster</p>
-                  <p style="margin-bottom: 10px;"><span style="color: var(--text-primary);">Harder:</span> Cloud-native incumbents</p>
-                  <p style="margin: 0;"><span style="color: var(--text-primary);">Harder:</span> Tight regulatory review of changes</p>
+              <div class="card card-amber" style="text-align: left; height: 100%;">
+                <div class="card-title text-amber" style="font-size: 24px; margin-bottom: 24px;">Startup</div>
+                <div style="font-size: 20px; color: var(--text-primary); line-height: 2.4;">
+                  <p style="margin: 0;">Target deep legacy markets</p>
+                  <p style="margin: 0;">Exploit long sales cycles</p>
+                  <p style="margin: 0;">Avoid regulatory bottlenecks</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="slide-takeaway">
-          <p>The startup is born in the upside down. <span class="highlight">The enterprise has to find a door.</span></p>
+          <p>Early-stage startups build <span class="text-green">disposable software</span> by default.</p>
         </div>
       </section>
 
@@ -1095,22 +1246,22 @@
         <div class="slide-header">
           <div class="barrier-header">
             <span class="barrier-number">4</span>
-            <h2>Resisting Temptation</h2>
+            <h2>Staying Focused on the Goal</h2>
           </div>
         </div>
         <div class="slide-content">
           <div class="data-table">
-            <div class="row"><span class="text-secondary">Revenue</span><span>$63B</span></div>
-            <div class="row"><span class="text-secondary">AI automation savings</span><span>$3.5B saved</span></div>
-            <div class="row"><span class="text-secondary">Cut costs → profit</span><span class="text-green">$3.5B (100%)</span></div>
-            <div class="row"><span class="text-secondary">Grow @ 57% margin</span><span>need <span class="text-amber">$6.1B</span> revenue</span></div>
+            <div class="row"><span class="text-secondary">Revenue</span><span>$100B</span></div>
+            <div class="row"><span class="text-secondary">AI automation savings</span><span>$5B saved</span></div>
+            <div class="row"><span class="text-secondary">Cut costs → profit</span><span class="text-green">$5B (100%)</span></div>
+            <div class="row"><span class="text-secondary">Grow @ 50% margin</span><span>need <span class="text-amber">$10B</span> revenue</span></div>
           </div>
           <p style="font-size: 36px; font-weight: 700; margin-top: 32px;">
-            $6.1B ÷ $63B = <span class="text-amber">~10%</span>
+            $10B ÷ $100B = <span class="text-amber">10%</span>
           </p>
         </div>
         <div class="slide-takeaway">
-          <p>Same profit boost from cutting or <span class="text-amber">10% revenue growth</span>. Cutting is easier.</p>
+          <p>Same profit boost from cutting or <span class="text-green">10% revenue growth</span>. Cutting is easier.</p>
         </div>
       </section>
 
@@ -1178,52 +1329,108 @@
         <div class="slide-content">
           <div class="two-col">
             <div class="col">
-              <div class="card card-amber" style="text-align: center;">
-                <div class="card-title text-amber">Enterprise</div>
-                <p style="font-size: 24px; font-weight: 600; margin-bottom: 8px;">Direct AI to growing units</p>
-                <p style="font-size: 18px; color: var(--text-secondary); margin: 0;">They reinvest → multiplier</p>
+              <div class="card card-blue" style="text-align: left; height: 100%;">
+                <div class="card-title text-blue" style="font-size: 24px; margin-bottom: 24px;">Enterprise</div>
+                <div style="font-size: 20px; color: var(--text-primary); line-height: 2.4;">
+                  <p style="margin: 0;">Direct AI to growing units</p>
+                  <p style="margin: 0;">They reinvest savings</p>
+                  <p style="margin: 0;">Multiplier effect</p>
+                </div>
               </div>
             </div>
             <div class="col">
-              <div class="card card-green" style="text-align: center;">
-                <div class="card-title text-green">Startup</div>
-                <p style="font-size: 24px; font-weight: 600; margin-bottom: 8px;">Follow the layoffs</p>
-                <p style="font-size: 18px; color: var(--text-secondary); margin: 0;">Build where they won't</p>
+              <div class="card card-amber" style="text-align: left; height: 100%;">
+                <div class="card-title text-amber" style="font-size: 24px; margin-bottom: 24px;">Startup</div>
+                <div style="font-size: 20px; color: var(--text-primary); line-height: 2.4;">
+                  <p style="margin: 0;">Follow the layoffs</p>
+                  <p style="margin: 0;">They won't see you as a threat</p>
+                  <p style="margin: 0;">Build where they retreat</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="slide-takeaway">
-          <p>Don't let AI become a <span class="text-amber">cost-cutting tool only</span>.</p>
+          <p>Don't let AI become a <span class="text-green">cost-cutting tool only</span>.</p>
         </div>
       </section>
 
-      <!-- ===== SLIDE 17: STARTUP PLAYBOOK ===== -->
+      <!-- ===== SLIDE 17: ENTERPRISE PLAYBOOK ===== -->
       <section class="slide-standard">
         <div class="slide-header">
-          <h2 style="color: var(--accent-green);">The Startup Playbook</h2>
+          <h2 style="color: var(--accent-blue);">The Enterprise Playbook</h2>
         </div>
         <div class="slide-content">
-          <div class="framework-list">
-            <div class="item" style="border-color: rgba(48, 209, 88, 0.3);">
-              <span class="item-number text-green">1</span>
-              <span class="item-label">PLANS</span>
-              <span class="item-criteria">Leverage natural defenses</span>
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 900px; margin: 0 auto;">
+            <div class="card" style="border-color: rgba(10, 132, 255, 0.4); padding: 20px 28px; display: flex; align-items: center; gap: 20px;">
+              <span class="text-blue" style="font-size: 24px; font-weight: 700; min-width: 32px;">1</span>
+              <div>
+                <div class="text-blue" style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Choosing the Theater</div>
+                <div style="font-size: 22px; margin-top: 4px;">Grow where you don't threaten existing customers</div>
+              </div>
             </div>
-            <div class="item" style="border-color: rgba(48, 209, 88, 0.3);">
-              <span class="item-number text-green">2</span>
-              <span class="item-label">PREPARATION</span>
-              <span class="item-criteria">Specialize to gain an edge</span>
+            <div class="card" style="border-color: rgba(10, 132, 255, 0.4); padding: 20px 28px; display: flex; align-items: center; gap: 20px;">
+              <span class="text-blue" style="font-size: 24px; font-weight: 700; min-width: 32px;">2</span>
+              <div>
+                <div class="text-blue" style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Planning Logistics</div>
+                <div style="font-size: 22px; margin-top: 4px;">Find ONE process that's 100% automatable as your beachhead</div>
+              </div>
             </div>
-            <div class="item" style="border-color: rgba(48, 209, 88, 0.3);">
-              <span class="item-number text-green">3</span>
-              <span class="item-label">LEARNING</span>
-              <span class="item-criteria">Learning is dirty work</span>
+            <div class="card" style="border-color: rgba(10, 132, 255, 0.4); padding: 20px 28px; display: flex; align-items: center; gap: 20px;">
+              <span class="text-blue" style="font-size: 24px; font-weight: 700; min-width: 32px;">3</span>
+              <div>
+                <div class="text-blue" style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Siege Engineering</div>
+                <div style="font-size: 22px; margin-top: 4px;">Use partners as accelerators and build smarter</div>
+              </div>
             </div>
-            <div class="item" style="border-color: rgba(48, 209, 88, 0.3);">
-              <span class="item-number text-green">4</span>
-              <span class="item-label">SPOILS</span>
-              <span class="item-criteria">Pursue a retreating enemy</span>
+            <div class="card" style="border-color: rgba(10, 132, 255, 0.4); padding: 20px 28px; display: flex; align-items: center; gap: 20px;">
+              <span class="text-blue" style="font-size: 24px; font-weight: 700; min-width: 32px;">4</span>
+              <div>
+                <div class="text-blue" style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Staying Focused on the Goal</div>
+                <div style="font-size: 22px; margin-top: 4px;">Direct AI to growing units so they can reinvest the gains</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-takeaway">
+          <p>Don't fight the structure. <span class="text-green">Work within it or around it.</span></p>
+        </div>
+      </section>
+
+      <!-- ===== SLIDE 18: STARTUP PLAYBOOK ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <h2 style="color: var(--accent-amber);">The Startup Playbook</h2>
+        </div>
+        <div class="slide-content">
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 900px; margin: 0 auto;">
+            <div class="card" style="border-color: rgba(255, 159, 10, 0.4); padding: 20px 28px; display: flex; align-items: center; gap: 20px;">
+              <span class="text-amber" style="font-size: 24px; font-weight: 700; min-width: 32px;">1</span>
+              <div>
+                <div class="text-amber" style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Choosing the Theater</div>
+                <div style="font-size: 22px; margin-top: 4px;">Build where enterprises won't compete</div>
+              </div>
+            </div>
+            <div class="card" style="border-color: rgba(255, 159, 10, 0.4); padding: 20px 28px; display: flex; align-items: center; gap: 20px;">
+              <span class="text-amber" style="font-size: 24px; font-weight: 700; min-width: 32px;">2</span>
+              <div>
+                <div class="text-amber" style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Planning Logistics</div>
+                <div style="font-size: 22px; margin-top: 4px;">Find the automatable slice and drive outward</div>
+              </div>
+            </div>
+            <div class="card" style="border-color: rgba(255, 159, 10, 0.4); padding: 20px 28px; display: flex; align-items: center; gap: 20px;">
+              <span class="text-amber" style="font-size: 24px; font-weight: 700; min-width: 32px;">3</span>
+              <div>
+                <div class="text-amber" style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Siege Engineering</div>
+                <div style="font-size: 22px; margin-top: 4px;">Start AI-native with no legacy to bridge</div>
+              </div>
+            </div>
+            <div class="card" style="border-color: rgba(255, 159, 10, 0.4); padding: 20px 28px; display: flex; align-items: center; gap: 20px;">
+              <span class="text-amber" style="font-size: 24px; font-weight: 700; min-width: 32px;">4</span>
+              <div>
+                <div class="text-amber" style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Staying Focused on the Goal</div>
+                <div style="font-size: 22px; margin-top: 4px;">Follow the layoffs and build where they retreat</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1232,61 +1439,54 @@
         </div>
       </section>
 
-      <!-- ===== SLIDE 18: ENTERPRISE PLAYBOOK ===== -->
-      <section class="slide-standard">
-        <div class="slide-header">
-          <h2 style="color: var(--accent-amber);">The Enterprise Playbook</h2>
-        </div>
-        <div class="slide-content">
-          <div class="framework-list">
-            <div class="item" style="border-color: rgba(255, 159, 10, 0.3);">
-              <span class="item-number text-amber">1</span>
-              <span class="item-label">PLANS</span>
-              <span class="item-criteria">Grow in ways that don't threaten structural constraints</span>
-            </div>
-            <div class="item" style="border-color: rgba(255, 159, 10, 0.3);">
-              <span class="item-number text-amber">2</span>
-              <span class="item-label">PREPARATION</span>
-              <span class="item-criteria">Find ONE process that's 100% automatable → beachhead</span>
-            </div>
-            <div class="item" style="border-color: rgba(255, 159, 10, 0.3);">
-              <span class="item-number text-amber">3</span>
-              <span class="item-label">LEARNING</span>
-              <span class="item-criteria">Find projects that can be vibe coded → AI-native from start</span>
-            </div>
-            <div class="item" style="border-color: rgba(255, 159, 10, 0.3);">
-              <span class="item-number text-amber">4</span>
-              <span class="item-label">SPOILS</span>
-              <span class="item-criteria">Direct AI within growing units → they reinvest the gains</span>
-            </div>
-          </div>
-        </div>
-        <div class="slide-takeaway">
-          <p>Don't fight the structure. <span class="text-amber">Work within it — or around it.</span></p>
-        </div>
-      </section>
-
       <!-- ===== SLIDE 19: CLOSING ===== -->
       <section class="slide-closing">
-        <div class="references">
-          <h3>Sources</h3>
-          <ul>
-            <li>Clayton Christensen, <em>The Innovator's Dilemma</em></li>
-            <li>Innosight, <em>Dual Transformation</em></li>
-            <li>a16z, "AI Wedges"</li>
-            <li>Bain, "Defending Against Disruption"</li>
-          </ul>
-          <div class="cta-box">
-            <p style="color: var(--text-primary);"><strong>Try it yourself:</strong> Claude skill to walk through the framework</p>
-            <p style="font-size: 0.9em; margin-top: 0.3em; color: var(--text-secondary);">
-              "As a startup finding a market" or "As an enterprise defending against disruption"
-            </p>
+        <div style="display: flex; gap: 60px; align-items: flex-start; max-width: 1000px;">
+          <!-- Left column: Sources + Contact -->
+          <div style="flex: 1;">
+            <div class="references" style="margin-bottom: 32px;">
+              <h3>Sources</h3>
+              <ul>
+                <li>Clayton Christensen, <em>The Innovator's Dilemma</em></li>
+                <li>Innosight, <em>Dual Transformation</em></li>
+                <li>a16z, "AI Wedges"</li>
+                <li>Bain, "Defending Against Disruption"</li>
+              </ul>
+            </div>
+            <div class="contact" style="border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 24px;">
+              <p class="name">Philip O'Donnell</p>
+              <p style="color: var(--text-secondary); margin-top: 0.3em;">philip@eloquentanalytics.com</p>
+              <p style="color: var(--text-secondary); margin-top: 0.3em;">Jax Tech · January 2026</p>
+            </div>
           </div>
-          <div class="contact">
-            <p class="name">Philip O'Donnell</p>
-            <p style="color: var(--text-secondary); margin-top: 0.3em;">Jax Tech · January 2026</p>
+          <!-- Right column: Try it yourself with QR -->
+          <div style="flex: 1;">
+            <div class="cta-box" style="display: flex; align-items: center; gap: 24px; padding: 24px;">
+              <div style="flex: 1;">
+                <p style="color: var(--text-primary); margin: 0;"><strong>Try it yourself:</strong></p>
+                <p style="font-size: 0.95em; margin-top: 8px; color: var(--text-secondary);">
+                  Claude skill to walk through the framework
+                </p>
+                <p style="font-size: 0.85em; margin-top: 12px; color: var(--text-secondary); font-style: italic;">
+                  "As a startup finding a market" or "As an enterprise defending against disruption"
+                </p>
+              </div>
+              <div style="text-align: center; flex-shrink: 0;">
+                <img src="img/github-repo-qr.png" alt="GitHub Repository QR Code" style="width: 140px; height: 140px; border-radius: 8px; background: white; padding: 10px;">
+                <p style="font-size: 0.65em; color: var(--text-secondary); margin-top: 8px;">Scan for slides & code</p>
+              </div>
+            </div>
           </div>
         </div>
+        <aside class="notes">
+          <p><strong>Sources URLs:</strong></p>
+          <ul>
+            <li>Clayton Christensen, <em>The Innovator's Dilemma</em>: https://www.hbs.edu/faculty/Pages/item.aspx?num=46</li>
+            <li>Innosight, <em>Dual Transformation</em>: https://www.innosight.com/wp-content/uploads/2017/11/Dual-Transformation.pdf</li>
+            <li>a16z, "AI Wedges": https://a16z.com/ai-wedges-will-help-startups-outmaneuver-incumbents/</li>
+            <li>Bain, "Defending Against Disruption": https://www.bain.com/insights/defending-against-disruption/</li>
+          </ul>
+        </aside>
       </section>
 
     </div>
@@ -1295,21 +1495,28 @@
   <!-- Reveal.js -->
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
   <script>
+    // Check if we're in print-pdf mode
+    var defined = !!window.location.search.match(/print-pdf/gi);
+    
     Reveal.initialize({
       hash: true,
-      disableLayout: true,
-      margin: 0,
-      minScale: 1,
-      maxScale: 1,
+      disableLayout: defined ? false : true,
+      margin: defined ? 0.1 : 0,
+      minScale: defined ? 0.5 : 1,
+      maxScale: defined ? 2 : 1,
+      width: defined ? 960 : undefined,
+      height: defined ? 700 : undefined,
       transition: 'fade',
       transitionSpeed: 'default',
       backgroundTransition: 'fade',
       center: true,
-      controls: true,
-      progress: true,
+      controls: !defined,
+      progress: !defined,
       slideNumber: false,
       keyboard: true,
-      overview: true
+      overview: true,
+      pdfMaxPagesPerSlide: 1,
+      pdfSeparateFragments: false
     });
   </script>
 </body>

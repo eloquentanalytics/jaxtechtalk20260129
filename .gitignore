@@ -7,3 +7,6 @@ venv/
 # IDE
 .vscode/
 .idea/
+
+.claude/
+.playwright-mcp/
