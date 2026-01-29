@@ -9,16 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
   
-  <!-- PDF Export Styles -->
-  <script>
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match(/print-pdf/gi)
-      ? 'https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/css/print/pdf.css'
-      : 'https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/css/print/paper.css';
-    document.getElementsByTagName('head')[0].appendChild(link);
-  </script>
+  <!-- PDF Export: Reveal 5.x handles print styles internally -->
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,7 +48,13 @@
       margin: 0;
     }
 
-    html:not(.print-pdf) .reveal .slides {
+    /* Live presentation: full viewport scaling (not for export) */
+    html:not(.print-pdf):not(.export-pdf) .reveal-viewport {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    html:not(.print-pdf):not(.export-pdf) .reveal .slides {
       width: 100vw !important;
       height: 100vh !important;
       left: 0 !important;
@@ -65,14 +62,28 @@
       transform: none !important;
     }
 
-    html:not(.print-pdf) .reveal .slides > section {
+    html:not(.print-pdf):not(.export-pdf) .reveal .slides > section {
       width: 100vw !important;
       height: 100vh !important;
       box-sizing: border-box;
     }
 
-    html.print-pdf .reveal .slides > section {
-      box-sizing: border-box;
+    /* Export mode: let Reveal handle scaling, dark background */
+    html.export-pdf {
+      background: #0A0A0F !important;
+    }
+    
+    html.export-pdf body {
+      background: #0A0A0F !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    html.export-pdf .reveal-viewport {
+      background: #0A0A0F !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
     }
 
     .reveal .progress {
@@ -101,7 +112,7 @@
     }
 
     .slide-title-page h1 {
-      font-size: 72px;
+      font-size: 56px;
       line-height: 1.1;
       margin-bottom: 8px;
     }
@@ -137,7 +148,15 @@
     .slide-standard {
       display: flex !important;
       flex-direction: column;
+      justify-content: space-between;
       padding: var(--margin);
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Nested vertical slides need explicit height */
+    section > section.slide-standard {
+      height: 100vh;
     }
 
     .slide-standard .slide-header {
@@ -600,87 +619,154 @@
     }
 
     /* ===== PRINT-PDF MODE OVERRIDES ===== */
+    /* 
+     * PDF Export Best Practices for Reveal.js 5.x:
+     * 1. Use decktape: npx decktape reveal --size 1920x1080 url output.pdf
+     * 2. Or Chrome: open with ?print-pdf, Cmd+P, Landscape, No margins, Background graphics ON
+     */
+    
+    @page {
+      size: 1920px 1080px;
+      margin: 0;
+      padding: 0;
+      background: #0A0A0F;
+    }
+
     @media print {
-      .reveal .slides {
-        width: 100% !important;
-        height: auto !important;
-        left: 0 !important;
-        top: 0 !important;
-        transform: none !important;
-        overflow: visible !important;
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
-
-      .reveal .slides > section {
-        width: 100% !important;
-        height: auto !important;
-        min-height: 100vh !important;
-        padding: 40px !important;
-        box-sizing: border-box !important;
-        page-break-after: always !important;
-        page-break-inside: avoid !important;
-      }
-
-      .reveal .slides > section > section {
-        page-break-after: always !important;
-        page-break-inside: avoid !important;
-      }
-
-      .slide-standard,
-      .slide-title-page,
-      .slide-closing {
-        min-height: 100vh !important;
-        height: auto !important;
-      }
-
-      .reveal .progress,
-      .reveal .controls,
-      .reveal aside.controls {
-        display: none !important;
+      
+      html, body {
+        background: #0A0A0F !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
     }
 
-    /* Print-PDF query string mode */
+    html.print-pdf body {
+      background: #0A0A0F !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    html.print-pdf .reveal-viewport {
+      background: #0A0A0F !important;
+    }
+
+    /* Scale up fonts for PDF export */
+    html.print-pdf .reveal {
+      font-size: 48px !important;
+    }
+
+    html.print-pdf .reveal h1 {
+      font-size: 96px !important;
+    }
+
+    html.print-pdf .reveal h2 {
+      font-size: 72px !important;
+    }
+
+    html.print-pdf .slide-title-page h1 {
+      font-size: 108px !important;
+    }
+
+    html.print-pdf .slide-title-page .subtitle {
+      font-size: 48px !important;
+    }
+
+    html.print-pdf .slide-title-page .thesis-card p {
+      font-size: 36px !important;
+    }
+
+    html.print-pdf .slide-title-page .speaker-info {
+      font-size: 30px !important;
+    }
+
+    html.print-pdf .slide-standard .slide-header h2 {
+      font-size: 72px !important;
+    }
+
+    html.print-pdf .slide-standard .slide-takeaway p {
+      font-size: 42px !important;
+    }
+
+    html.print-pdf .card .card-title {
+      font-size: 28px !important;
+    }
+
+    html.print-pdf .card .card-detail {
+      font-size: 22px !important;
+    }
+
+    html.print-pdf .barrier-number {
+      font-size: 28px !important;
+      padding: 10px 20px !important;
+    }
+
     html.print-pdf .reveal .slides {
-      width: 100% !important;
+      width: 1920px !important;
       height: auto !important;
       overflow: visible !important;
+      transform: none !important;
+      left: 0 !important;
+      top: 0 !important;
     }
 
     html.print-pdf .reveal .slides > section {
-      width: 100% !important;
-      height: auto !important;
-      min-height: 700px !important;
-      padding: 50px 60px !important;
+      width: 1920px !important;
+      height: 1080px !important;
+      padding: 60px 80px !important;
       visibility: visible !important;
       display: flex !important;
       page-break-after: always !important;
+      page-break-inside: avoid !important;
+      box-sizing: border-box !important;
+      position: relative !important;
+      left: 0 !important;
+      top: 0 !important;
+      background: #0A0A0F !important;
     }
 
     html.print-pdf .reveal .slides > section > section {
-      width: 100% !important;
-      height: auto !important;
-      min-height: 700px !important;
-      padding: 50px 60px !important;
+      width: 1920px !important;
+      height: 1080px !important;
+      padding: 60px 80px !important;
       visibility: visible !important;
       display: flex !important;
+      page-break-after: always !important;
+      page-break-inside: avoid !important;
+      box-sizing: border-box !important;
+      background: #0A0A0F !important;
     }
 
-    html.print-pdf .slide-standard {
-      min-height: 700px !important;
-    }
-
-    html.print-pdf .slide-title-page {
-      min-height: 700px !important;
-    }
-
+    html.print-pdf .slide-standard,
+    html.print-pdf .slide-title-page,
     html.print-pdf .slide-closing {
-      min-height: 700px !important;
+      height: 1080px !important;
+      min-height: 1080px !important;
+      max-height: 1080px !important;
     }
 
     html.print-pdf .reveal .progress,
     html.print-pdf .reveal .controls,
-    html.print-pdf .reveal aside.controls {
+    html.print-pdf .reveal aside.controls,
+    html.print-pdf .reveal .slide-number {
       display: none !important;
+    }
+
+    /* Ensure content stays within bounds */
+    html.print-pdf .slide-content {
+      overflow: hidden !important;
+    }
+
+    html.print-pdf .journey-circle {
+      transform: scale(0.85);
+    }
+
+    html.print-pdf .threshold-bar {
+      max-width: 600px;
     }
   </style>
 </head>
@@ -768,53 +854,50 @@
         </div>
       </section>
 
-      <!-- ===== SLIDE 5: BARRIER 1 - INTRO (Vertical Stack for Build) ===== -->
-      <section>
-        <!-- 5a: The Question -->
-        <section class="slide-standard">
-          <div class="slide-header">
-            <div class="barrier-header">
-              <span class="barrier-number">1</span>
-              <h2>Choosing the Theater</h2>
-            </div>
+      <!-- ===== SLIDE 5a: BARRIER 1 - The Question ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">1</span>
+            <h2>Choosing the Theater</h2>
           </div>
-          <div class="slide-content">
-            <div class="card card-amber" style="max-width: 700px; text-align: center;">
-              <p style="font-size: 32px; margin: 0;"><span class="text-amber">Why doesn't LinkedIn do recruiting?</span></p>
-            </div>
+        </div>
+        <div class="slide-content">
+          <div class="card card-amber" style="max-width: 700px; text-align: center;">
+            <p style="font-size: 32px; margin: 0;"><span class="text-amber">Why doesn't LinkedIn do recruiting?</span></p>
           </div>
-          <div class="slide-takeaway">
-            <p>&nbsp;</p>
-          </div>
-        </section>
+        </div>
+        <div class="slide-takeaway">
+          <p>&nbsp;</p>
+        </div>
+      </section>
 
-        <!-- 5b: The Answer -->
-        <section class="slide-standard">
-          <div class="slide-header">
-            <div class="barrier-header">
-              <span class="barrier-number">1</span>
-              <h2>Choosing the Theater</h2>
-            </div>
+      <!-- ===== SLIDE 5b: BARRIER 1 - The Answer ===== -->
+      <section class="slide-standard">
+        <div class="slide-header">
+          <div class="barrier-header">
+            <span class="barrier-number">1</span>
+            <h2>Choosing the Theater</h2>
           </div>
-          <div class="slide-content">
-            <div class="card card-amber" style="max-width: 700px; text-align: center;">
-              <p style="font-size: 32px; margin: 0;"><span class="text-amber">Why doesn't LinkedIn do recruiting?</span></p>
-            </div>
-            <p style="font-size: 36px; margin-top: 32px; font-weight: 600;">LinkedIn's customers are recruiters.</p>
-            <p style="font-size: 24px; margin-top: 12px; color: var(--text-secondary);">~60% of revenue ($7B) comes from recruiters</p>
+        </div>
+        <div class="slide-content">
+          <div class="card card-amber" style="max-width: 700px; text-align: center;">
+            <p style="font-size: 32px; margin: 0;"><span class="text-amber">Why doesn't LinkedIn do recruiting?</span></p>
           </div>
-          <div class="slide-takeaway">
-            <p>Existing customers provide a <span class="text-green">structural constraint</span> on growth.</p>
-          </div>
-          <aside class="notes">
-            <p><strong>Sources:</strong></p>
-            <ul>
-              <li>Statista: LinkedIn Revenue by Segment - https://www.statista.com/statistics/1472741/linkedin-revenue-by-business-segment/</li>
-              <li>FourWeekMBA: LinkedIn Revenue Breakdown - https://fourweekmba.com/linkedin-revenue-breakdown/</li>
-              <li>LinkedIn Business Highlights FY23 Q4 - https://news.linkedin.com/2023/july/linkedin-business-highlights-from-microsoft-s-fy23-q4-earnings</li>
-            </ul>
-          </aside>
-        </section>
+          <p style="font-size: 36px; margin-top: 32px; font-weight: 600;">LinkedIn's customers are recruiters.</p>
+          <p style="font-size: 24px; margin-top: 12px; color: var(--text-secondary);">~60% of revenue ($7B) comes from recruiters</p>
+        </div>
+        <div class="slide-takeaway">
+          <p>Existing customers provide a <span class="text-green">structural constraint</span> on growth.</p>
+        </div>
+        <aside class="notes">
+          <p><strong>Sources:</strong></p>
+          <ul>
+            <li>Statista: LinkedIn Revenue by Segment - https://www.statista.com/statistics/1472741/linkedin-revenue-by-business-segment/</li>
+            <li>FourWeekMBA: LinkedIn Revenue Breakdown - https://fourweekmba.com/linkedin-revenue-breakdown/</li>
+            <li>LinkedIn Business Highlights FY23 Q4 - https://news.linkedin.com/2023/july/linkedin-business-highlights-from-microsoft-s-fy23-q4-earnings</li>
+          </ul>
+        </aside>
       </section>
 
       <!-- ===== SLIDE 6: BARRIER 1 - CONSTRAINTS ===== -->
@@ -1495,26 +1578,37 @@
   <!-- Reveal.js -->
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
   <script>
-    // Check if we're in print-pdf mode
-    var defined = !!window.location.search.match(/print-pdf/gi);
+    // Check if we're in print/export mode
+    var isPrintPDF = !!window.location.search.match(/print-pdf/gi);
+    var isExport = !!window.location.search.match(/export/gi);
+    var useRevealLayout = isPrintPDF || isExport;
+    
+    // Add export class to HTML for CSS targeting
+    if (isExport) {
+      document.documentElement.classList.add('export-pdf');
+    }
     
     Reveal.initialize({
       hash: true,
-      disableLayout: defined ? false : true,
-      margin: defined ? 0.1 : 0,
-      minScale: defined ? 0.5 : 1,
-      maxScale: defined ? 2 : 1,
-      width: defined ? 960 : undefined,
-      height: defined ? 700 : undefined,
+      // Use Reveal's layout for PDF/export, disable for live presentation
+      disableLayout: !useRevealLayout,
+      // Fixed dimensions - Reveal will scale content to fit viewport
+      // Smaller base = more scaling when exported at 1920x1080
+      width: 960,
+      height: 540,
+      margin: 0,
+      minScale: 0.2,
+      maxScale: 2.0,
       transition: 'fade',
       transitionSpeed: 'default',
       backgroundTransition: 'fade',
       center: true,
-      controls: !defined,
-      progress: !defined,
+      controls: !useRevealLayout,
+      progress: !useRevealLayout,
       slideNumber: false,
       keyboard: true,
       overview: true,
+      // PDF Export settings - one centered slide per page
       pdfMaxPagesPerSlide: 1,
       pdfSeparateFragments: false
     });
