@@ -11,4 +11,4 @@ venv/
 .claude/
 .playwright-mcp/
 
-notes/
+notes/.claude/
