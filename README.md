@@ -4,7 +4,7 @@
 
 ---
 
-📽️ **[View Slides in Browser](https://philipsodonnell.github.io/jaxtechtalk20260129/)**
+📽️ **[View Slides in Browser](https://eloquentanalytics.github.io/jaxtechtalk20260129/)**
 
 📧 **Contact:** [philip@eloquentanalytics.com](mailto:philip@eloquentanalytics.com)  
 🔗 **LinkedIn:** [linkedin.com/in/philipsodonnell](https://www.linkedin.com/in/philipsodonnell)
@@ -23,7 +23,9 @@ The same forces that made incumbents powerful now prevent them from going AI-fir
 
 ## Viewing the Presentation
 
-To view the presentation slides, start a local HTTP server in the `/docs` directory:
+**Online:** [eloquentanalytics.github.io/jaxtechtalk20260129](https://eloquentanalytics.github.io/jaxtechtalk20260129/)
+
+**Locally:** Start a local HTTP server in the `/docs` directory:
 
 ```bash
 cd docs
