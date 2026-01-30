@@ -2,6 +2,15 @@
 
 **[Jax Tech Meetup](https://www.meetup.com/jax-tech-meetup/events/311538088/) · January 29, 2026**
 
+---
+
+📽️ **[View Slides in Browser](https://philipsodonnell.github.io/jaxtechtalk20260129/)**
+
+📧 **Contact:** [philip@eloquentanalytics.com](mailto:philip@eloquentanalytics.com)  
+🔗 **LinkedIn:** [linkedin.com/in/philipsodonnell](https://www.linkedin.com/in/philipsodonnell)
+
+---
+
 > **Looking for the interactive Claude skills?**  
 > - [Enterprise AI Competitive Strategy Consultant](skills/enterprise-ai-competitive-strategy-consultant.md) — for enterprise executives defending against disruption  
 > - [Startup AI Competitive Strategy Consultant](skills/startup-ai-competitive-strategy-consultant.md) — for founders finding market opportunities
